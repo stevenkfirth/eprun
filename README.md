@@ -1,2 +1,3 @@
 # eprun
-Python package for 
+Python package for running EnergyPlus simulations
+

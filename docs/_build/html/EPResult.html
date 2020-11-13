@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>EPResult class &mdash; eprun  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="eprun function" href="eprun.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> eprun
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="eprun.html">eprun function</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EPResult class</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">eprun</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>EPResult class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/EPResult.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="epresult-class">
+<h1>EPResult class<a class="headerlink" href="#epresult-class" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="eprun.eprun.EPResult">
+<em class="property">class </em><code class="sig-prename descclassname">eprun.eprun.</code><code class="sig-name descname">EPResult</code><a class="reference internal" href="_modules/eprun/eprun.html#EPResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eprun.EPResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class representing the results of an EnergyPlus simulation.</p>
+<p>An EPResult instance is returned as the result of the <a class="reference internal" href="eprun.html#eprun.eprun.eprun" title="eprun.eprun.eprun"><code class="xref py py-meth docutils literal notranslate"><span class="pre">eprun()</span></code></a> function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">eprun</span> <span class="kn">import</span> <span class="n">eprun</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">=</span><span class="n">eprun</span><span class="p">(</span><span class="n">idf_filepath</span><span class="o">=</span><span class="s1">&#39;1ZoneUncontrolled.idf&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>             <span class="n">epw_filepath</span><span class="o">=</span><span class="s1">&#39;USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>             <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;sim&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="go">&lt;class &#39;eprun.eprun.EPResult&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="eprun.eprun.EPResult.files">
+<em class="property">property </em><code class="sig-name descname">files</code><a class="headerlink" href="#eprun.eprun.EPResult.files" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary of the results files from a successful EnergyPlus simulation.
+The keys of the dictionary are the file extensions e.g. ‘eso’, ‘err’ etc.
+The values of the dictionary are the absolute filepaths of the files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eprun.eprun.EPResult.returncode">
+<em class="property">property </em><code class="sig-name descname">returncode</code><a class="headerlink" href="#eprun.eprun.EPResult.returncode" title="Permalink to this definition">¶</a></dt>
+<dd><p>The returncode of the subprocess.run call to the EnergyPlus exe file.
+This indicates if the call to EnergyPlus was successful.
+0 means success. 1 means failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eprun.eprun.EPResult.stdout">
+<em class="property">property </em><code class="sig-name descname">stdout</code><a class="headerlink" href="#eprun.eprun.EPResult.stdout" title="Permalink to this definition">¶</a></dt>
+<dd><p>The stdout of the subprocess.run call to the EnergyPlus exe file.
+This is the text that would appear in the CommandPromt if the command was run there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="eprun.html" class="btn btn-neutral float-left" title="eprun function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Steven K Firth
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

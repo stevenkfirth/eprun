@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>eprun function &mdash; eprun  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="EPResult class" href="EPResult.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> eprun
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">eprun function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPResult.html">EPResult class</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">eprun</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>eprun function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/eprun.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eprun-function">
+<h1>eprun function<a class="headerlink" href="#eprun-function" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="eprun.eprun.eprun">
+<code class="sig-prename descclassname">eprun.eprun.</code><code class="sig-name descname">eprun</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idf_filepath</span></em>, <em class="sig-param"><span class="n">epw_filepath</span></em>, <em class="sig-param"><span class="n">sim_dir</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">ep_dir</span><span class="o">=</span><span class="default_value">'C:\\EnergyPlusV9-4-0'</span></em>, <em class="sig-param"><span class="n">expand_objects</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">convert</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">readvars</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eprun/eprun.html#eprun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eprun.eprun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs an EnergyPlus simulation and returns the results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idf_filepath</strong> (<em>str</em>) – The filepath of the input .idf file.
+This can be relative or absolute.</p></li>
+<li><p><strong>epw_filepath</strong> (<em>str</em>) – The filepath of the climate .epw file.
+This can be relative or absolute.</p></li>
+<li><p><strong>sim_dir</strong> (<em>str</em>) – The directory to hold the simulation files.
+This can be relative or absolute.
+Default is ‘.’ which is the current directory.</p></li>
+<li><p><strong>ep_dir</strong> – The EnergyPlus directory where ‘energyplus.exe’ is installed.
+Default is ‘C:EnergyPlusV9-4-0’.</p></li>
+<li><p><strong>expand_objects</strong> (<em>bool</em>) – If True, the ‘–expandobjects’ argument is included
+in the call to EnergyPlus.
+This is the argument for ‘Run ExpandObjects prior to simulation’.
+Default is False.</p></li>
+<li><p><strong>convert</strong> (<em>bool</em>) – If True, the ‘–convert’ argument is included in the call
+to EnergyPlus. 
+This is the argument for ‘Output IDF-&gt;epJSON or epJSON-&gt;IDF, dependent on
+input file type’.
+Default is False.</p></li>
+<li><p><strong>readvars</strong> (<em>bool</em>) – If True, the ‘–readvars’ argument is included in the 
+call to EnergyPlus.
+This is the argument for ‘Run ReadVarsESO after simulation’.
+Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A EPResult object which contains the returncode, stdout and a 
+dictionary of the results files.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="EPResult.html#eprun.eprun.EPResult" title="eprun.eprun.EPResult">eprun.eprun.EPResult</a></p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">eprun</span> <span class="kn">import</span> <span class="n">eprun</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">=</span><span class="n">eprun</span><span class="p">(</span><span class="n">idf_filepath</span><span class="o">=</span><span class="s1">&#39;1ZoneUncontrolled.idf&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>             <span class="n">epw_filepath</span><span class="o">=</span><span class="s1">&#39;USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>             <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;sim&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="go">&lt;class &#39;eprun.eprun.EPResult&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
+<span class="go">{&#39;audit&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.audit&#39;, </span>
+<span class="go"> &#39;bnd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.bnd&#39;, </span>
+<span class="go"> &#39;dxf&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.dxf&#39;, </span>
+<span class="go"> &#39;eio&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.eio&#39;, </span>
+<span class="go"> &#39;end&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.end&#39;, </span>
+<span class="go"> &#39;err&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.err&#39;, </span>
+<span class="go"> &#39;eso&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.eso&#39;, </span>
+<span class="go"> &#39;mdd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mdd&#39;, </span>
+<span class="go"> &#39;mtd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mtd&#39;, </span>
+<span class="go"> &#39;mtr&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mtr&#39;, </span>
+<span class="go"> &#39;rdd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.rdd&#39;, </span>
+<span class="go"> &#39;shd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.shd&#39;, </span>
+<span class="go"> &#39;csv&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.csv&#39;, </span>
+<span class="go"> &#39;htm&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.htm&#39;, </span>
+<span class="go"> &#39;tab&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.tab&#39;, </span>
+<span class="go"> &#39;txt&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.txt&#39;, </span>
+<span class="go"> &#39;xml&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.xml&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="EPResult.html" class="btn btn-neutral float-right" title="EPResult class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Steven K Firth
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

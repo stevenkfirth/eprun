@@ -1,0 +1,16 @@
+ ReadVarsESO
+ processing:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\1ZoneUncontrolled.rvi
+ input file:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.eso
+ output file:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.csv
+ getting all vars from:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.eso
+  number variables requested for output=          34
+ ReadVars Run Time=00hr 00min  1.38sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\1ZoneUncontrolled.mvi
+ input file:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mtr
+ output file:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusmtr.csv
+ getting all vars from:C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mtr
+  number variables requested for output=           3
+ ReadVars Run Time=00hr 00min  0.53sec
+ ReadVarsESO program completed successfully.

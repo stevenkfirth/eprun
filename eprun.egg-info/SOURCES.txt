@@ -1,0 +1,8 @@
+README.md
+setup.py
+eprun/__init__.py
+eprun/eprun.py
+eprun.egg-info/PKG-INFO
+eprun.egg-info/SOURCES.txt
+eprun.egg-info/dependency_links.txt
+eprun.egg-info/top_level.txt
