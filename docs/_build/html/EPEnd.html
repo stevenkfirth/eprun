@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to eprun’s documentation! &mdash; eprun  documentation</title>
+  <title>EPEnd class &mdash; eprun  documentation</title>
   
 
   
@@ -35,7 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="Introduction.html" /> 
+    <link rel="next" title="EPErr class" href="EPErr.html" />
+    <link rel="prev" title="EPResult class" href="EPResult.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -49,7 +50,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> eprun
+            <a href="index.html" class="icon icon-home"> eprun
           
 
           
@@ -84,10 +85,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="eprun.html">eprun function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPResult.html">EPResult class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEnd.html">EPEnd class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EPEnd class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPErr.html">EPErr class</a></li>
 </ul>
 
@@ -103,7 +104,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">eprun</a>
+          <a href="index.html">eprun</a>
         
       </nav>
 
@@ -132,15 +133,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Welcome to eprun’s documentation!</li>
+      <li>EPEnd class</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/EPEnd.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -153,32 +154,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-eprun-s-documentation">
-<h1>Welcome to eprun’s documentation!<a class="headerlink" href="#welcome-to-eprun-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>eprun is a Python package for running EnergyPlus simulations.</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-</ul>
+  <div class="section" id="epend-class">
+<h1>EPEnd class<a class="headerlink" href="#epend-class" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="eprun.eprun.EPEnd">
+<em class="property">class </em><code class="sig-prename descclassname">eprun.eprun.</code><code class="sig-name descname">EPEnd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fp</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eprun/eprun.html#EPEnd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eprun.EPEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for an EnergyPlus .end file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fp</strong> (<em>str</em>) – The filepath for the .end file.</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">eprun</span> <span class="kn">import</span> <span class="n">EPRun</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">=</span><span class="n">EPEnd</span><span class="p">(</span><span class="n">fp</span><span class="o">=</span><span class="s1">&#39;eplusout.end&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+<span class="go">EnergyPlus Completed Successfully-- 3 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.33sec</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="eprun.html">eprun function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPResult.html">EPResult class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEnd.html">EPEnd class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPErr.html">EPErr class</a></li>
-</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Output Details and Examples, page 125.
+<a class="reference external" href="https://energyplus.net/quickstart">https://energyplus.net/quickstart</a></p>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<dl class="py method">
+<dt id="eprun.eprun.EPEnd.line">
+<em class="property">property </em><code class="sig-name descname">line</code><a class="headerlink" href="#eprun.eprun.EPEnd.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>The single line recorded in the .end file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -189,8 +201,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="EPErr.html" class="btn btn-neutral float-right" title="EPErr class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="EPResult.html" class="btn btn-neutral float-left" title="EPResult class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

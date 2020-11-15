@@ -21,6 +21,8 @@ eprun is a Python package for running EnergyPlus simulations.
    
    eprun
    EPResult
+   EPEnd
+   EPErr
    
 
 

@@ -86,6 +86,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../eprun.html">eprun function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../EPResult.html">EPResult class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EPEnd.html">EPEnd class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EPErr.html">EPErr class</a></li>
 </ul>
 
             
@@ -228,6 +230,11 @@
 <span class="sd">        &#39;txt&#39;: &#39;C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.txt&#39;, </span>
 <span class="sd">        &#39;xml&#39;: &#39;C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.xml&#39;}</span>
 <span class="sd">               </span>
+<span class="sd">    .. seealso::</span>
+<span class="sd">    </span>
+<span class="sd">       EnergyPlus Essentials, pages 15 and 16.</span>
+<span class="sd">       https://energyplus.net/quickstart</span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># check if the directory for the simulation exists</span>
@@ -330,14 +337,156 @@
 <span class="sd">        </span>
 <span class="sd">        :rtype: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files</span>
+    
+    
+<div class="viewcode-block" id="EPResult.get_end"><a class="viewcode-back" href="../../EPResult.html#eprun.eprun.EPResult.get_end">[docs]</a>    <span class="k">def</span> <span class="nf">get_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets the .end output file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: eprun.eprun.EPEnd        </span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">EPEnd</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="EPResult.get_err"><a class="viewcode-back" href="../../EPResult.html#eprun.eprun.EPResult.get_err">[docs]</a>    <span class="k">def</span> <span class="nf">get_err</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets the .err output file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: eprun.eprun.EPErr        </span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;err&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">EPErr</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div></div>
+    
+        
+<div class="viewcode-block" id="EPEnd"><a class="viewcode-back" href="../../EPEnd.html#eprun.eprun.EPEnd">[docs]</a><span class="k">class</span> <span class="nc">EPEnd</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;A class for an EnergyPlus .end file.</span>
+<span class="sd">    </span>
+<span class="sd">    :param fp: The filepath for the .end file.</span>
+<span class="sd">    :type fp: str</span>
+<span class="sd">    </span>
+<span class="sd">    :Example:</span>
+<span class="sd">        </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">           </span>
+<span class="sd">       &gt;&gt;&gt; from eprun import EPRun</span>
+<span class="sd">       &gt;&gt;&gt; e=EPEnd(fp=&#39;eplusout.end&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; print(e.line)</span>
+<span class="sd">       EnergyPlus Completed Successfully-- 3 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.33sec</span>
+<span class="sd">    </span>
+<span class="sd">    .. seealso::</span>
+<span class="sd">    </span>
+<span class="sd">       Output Details and Examples, page 125.</span>
+<span class="sd">       https://energyplus.net/quickstart</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fp</span><span class="p">):</span>
+        <span class="s2">&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+            
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The single line recorded in the .end file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span></div>
+                    
+        
+<div class="viewcode-block" id="EPErr"><a class="viewcode-back" href="../../EPErr.html#eprun.eprun.EPErr">[docs]</a><span class="k">class</span> <span class="nc">EPErr</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;A class for an EnergyPlus .err file.</span>
+<span class="sd">    </span>
+<span class="sd">    :param fp: The filepath for the .err file.</span>
+<span class="sd">    :type fp: str</span>
+<span class="sd">    </span>
+<span class="sd">    :Example:</span>
+<span class="sd">        </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">           </span>
+<span class="sd">       &gt;&gt;&gt; from eprun import EPErr</span>
+<span class="sd">       &gt;&gt;&gt; e=EPErr(fp=&#39;eplusout.err&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; print(len(e.warnings))</span>
+<span class="sd">       3</span>
+<span class="sd">       &gt;&gt;&gt; print(e.warnings[0])</span>
+<span class="sd">       Weather file location will be used rather than entered (IDF) Location object.</span>
+<span class="sd">       ..Location object=DENVER CENTENNIAL  GOLDEN   N_CO_USA DESIGN_CONDITIONS</span>
+<span class="sd">       ..Weather File Location=San Francisco Intl Ap CA USA TMY3 WMO#=724940</span>
+<span class="sd">       ..due to location differences, Latitude difference=[2.12] degrees, Longitude difference=[17.22] degrees.</span>
+<span class="sd">       ..Time Zone difference=[1.0] hour(s), Elevation difference=[99.89] percent, [1827.00] meters.</span>
+<span class="sd">    </span>
+<span class="sd">    .. seealso::</span>
+<span class="sd">    </span>
+<span class="sd">       Output Details and Examples, page 125.</span>
+<span class="sd">       https://energyplus.net/quickstart</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+        
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fp</span><span class="p">):</span>
+        <span class="s2">&quot;&quot;</span>
+        <span class="n">lines</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">warnings</span><span class="o">=</span><span class="p">[]</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                
+                <span class="c1"># first line</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Program Version&#39;</span><span class="p">):</span>
+                    <span class="n">firstline</span><span class="o">=</span><span class="n">line</span>
+                
+                <span class="c1"># warning</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;   ** Warning ** &#39;</span><span class="p">):</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">17</span><span class="p">:])</span>
+                    <span class="n">current_message</span><span class="o">=</span><span class="n">warnings</span>
+                    
+                    
+                <span class="c1"># error message continuation</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;   **   ~~~   ** &#39;</span><span class="p">):</span>
+                    <span class="n">current_message</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="n">line</span><span class="p">[</span><span class="mi">17</span><span class="p">:]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_firstline</span><span class="o">=</span><span class="n">firstline</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastline</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">17</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">=</span><span class="n">lines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_warnings</span><span class="o">=</span><span class="n">warnings</span>
         
         
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">firstline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The first line recorded in the .err file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_firstline</span>
+    
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lastline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The last line recorded in the .err file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lastline</span>
+    
         
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The lines recorded in the .err file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span>
         
-        
-        
-        
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">warnings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The warnings recorded in the .err file.</span>
+<span class="sd">        </span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_warnings</span></div>
         
         
         
