@@ -4,6 +4,8 @@ import os
 import subprocess
 import time
 
+from .epresult import EPResult
+
         
 def eprun(idf_filepath,
           epw_filepath,
@@ -46,7 +48,7 @@ def eprun(idf_filepath,
         
     :returns: A EPResult object which contains the returncode, stdout and a 
         dictionary of the results files.
-    :rtype: eprun.eprun.EPResult
+    :rtype: eprun.epresult.EPResult
     
     :Example:
         
@@ -58,24 +60,9 @@ def eprun(idf_filepath,
        >>>              sim_dir='sim')
        >>> print(type(result))
        <class 'eprun.eprun.EPResult'>
-       >>> print(result.files)
-       {'audit': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.audit', 
-        'bnd': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.bnd', 
-        'dxf': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.dxf', 
-        'eio': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.eio', 
-        'end': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.end', 
-        'err': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.err', 
-        'eso': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.eso', 
-        'mdd': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.mdd', 
-        'mtd': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.mtd', 
-        'mtr': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.mtr', 
-        'rdd': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.rdd', 
-        'shd': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplusout.shd', 
-        'csv': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.csv', 
-        'htm': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.htm', 
-        'tab': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.tab', 
-        'txt': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.txt', 
-        'xml': 'C:\\Users\\cvskf\\OneDrive - Loughborough University\\_Git\\stevenkfirth\\eprun\\tests\\sim\\eplustbl.xml'}
+       >>> print(list(result.files.keys()))
+       ['audit', 'bnd', 'dxf', 'eio', 'end', 'err', 'eso', 'mdd', 'mtd', 
+        'mtr', 'rdd', 'shd', 'csv', 'htm', 'tab', 'txt', 'xml']
                
     .. seealso::
     
@@ -135,207 +122,11 @@ def eprun(idf_filepath,
     return result
     
     
-class EPResult():
-    """A class representing the results of an EnergyPlus simulation.
-    
-    An EPResult instance is returned as the result of the :py:meth:`~eprun.eprun.eprun` function.
-    
-    :Example:
-        
-    .. code-block:: python
-           
-       >>> from eprun import eprun
-       >>> result=eprun(idf_filepath='1ZoneUncontrolled.idf',
-       >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
-       >>>              sim_dir='sim')
-       >>> print(type(result))
-       <class 'eprun.eprun.EPResult'>
-       >>> print(result.returncode)
-       1
 
-    """
-    
-    @property
-    def returncode(self):
-        """The returncode of the subprocess.run call to the EnergyPlus exe file.
-        This indicates if the call to EnergyPlus was successful.
-        0 means success. 1 means failure.
         
-        :rtype: int
-        """
-        return self._returncode
-    
-    
-    @property
-    def stdout(self):
-        """The stdout of the subprocess.run call to the EnergyPlus exe file.
-        This is the text that would appear in the CommandPromt if the command was run there.
-        
-        :rtype: str
-        """
-        return self._stdout
-    
-    
-    @property
-    def files(self):
-        """A dictionary of the results files from a successful EnergyPlus simulation.
-        The keys of the dictionary are the file extensions e.g. 'eso', 'err' etc.
-        The values of the dictionary are the absolute filepaths of the files.
-        
-        :rtype: dict
-        """
-        return self._files
-    
-    
-    def get_end(self):
-        """Gets the .end output file.
-        
-        :rtype: eprun.eprun.EPEnd        
-        
-        """
-        fp=self.files['end']
-        return EPEnd(fp)
-    
-    
-    def get_err(self):
-        """Gets the .err output file.
-        
-        :rtype: eprun.eprun.EPErr        
-        
-        """
-        fp=self.files['err']
-        return EPErr(fp)
-    
-        
-class EPEnd():
-    """A class for an EnergyPlus .end file.
-    
-    :param fp: The filepath for the .end file.
-    :type fp: str
-    
-    :Example:
-        
-    .. code-block:: python
-           
-       >>> from eprun import EPRun
-       >>> e=EPEnd(fp='eplusout.end')
-       >>> print(e.line)
-       EnergyPlus Completed Successfully-- 3 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.33sec
-    
-    .. seealso::
-    
-       Output Details and Examples, page 125.
-       https://energyplus.net/quickstart
-    
-    """        
-    
-    def __init__(self,fp):
-        ""
-        with open(fp,'r') as f:
-            self._line=f.readline()
-            
-    @property
-    def line(self):
-        """The single line recorded in the .end file.
-        
-        :rtype: str
-        """
-        return self._line
+
                     
         
-class EPErr():
-    """A class for an EnergyPlus .err file.
-    
-    :param fp: The filepath for the .err file.
-    :type fp: str
-    
-    :Example:
-        
-    .. code-block:: python
-           
-       >>> from eprun import EPErr
-       >>> e=EPErr(fp='eplusout.err')
-       >>> print(len(e.warnings))
-       3
-       >>> print(e.warnings[0])
-       Weather file location will be used rather than entered (IDF) Location object.
-       ..Location object=DENVER CENTENNIAL  GOLDEN   N_CO_USA DESIGN_CONDITIONS
-       ..Weather File Location=San Francisco Intl Ap CA USA TMY3 WMO#=724940
-       ..due to location differences, Latitude difference=[2.12] degrees, Longitude difference=[17.22] degrees.
-       ..Time Zone difference=[1.0] hour(s), Elevation difference=[99.89] percent, [1827.00] meters.
-    
-    .. seealso::
-    
-       Output Details and Examples, page 125.
-       https://energyplus.net/quickstart
-    
-    """        
-        
-    def __init__(self,fp):
-        ""
-        lines=[]
-        warnings=[]
-        
-        with open(fp,'r') as f:
-            for line in f:
-                lines.append(line)
-                
-                # first line
-                if line.startswith('Program Version'):
-                    firstline=line
-                
-                # warning
-                if line.startswith('   ** Warning ** '):
-                    warnings.append(line[17:])
-                    current_message=warnings
-                    
-                    
-                # error message continuation
-                if line.startswith('   **   ~~~   ** '):
-                    current_message[-1]+=line[17:]
-        
-        self._firstline=firstline
-        self._lastline=line[17:]
-        self._lines=lines
-        self._warnings=warnings
-        
-        
-    @property
-    def firstline(self):
-        """The first line recorded in the .err file.
-        
-        :rtype: str
-        """
-        return self._firstline
-    
-    
-    @property
-    def lastline(self):
-        """The last line recorded in the .err file.
-        
-        :rtype: str
-        """
-        return self._lastline
-    
-        
-    @property
-    def lines(self):
-        """The lines recorded in the .err file.
-        
-        :rtype: list
-        """
-        return self._lines
-        
-    
-    @property
-    def warnings(self):
-        """The warnings recorded in the .err file.
-        
-        :rtype: list
-        """
-        return self._warnings
-        
-        
-        
+
         
         

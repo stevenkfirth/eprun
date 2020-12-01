@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import datetime
+from .epeso_simulation_environment import EPEsoSimulationEnviroment
 
 
 class EPEso():
-    """A class for an EnergyPlus .ese file.
+    """A class for an EnergyPlus .eso file.
     
     :param fp: The filepath for the .eso file.
     :type fp: str
@@ -15,546 +15,288 @@ class EPEso():
            
        >>> from eprun import EPEso
        >>> e=EPEso(fp='eplusout.eso')
-       >>> print()
-       
+       >>> print(e.programme_version_statement)
+       {'programme': 'EnergyPlus',
+        'timestamp': 'YMD=2020.11.13 06:25',
+        'version': 'Version 9.4.0-998c4b761e'}
+       >>> print(e.standard_items_dictionary[1])
+       {'comment': None,
+        'items': [{'name': 'Environment Title', 'unit': None},
+                  {'name': 'Latitude', 'unit': 'deg'},
+                  {'name': 'Longitude', 'unit': 'deg'},
+                  {'name': 'Time Zone', 'unit': None},
+                  {'name': 'Elevation', 'unit': 'm'}],
+        'number_of_values': 5}
+       >>> print(e.variable_dictionary[7])
+       {'comment': 'Hourly',
+        'number_of_values': 1,
+        'object_name': 'Environment',
+        'quantity': 'Site Outdoor Air Drybulb Temperature',
+        'unit': 'C'}
+       >>> print(e.get_environments())
+       [EPEsoSimuationEnvironment("DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB"),
+        EPEsoSimuationEnvironment("DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=>MWB"),
+        EPEsoSimuationEnvironment("RUN PERIOD 1")]
+
     .. seealso::
     
        Output Details and Examples, page 126.
        https://energyplus.net/quickstart
-    
-    """        
-        
+
+    """
+
     def __init__(self,fp):
         ""
         
-        eodd_flag=False # End of Data Dictionary flag, if True has occurred
-        eod_flag=False # End of Data flag, if True has occurred
-        
-        data_dictionary={} 
+        programme_version_statement_flag=True # True if in his section
+        data_dictionary_flag=False # True if in this section
+        data_flag=False # True if in this section
+                
+        standard_items_dictionary={}
+        variable_dictionary={}
         data=[]
-        environment_data={}
-        
+                
         with open(fp,'r') as f:
             
-            programme_version_statement=f.readline()
-            
-            while not eod_flag:
-                            
-                line=f.readline()
+            for line in f: # loop through lines in file
                 
-                if eodd_flag: # data section
+                if programme_version_statement_flag: # programme version statement (first row)
                     
-                    if line.startswith('End of Data'): # end of the data section
+                    row=line.strip().split(',')
+                    programme_version_statement={'programme':row[1].strip(),
+                                                 'version':row[2].strip(),
+                                                 'timestamp':row[3].strip()}
+                    programme_version_statement_flag=False
+                    data_dictionary_flag=True
                     
-                        eod_flag=True
+                    
+                elif data_dictionary_flag: # data dictionary section
+                    
+                    if line.startswith('End of Data Dictionary'): # end of section line
+                        
+                        data_dictionary_flag=False
+                        data_flag=True
+                        
+                    else: # a data dictionary line
+                    
+                        line_and_comment=line.split('!')
+                        row=line_and_comment[0].split(',')
+                        try:
+                            comment=line_and_comment[1].strip()
+                        except IndexError:
+                            comment=None
+                    
+                        report_code=int(row[0])
+                        number_of_values=int(row[1])
+                        
+                        if report_code<=6: # a 'standard item'
+                        
+                            items=[]
+                            for item in row[2:]:
+                                a=item.split('[')
+                                name=a[0].strip()
+                                try:
+                                    unit=a[1].split(']')[0].strip() or None
+                                except IndexError:
+                                    unit=None
+                                items.append({'name':name,
+                                              'unit':unit})
+                            
+                            standard_items_dictionary[report_code]={'number_of_values':number_of_values,
+                                                                    'items':items,
+                                                                    'comment':comment}
+                        
+                        else: # a 'variable item'
+                            
+                            object_name=row[2]
+                            a=row[3].split('[')
+                            quantity=a[0].strip()
+                            try:
+                                unit=a[1].split(']')[0].strip() or None
+                            except IndexError:
+                                unit=None
+                        
+                            variable_dictionary[report_code]={'number_of_values':number_of_values,
+                                                              'object_name':object_name,
+                                                              'quantity':quantity,
+                                                              'unit':unit,
+                                                              'comment':comment}
+                        
+    
+                elif data_flag: # data section
                 
-                    else: # not the end of the data section
+                    if line.startswith('End of Data'):
                         
-                        report_code,items=self._parse_data_line(line)
+                        data_flag=False
+                    
+                    else:
                         
-                        if report_code==1: # new environment section
+                        row=[x.strip() for x in line.split(',')]
+                        report_code=int(row[0])
+                        
+                        if report_code==1: # start of a new simulation environment
                             
-                            environment_data={'environment':items,
-                                              'frequency':{}
-                                              }
-                            data.append(environment_data)
+                            simulation_environment={'environment_title':row[1].strip(),
+                                                    'latitude':row[2].strip(),
+                                                    'longitude':row[3].strip(),
+                                                    'time_zone':row[4].strip(),
+                                                    'elevation':row[5].strip(),
+                                                    'interval_data':{2:[]},
+                                                    'daily_data':{3:[]},
+                                                    'monthly_data':{4:[]},
+                                                    'run_period_data':{5:[]},
+                                                    'annual_data':{6:[]}}
                             
+                            data.append(simulation_environment)
+                            
+                            
+                        elif report_code==2:
+                            
+                            d=simulation_environment['interval_data']
+                            d[report_code].append(row[1:])
+                            
+                        elif report_code==3:
+                            
+                            d=simulation_environment['daily_data']
+                            d[report_code].append(row[1:])
+                            
+                        elif report_code==4:
+                            
+                            d=simulation_environment['monthly_data']
+                            d[report_code].append(row[1:])
+                            
+                            
+                        elif report_code==5:
+                            
+                            d=simulation_environment['run_period_data']
+                            d[report_code].append(row[1:])
+                            
+                        elif report_code==6:
+                            
+                            d=simulation_environment['annual_data']
+                            d[report_code].append(row[1:])
                             
                         else:
                             
-                            if report_code>=2 and report_code<=6: # new interval section
+                            x=d.setdefault(report_code,[])
+                            x.append(row[1:])
                             
-                                frequency_data=environment_data['frequency'].setdefault(report_code,{})
-                                
-                            interval_data=frequency_data.setdefault(report_code,[])
-                            interval_data.append(items)
+                else: # beyond the data section
                     
-                else: # data dictionary section
-                    
-                    if line.startswith('End of Data Dictionary'):
-                        eodd_flag=True
-                        
-                    else:
-                        report_code,items=self._parse_data_dictionary_line(line)
-                        data_dictionary[report_code]=items
-        
-        
-        self._programme_version_statement=programme_version_statement
-        self._data_dictionary=data_dictionary
-        
+                    pass
+
         # zip the interval data
         for env in data:
-            for frequency_data in env['frequency'].values():
-                for report_code,interval_data in frequency_data.items():
-                    a=tuple(zip(*interval_data))
-                    frequency_data[report_code]=a
-        
+            for k in env['interval_data'].keys():
+                env['interval_data'][k]=tuple(zip(*env['interval_data'][k]))
+            for k in env['daily_data'].keys():
+                env['daily_data'][k]=tuple(zip(*env['daily_data'][k]))
+            for k in env['monthly_data'].keys():
+                env['monthly_data'][k]=tuple(zip(*env['monthly_data'][k]))
+            for k in env['run_period_data'].keys():
+                env['run_period_data'][k]=tuple(zip(*env['run_period_data'][k]))
+            for k in env['annual_data'].keys():
+                env['annual_data'][k]=tuple(zip(*env['annual_data'][k]))
+            
+        # set attributes
+        self._programme_version_statement=programme_version_statement
+        self._standard_items_dictionary=standard_items_dictionary
+        self._variable_dictionary=variable_dictionary
         self._data=data
-    
-    
-    @staticmethod
-    def _parse_data_line(line):
-        """Parses a data line in the .eso file.
+
+
+
+    @property
+    def data(self):
+        """A list of the simulation environment data dictionaries.
         
-        :param line: A line of text in the .eso file from the data section.
-        :type line: str
-        
-        :returns: A tuple with (report_code,items) where the report code
-            is the first item in the row, and items is a list of the remaining
-            items in the row. Numeric items are converted to integers and floats.
-        :rtype: tuple
-        
+        :returns: A list of dictionaries where each dictionary holds the
+            data from a simulation environment such as a winter design day,
+            a summer design day or a full annual simulation. The dictionary
+            has keys 'environment_title', 'latitude', 'longitude',
+            'time_zone', 'elevation', 'interval_data' ,'daily_data',
+            'monthly_data', 'run_period_data' and 'annual_data'.
+        :rtype: list
         """
-        a=line.split('\n')[0] # remove characters inc. and after an exclamation mark
-        b=a.split(',') # split by commas
+        return self._data
+
+
+    @property
+    def programme_version_statement(self):
+        """A dictionary of the programme version statement.
         
-        report_code=int(b[0])
-        items=b[1:]
-        
-        if report_code==1:
-            items=[items[0]]+[float(x) for x in items[1:]]
-        elif report_code==2:
-            items=[int(x) for x in items[0:5]]+[float(x) for x in items[5:7]]+[items[7]]
-        elif report_code==3:
-            items=[int(x) for x in items[0:4]]+[items[4]]
-        else:
-            items=[float(x) for x in items]
-            
-        return report_code,items
-    
-    
-    @staticmethod
-    def _parse_data_dictionary_line(line):
-        """Parses a data dictionary line in the .eso file.
-        
-        :param line: A line of text in the .eso file from the data dictionary.
-        :type line: str
-        
-        :returns: A tuple with (report_code,items) where the report code
-            is the first item in the row, and items is a list of the remaining
-            items in the row. Numeric items are converted to integers and floats.
-        :rtype: tuple
-        
+        :returns: A dictionary with keys 'programme', 'version' and 'timestamp'.
+        :rtype: dict
         """
-        a=line.split('!')[0] # remove characters inc. and after an exclamation mark
-        b=a.split(',') # split by commas
-        
-        report_code=int(b[0])
-        number_of_items=int(b[1])
-        remaining_items=b[2:]
-        
-        return report_code, [number_of_items]+remaining_items
-            
+        return self._programme_version_statement
     
-    # @property
-    # def _data(self):
-    #     """A list of the data in the .eso file, structured by the environments and reporting intervals.
+
+    @property
+    def standard_items_dictionary(self):
+        """A dictionary of the standard items in the data dictionary.
         
-    #     :returns: A list where each item is a dictionary of the complete data for a simulation environment.
-    #         A environment dictionary has keys 'environment' and 'data'.
-    #         'environment' contains a list with the enviroment metadata.
-    #         'data' contains a list of dictionaries where each dictionary 
-    #         represents the data from a time interval, using the report codes as keys.
-    #     :rtype: list
+        :returns: A dictionary with the keys based on the report codes and the values given 
+            by a dictionary with keys 'number_of_values', 'items' and 'comment'.
+        :rtype: dict
+        """
+        return self._standard_items_dictionary
+
+
+    @property
+    def variable_dictionary(self):
+        """A dictionary of the variables in the data dictionary.
         
-    #     """
-    #     return self._data
-    
-        
-    # @property
-    # def _data_dictionary(self):
-    #     """A dictionary of the data dictionary items in the .eso file.
-        
-    #     :returns: A dictionary with {report_code,items}
-    #     :rtype: dict
-    #     """
-    #     return self._data_dictionary
-        
-    
+        :returns: A dictionary with the keys based on the report codes and the values given 
+            by a dictionary with keys 'number_of_values', 'object_name', 'quantity', 
+            'unit' and 'comment'.
+        :rtype: dict
+        """
+        return self._variable_dictionary
+
+
     def get_environments(self):
         """Returns a list of the simulation environments in the .eso file.
         
-        :returns: A list of EPEsoSimulationEnvironment instances
+        :returns: A list of `EPEsoSimulationEnvironment` instances.
         :rtype: list
         
         """
-        return [EPEsoSimulationEnviroment(self,i) for i,x in enumerate(self._data)]
-            
+        result=[]
+        for i in range(len(self._data)):
+            epesose=EPEsoSimulationEnviroment()
+            epesose._epeso=self
+            epesose._index=i
+            result.append(epesose) 
+        return result
+    
     
       
-class EPEsoSimulationEnviroment():
-    """
-    """
     
-    def __init__(self,
-                 epeso,
-                 index):
-        self._epeso=epeso
-        self._index=index
-        
     
-    def __repr__(self):
-        ""
-        return 'EPEsoSimuationEnvironment("%s")' % self.title
-    
-    
-    @property
-    def _dict(self):
-        ""
-        return self._epeso._data[self._index]
-    
-    
-    @property
-    def title(self):
-        ""
-        return self._dict['environment'][0]
-    
-    
-    @property
-    def latitude(self):
-        ""
-        return self._dict['environment'][1]
-    
-    
-    @property
-    def longitude(self):
-        ""
-        return self._dict['environment'][2]
-    
-    
-    @property
-    def time_zone(self):
-        ""
-        return self._dict['environment'][3]
-    
-    
-    @property
-    def elevation(self):
-        ""
-        return self._dict['environment'][4]
-    
-    
-    def get_interval_periods(self):
-        ""
-        return EPEsoIntervalPeriods(self,2)
-    
-    
-    def get_interval_variables(self):
-        ""
-        frequency=2
-        report_codes=self._dict['frequency'].get(frequency,{}).keys()
-        return [EPEsoIntervalVariable(self,frequency,report_code) 
-                for report_code in report_codes if not report_code==frequency]
-    
-    
-    def get_daily_variables(self):
-        ""
-        frequency=3
-        report_codes=self._dict['frequency'].get(frequency,{}).keys()
-        return [EPEsoDailyVariable(self,frequency,report_code) 
-                for report_code in report_codes if not report_code==frequency]
-                
-    
-    def get_monthly_variables(self):
-        ""
-        frequency=4
-        report_codes=self._dict['frequency'].get(frequency,{}).keys()
-        return [EPEsoMonthlyVariable(self,frequency,report_code) 
-                for report_code in report_codes if not report_code==frequency]
-        
-    
-    def get_run_period_variables(self):
-        ""
-        frequency=5
-        report_codes=self._dict['frequency'].get(frequency,{}).keys()
-        return [EPEsoRunPeriodVariable(self,frequency,report_code) 
-                for report_code in report_codes if not report_code==frequency]
-        
-    
-    def get_annual_variables(self):
-        ""
-        frequency=6
-        report_codes=self._dict['frequency'].get(frequency,{}).keys()
-        return [EPEsoAnnualVariable(self,frequency,report_code) 
-                for report_code in report_codes if not report_code==frequency]
-    
-    
-    def get_timezone(self):
-        """returns a datetime.timezone instance
-        """
-        return datetime.timezone(datetime.timedelta(hours=self.time_zone))
-    
-    
-                                 
-class _EPEsoPeriods():
-    """
-    """
-    def __init__(self,
-                 epesose,
-                 frequency):
-        ""
-        self._epesose=epesose
-        self._frequency=frequency
-        
-        
-    @property
-    def _data(self):
-        ""
-        return self._epesose._dict['frequency'][self._frequency][self._frequency]
-    
-    
-
-class EPEsoIntervalPeriods(_EPEsoPeriods):
-    """
-    """
-    
-    @property
-    def day_of_simulation(self):
-        ""
-        return self._data[0]
-    
-    
-    @property
-    def month(self):
-        ""
-        return self._data[1]
-    
-    
-    @property 
-    def day_of_month(self):
-        ""
-        return self._data[2]
-    
-    
-    @property 
-    def dst_indicator(self):
-        ""
-        return self._data[3]
-    
-    
-    @property 
-    def hour(self):
-        ""
-        return self._data[4]
-    
-    
-    @property 
-    def start_minute(self):
-        ""
-        return [int(x) for x in self._data[5]] # assumes whole minutes
-    
-    
-    @property 
-    def end_minute(self):
-        ""
-        return [int(x) for x in self._data[6]] # assumes whole minutes
-    
-    
-    @property 
-    def day_type(self):
-        ""
-        return self._data[7]
-    
-    
-    def get_start_times(self):
-        ""
-        x=zip(self.month,self.day_of_simulation,self.hour,self.start_minute)
-        return [datetime.datetime(2001,m,d,h-1,mi,
-                                  tzinfo=self._epesose.get_timezone())
-                for m,d,h,mi in x]
-    
-    
-    def get_end_times(self):
-        ""
-        start_times=self.get_start_times()
-        x=zip(start_times,self.start_minute,self.end_minute)
-        return [start_time+datetime.timedelta(minutes=end_minute-start_minute) 
-                for start_time,start_minute,end_minute in x]
-    
-    
-    
-class EPEsoVariable():
-    """
-    """
-    
-    def __init__(self,
-                 epesose,
-                 frequency,
-                 report_code):
-        ""
-        self._epesose=epesose
-        self._frequency=frequency
-        self._report_code=report_code
-        
-        
-    @property
-    def _data(self):
-        ""
-        return self._epesose._dict['frequency'][self._frequency][self._report_code]
-        
-        
-    @property
-    def _datadict(self):
-        ""
-        return self._epesose._epeso._data_dictionary[self._report_code]
-    
-    
-    @property
-    def location(self):
-        ""
-        return self._datadict[1]
-    
-    
-    @property
-    def quantity(self):
-        ""
-        return self._datadict[2].split('[')[0].strip()
-    
-    
-    @property
-    def units(self):
-        ""
-        return self._datadict[2].split('[')[1].split(']')[0]
-    
-    
-    @property
-    def values(self):
-        ""
-        return self._data[0]
-
-
-
-class EPEsoIntervalVariable(EPEsoVariable):
-    """
-    """
-    
-    def __repr__(self):
-        ""
-        return 'EPEsoIntervalVariable(report_code=%s)' % (self._report_code)
-    
-        
-    
-class EPEsoDailyVariable(EPEsoVariable):
-    """
-    """
-    
-    def __repr__(self):
-        ""
-        return 'EPEsoDailyVariable(report_code=%s)' % (self._report_code)
-    
-    
-    @property
-    def min_value(self):
-        ""
-        return self._data[1]
-    
-    
-    @property
-    def min_hour(self):
-        ""
-        return self._data[2]
-    
-    
-    @property
-    def min_minute(self):
-        ""
-        return self._data[3]
-    
-    
-    @property
-    def max_value(self):
-        ""
-        return self._data[4]
-    
-    
-    @property
-    def max_hour(self):
-        ""
-        return self._data[5]
-    
-    
-    @property
-    def max_minute(self):
-        ""
-        return self._data[6]
     
    
-    
-class EPEsoMonthlyVariable(EPEsoVariable):
-    """
-    """
-    
-    def __repr__(self):
-        ""
-        return 'EPEsoMonthlyVariable(report_code=%s)' % (self._report_code)
+
+
     
     
-    @property
-    def min_value(self):
-        ""
-        return self._data[1]
+    
+
+    
+
+
+
+       
     
     
-    @property
-    def min_day(self):
-        ""
-        return self._data[2]
+   
+   
     
-    
-    @property
-    def min_hour(self):
-        ""
-        return self._data[3]
-    
-    
-    @property
-    def min_minute(self):
-        ""
-        return self._data[4]
-    
-    
-    @property
-    def max_value(self):
-        ""
-        return self._data[5]
-    
-    
-    @property
-    def max_day(self):
-        ""
-        return self._data[6]
-    
-    
-    @property
-    def max_hour(self):
-        ""
-        return self._data[7]
-    
-    
-    @property
-    def max_minute(self):
-        ""
-        return self._data[8]
-    
+      
     
         
-class EPEsoRunPeriodVariable(EPEsoVariable):
-    """
-    """
-    
-    def __repr__(self):
-        ""
-        return 'EPEsoRunPeriodVariable(report_code=%s)' % (self._report_code)
         
     
     
-class EPEsoAnnualVariable(EPEsoVariable):
-    """
-    """
-    
-    def __repr__(self):
-        ""
-        return 'EPEsoAnnualVariable(report_code=%s)' % (self._report_code)
         
         
         

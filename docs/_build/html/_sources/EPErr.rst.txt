@@ -2,5 +2,5 @@
 EPErr class
 ===========
 
-.. autoclass:: eprun.eprun.EPErr
+.. autoclass:: eprun.eperr.EPErr
    :members:

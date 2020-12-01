@@ -3,38 +3,81 @@
 import unittest
 from eprun import EPEso
 from pprint import pprint
+import pandas as pd
 
 class Test_EPEso(unittest.TestCase):
    
     
     def test_EPEso(self):
         ""
-        e=EPEso(fp=r'files\eplusout.eso')
+        #e=EPEso(fp=r'files\eplusout.eso')
         
-        #print(e._data_dictionary)
-        pprint(e._data[0]['frequency'][2])
+        #pprint(e.programme_version_statement)
         
-        envs=e.get_environments()
+        #pprint(e.standard_items_dictionary[1])
         
-        pprint(envs)
+        #pprint(e.variable_dictionary[7])
         
-        env1=envs[0]
+        #pprint(e.get_environments())
         
-        print(env1.elevation)
         
-        print(env1.get_interval_variables())
-        print(env1.get_daily_variables())
-        print(env1.get_monthly_variables())
-        print(env1.get_run_period_variables())
-        print(env1.get_annual_variables())
+    def test_EPEsoSimulationEnviroment(self):
+        ""
+        epeso=EPEso(fp=r'files\eplusout.eso')
+        se=epeso.get_environments()[0]
         
-        print(env1.get_interval_variables()[0].values)
-        print(env1.get_interval_variables()[0].location)
-        print(env1.get_interval_variables()[0].quantity)
-        print(env1.get_interval_variables()[0].units)
+        #print(se.environment_title)
+        #print(se.monthly_data)
+        #pprint(se.get_monthly_variables())
         
-        #pprint(env1.get_interval_periods().get_start_times())
-        #print(env1.time_zone)
+        #pprint(se.get_monthly_data())
+        
+        index,freq,data,columns,column_level_names=se.get_interval_dataframe_inputs()
+        
+        df=pd.DataFrame(index=[pd.Period(dt,freq) for dt in index],
+                        data=data,
+                        columns=pd.MultiIndex.from_tuples(columns, 
+                                                          names=column_level_names))
+        print(df)
+        df.to_csv('test.csv')
+        
+        
+    def test_EPEsoMonthlyPeriods(self):
+        ""
+        epeso=EPEso(fp=r'files\eplusout.eso')
+        se=epeso.get_environments()[0]
+        mp=se.get_monthly_periods()
+        
+        # print(mp)
+        # print(mp._data)
+        # print(mp.cumulative_days_of_simulation)
+        # print(mp.month)
+        # print(mp.get_start_times())
+        # print(mp.get_end_times())
+       
+    
+    def test_EPESOMonthlyVariable(self):
+        ""
+        epeso=EPEso(fp=r'files\eplusout.eso')
+        se=epeso.get_environments()[0]
+        mv=se.get_monthly_variables()[0]
+        
+        # print(mv)
+        # print(mv.object_name)
+        # print(mv.quantity)
+        # print(mv.unit)
+        # print(mv.values)
+        # print(mv.min_values)
+        # print(mv.min_days)
+        # print(mv.min_hours)
+        # print(mv.min_minutes)
+        # print(mv.get_min_times())
+        # print(mv.max_values)
+        # print(mv.max_days)
+        # print(mv.max_hours)
+        # print(mv.max_minutes)
+        # print(mv.get_max_times())
+        
     
 if __name__=='__main__':
     

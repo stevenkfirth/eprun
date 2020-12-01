@@ -84,12 +84,34 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
+<p class="caption"><span class="caption-text">Reference - Simulation Run:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">eprun function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPResult.html">EPResult class</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference - Input files:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="EPSchema.html">EPSchema class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPSchemaObject.html">EPSchemaObject class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPSchemaName.html">EPSchemaName class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPSchemaProperty.html">EPSchemaProperty class</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference - Output files:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="EPEnd.html">EPEnd class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPErr.html">EPErr class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEso.html">EPEso class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoSimulationEnvironment.html">EPEsoSimulationEnviroment class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoIntervalPeriods.html">EPEsoIntervalPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoIntervalVariable.html">EPEsoIntervalVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoDailyPeriods.html">EPEsoDailyPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoDailyVariable.html">EPEsoDailyVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoMonthlyPeriods.html">EPEsoMonthlyPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoMonthlyVariable.html">EPEsoMonthlyVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoRunPeriodPeriods.html">EPEsoRunPeriodPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoRunPeriodVariable.html">EPEsoRunPeriodVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoAnnualPeriods.html">EPEsoAnnualPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoAnnualVariable.html">EPEsoAnnualVariable class</a></li>
 </ul>
 
             
@@ -192,7 +214,7 @@ Default is False.</p></li>
 dictionary of the results files.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="EPResult.html#eprun.eprun.EPResult" title="eprun.eprun.EPResult">eprun.eprun.EPResult</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="EPResult.html#eprun.epresult.EPResult" title="eprun.epresult.EPResult">eprun.epresult.EPResult</a></p>
 </dd>
 <dt class="field-even">Example</dt>
 <dd class="field-even"><p></p></dd>
@@ -203,24 +225,9 @@ dictionary of the results files.</p>
 <span class="gp">&gt;&gt;&gt; </span>             <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;sim&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 <span class="go">&lt;class &#39;eprun.eprun.EPResult&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
-<span class="go">{&#39;audit&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.audit&#39;, </span>
-<span class="go"> &#39;bnd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.bnd&#39;, </span>
-<span class="go"> &#39;dxf&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.dxf&#39;, </span>
-<span class="go"> &#39;eio&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.eio&#39;, </span>
-<span class="go"> &#39;end&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.end&#39;, </span>
-<span class="go"> &#39;err&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.err&#39;, </span>
-<span class="go"> &#39;eso&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.eso&#39;, </span>
-<span class="go"> &#39;mdd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mdd&#39;, </span>
-<span class="go"> &#39;mtd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mtd&#39;, </span>
-<span class="go"> &#39;mtr&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.mtr&#39;, </span>
-<span class="go"> &#39;rdd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.rdd&#39;, </span>
-<span class="go"> &#39;shd&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplusout.shd&#39;, </span>
-<span class="go"> &#39;csv&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.csv&#39;, </span>
-<span class="go"> &#39;htm&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.htm&#39;, </span>
-<span class="go"> &#39;tab&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.tab&#39;, </span>
-<span class="go"> &#39;txt&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.txt&#39;, </span>
-<span class="go"> &#39;xml&#39;: &#39;C:\Users\cvskf\OneDrive - Loughborough University\_Git\stevenkfirth\eprun\tests\sim\eplustbl.xml&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="go">[&#39;audit&#39;, &#39;bnd&#39;, &#39;dxf&#39;, &#39;eio&#39;, &#39;end&#39;, &#39;err&#39;, &#39;eso&#39;, &#39;mdd&#39;, &#39;mtd&#39;, </span>
+<span class="go"> &#39;mtr&#39;, &#39;rdd&#39;, &#39;shd&#39;, &#39;csv&#39;, &#39;htm&#39;, &#39;tab&#39;, &#39;txt&#39;, &#39;xml&#39;]</span>
 </pre></div>
 </div>
 <div class="admonition seealso">

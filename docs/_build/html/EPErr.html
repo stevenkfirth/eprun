@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="EPEso class" href="EPEso.html" />
     <link rel="prev" title="EPEnd class" href="EPEnd.html" /> 
 </head>
 
@@ -83,12 +84,34 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference:</span></p>
-<ul class="current">
+<p class="caption"><span class="caption-text">Reference - Simulation Run:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="eprun.html">eprun function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPResult.html">EPResult class</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference - Input files:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="EPSchema.html">EPSchema class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPSchemaObject.html">EPSchemaObject class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPSchemaName.html">EPSchemaName class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPSchemaProperty.html">EPSchemaProperty class</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference - Output files:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="EPEnd.html">EPEnd class</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">EPErr class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEso.html">EPEso class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoSimulationEnvironment.html">EPEsoSimulationEnviroment class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoIntervalPeriods.html">EPEsoIntervalPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoIntervalVariable.html">EPEsoIntervalVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoDailyPeriods.html">EPEsoDailyPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoDailyVariable.html">EPEsoDailyVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoMonthlyPeriods.html">EPEsoMonthlyPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoMonthlyVariable.html">EPEsoMonthlyVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoRunPeriodPeriods.html">EPEsoRunPeriodPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoRunPeriodVariable.html">EPEsoRunPeriodVariable class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoAnnualPeriods.html">EPEsoAnnualPeriods class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EPEsoAnnualVariable.html">EPEsoAnnualVariable class</a></li>
 </ul>
 
             
@@ -156,8 +179,8 @@
   <div class="section" id="eperr-class">
 <h1>EPErr class<a class="headerlink" href="#eperr-class" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="eprun.eprun.EPErr">
-<em class="property">class </em><code class="sig-prename descclassname">eprun.eprun.</code><code class="sig-name descname">EPErr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fp</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eprun/eprun.html#EPErr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eprun.EPErr" title="Permalink to this definition">¶</a></dt>
+<dt id="eprun.eperr.EPErr">
+<em class="property">class </em><code class="sig-prename descclassname">eprun.eperr.</code><code class="sig-name descname">EPErr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fp</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eprun/eperr.html#EPErr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eperr.EPErr" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for an EnergyPlus .err file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -184,8 +207,8 @@
 <a class="reference external" href="https://energyplus.net/quickstart">https://energyplus.net/quickstart</a></p>
 </div>
 <dl class="py method">
-<dt id="eprun.eprun.EPErr.firstline">
-<em class="property">property </em><code class="sig-name descname">firstline</code><a class="headerlink" href="#eprun.eprun.EPErr.firstline" title="Permalink to this definition">¶</a></dt>
+<dt id="eprun.eperr.EPErr.firstline">
+<em class="property">property </em><code class="sig-name descname">firstline</code><a class="headerlink" href="#eprun.eperr.EPErr.firstline" title="Permalink to this definition">¶</a></dt>
 <dd><p>The first line recorded in the .err file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -195,8 +218,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="eprun.eprun.EPErr.lastline">
-<em class="property">property </em><code class="sig-name descname">lastline</code><a class="headerlink" href="#eprun.eprun.EPErr.lastline" title="Permalink to this definition">¶</a></dt>
+<dt id="eprun.eperr.EPErr.lastline">
+<em class="property">property </em><code class="sig-name descname">lastline</code><a class="headerlink" href="#eprun.eperr.EPErr.lastline" title="Permalink to this definition">¶</a></dt>
 <dd><p>The last line recorded in the .err file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -206,8 +229,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="eprun.eprun.EPErr.lines">
-<em class="property">property </em><code class="sig-name descname">lines</code><a class="headerlink" href="#eprun.eprun.EPErr.lines" title="Permalink to this definition">¶</a></dt>
+<dt id="eprun.eperr.EPErr.lines">
+<em class="property">property </em><code class="sig-name descname">lines</code><a class="headerlink" href="#eprun.eperr.EPErr.lines" title="Permalink to this definition">¶</a></dt>
 <dd><p>The lines recorded in the .err file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -217,8 +240,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="eprun.eprun.EPErr.warnings">
-<em class="property">property </em><code class="sig-name descname">warnings</code><a class="headerlink" href="#eprun.eprun.EPErr.warnings" title="Permalink to this definition">¶</a></dt>
+<dt id="eprun.eperr.EPErr.warnings">
+<em class="property">property </em><code class="sig-name descname">warnings</code><a class="headerlink" href="#eprun.eperr.EPErr.warnings" title="Permalink to this definition">¶</a></dt>
 <dd><p>The warnings recorded in the .err file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -238,6 +261,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="EPEso.html" class="btn btn-neutral float-right" title="EPEso class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="EPEnd.html" class="btn btn-neutral float-left" title="EPEnd class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
