@@ -30,6 +30,9 @@ eprun is a Python package for running EnergyPlus simulations.
    EPSchemaObject
    EPSchemaName
    EPSchemaProperty
+   EPEpJSON
+   EPEpJSONObjectType
+   EPEpJSONObject
    
 .. toctree::
    :maxdepth: 1
