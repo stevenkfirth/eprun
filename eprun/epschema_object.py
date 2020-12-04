@@ -90,6 +90,17 @@ class EPSchemaObject():
     
     
     @property
+    def fields(self):
+        """The fields of the schema object.
+        
+        :returns: The 'legacy_idd' fields list.
+        :rtype: list
+        
+        """
+        return self._dict['legacy_idd']['fields']
+    
+    
+    @property
     def format_(self):
         """The format of the schema object.
         
@@ -111,7 +122,7 @@ class EPSchemaObject():
     
     
     def get_name(self):
-        """Returns a EPSchemaName instance for the schema object.
+        """Returns a name object for the schema object.
         
         :rtype: EPSchemaName or None
         

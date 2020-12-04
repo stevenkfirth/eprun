@@ -75,6 +75,13 @@ class Test_EPSchemaObject(unittest.TestCase):
                          1.0)
         
         
+    def test_fields(self):
+        ""
+        so=s.get_object('Version')
+        self.assertEqual(so.fields,
+                         ['version_identifier'])
+        
+        
     def test_format(self):
         ""
         so=s.get_object('Version')
@@ -89,7 +96,7 @@ class Test_EPSchemaObject(unittest.TestCase):
                          '[EPSchemaProperty(name="version_identifier")]')
         
     
-    def test_get_properties(self):
+    def test_get_property(self):
         ""
         so=s.get_object('Version')
         self.assertEqual(str(so.get_property('version_identifier')),
