@@ -108,6 +108,25 @@ class EPEpJSONObject():
         """
         return self._epjson_object_type._epjson._schema
     
+
+    def _validate_property_name(self,name,schema):
+        """Validates the value of a property using the package jsonschema.
+        
+        :param name: The name of the new or existing property.
+        :type name: str
+        :param value: The value of the property. 
+        :type value: str or float or int or list or dict or bool
+        :param schema: The schema for the epJSON file. 
+        :type schema: EPSchema
+        
+        :raises: ValueError
+        
+        """
+        schema_object=self._epjson_object_type._get_schema_object(schema)
+        if not name in schema_object.property_names:
+            raise ValueError("name '%s' is not a property of object '%s'" % (name,self._name))
+        
+        
     
     def _validate_property_value(self,name,value,schema):
         """Validates the value of a property using the package jsonschema.
@@ -119,14 +138,17 @@ class EPEpJSONObject():
         :param schema: The schema for the epJSON file. 
         :type schema: EPSchema
         
-        :raises: jsonschema.exceptions.ValidationError
+        :raises: ValueError
         
         """
         schema_property=self._get_schema_property(name,schema)
         schema_property_json_dict=schema_property._dict
-        jsonschema.validate(value,
-                            schema_property_json_dict,
-                            jsonschema.Draft4Validator)
+        try:
+            jsonschema.validate(value,
+                                schema_property_json_dict,
+                                jsonschema.Draft4Validator)
+        except jsonschema.exceptions.ValidationError as err:
+            raise ValueError(str(err).split('\n')[0] + " in property '%s'" % name)
     
     
     def get_property_value(self,name):
@@ -183,14 +205,14 @@ class EPEpJSONObject():
             property name and the property value.
         :type schema: EPSchema
         
-        :returns: None
+        :raises: ValueError - if either the property name or the property value is not valid.
         
         .. note::
         
-           When setting a property value, the value can be validated against a JSON schema.
+           When setting a property value, the name and value can be validated against a JSON schema.
            Schema validation occurs in two cases:
            1. A EPSchema instance is supplied to this method using the `schema` argument;
-           2. The parent :py:class:`~eprun.epepjson.EPEpJSON` class was initiated with an EPSchema instance.
+           2. The parent :py:class:`~eprun.epepjson.EPEpJSON` object was initiated with an EPSchema instance.
         
         """
         
@@ -199,12 +221,13 @@ class EPEpJSONObject():
             schema=self._schema # if the EPEpJSON instance does not have a schema then this is set to None.
         
         if not schema is None:
+            self._validate_property_name(name, schema)
             self._validate_property_value(name,value,schema)
             
         self._dict[name]=value
         
     
-    
+
         
     
     

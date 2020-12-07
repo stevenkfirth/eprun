@@ -84,6 +84,16 @@ class Test_EPEpJSONObject(unittest.TestCase):
                           'EPSchemaProperty(name="north_axis")')
         
         
+    def test__validate_property_name(self):
+        ""
+        j=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
+        ot=j.get_object_type('Building')
+        o=ot.get_object('Simple One Zone (Wireframe DXF)')
+        self.assertRaises(ValueError,
+                          o._validate_property_name,
+                          'ABC',s)
+        
+        
     def test_get_property_value(self):
         ""
         j=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
@@ -148,7 +158,7 @@ class Test_EPEpJSONObject(unittest.TestCase):
         o.set_property_value('terrain','City',schema=s)
         
         # type validation error - string - fails
-        self.assertRaises(ValidationError,
+        self.assertRaises(ValueError,
                           o.set_property_value,
                           'terrain',0,schema=s)
 
@@ -156,7 +166,7 @@ class Test_EPEpJSONObject(unittest.TestCase):
         o.set_property_value('north_axis',180,schema=s)
         
         # type validation error - number - fails
-        self.assertRaises(ValidationError,
+        self.assertRaises(ValueError,
                           o.set_property_value,
                           'north_axis','City',schema=s)
 
@@ -169,7 +179,7 @@ class Test_EPEpJSONObject(unittest.TestCase):
                               schema=s)
         
         # type validation error - array - fails
-        self.assertRaises(ValidationError,
+        self.assertRaises(ValueError,
                           o1.set_property_value,
                           'vertices',0,schema=s)
         
@@ -177,7 +187,7 @@ class Test_EPEpJSONObject(unittest.TestCase):
         o.set_property_value('terrain','City',schema=s)
         
         # enum validation error - string - fails
-        self.assertRaises(ValidationError,
+        self.assertRaises(ValueError,
                           o.set_property_value,
                           'terrain','MyMegaCity',schema=s)
         
@@ -186,7 +196,7 @@ class Test_EPEpJSONObject(unittest.TestCase):
         ot=j1.get_object_type('Building')
         o=ot.get_object('Simple One Zone (Wireframe DXF)')
         o.set_property_value('north_axis',180)
-        self.assertRaises(ValidationError,
+        self.assertRaises(ValueError,
                           o.set_property_value,
                           'north_axis','City')
         

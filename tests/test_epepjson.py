@@ -3,7 +3,9 @@
 import unittest
 from pprint import pprint
 
-from eprun import EPEpJSON
+import jsonschema
+
+from eprun import EPEpJSON, EPSchema
 
 
 class Test_EPEpJSON(unittest.TestCase):
@@ -106,8 +108,28 @@ class Test_EPEpJSON(unittest.TestCase):
                           'Zone': 1})
         
     
+    def test_validate(self):
+        ""
+        #passes
+        j.validate(schema=s)
+        
+        #fails
+        j1=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
+        del j1._dict['Building']
+        # COMMENTED OUT AS IT TAKES 10+ SECONDS TO RUN.
+        # self.assertRaises(jsonschema.exceptions.ValidationError,
+        #                   j1.validate,
+        #                   s)
+        
+        
+    def test_write(self):
+        ""
+        j.write('test.epJSON')
+        
+        
     
 if __name__=='__main__':
     
     j=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
+    s=EPSchema(fp='files/Energy+.schema.epJSON')
     unittest.main(Test_EPEpJSON())

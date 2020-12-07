@@ -2,6 +2,8 @@
 
 
 import json
+import jsonschema
+
 
 from .epepjson_object_type import EPEpJSONObjectType
 
@@ -87,6 +89,12 @@ class EPEpJSON():
         return 'EPEpJSON(fp="%s")' % self._fp 
         
     
+    def add_object(self,name,object_type):
+        """
+        
+        """
+    
+    
     def get_object_type(self,name):
         """Returns an object type in the .epJSON file.
         
@@ -130,13 +138,54 @@ class EPEpJSON():
         """
         return {k:len(v.keys()) for k,v in self._dict.items()}
         
+    
+    def validate(self,schema=None):
+        """Validates the .epJSON file against a schema.
+        
+        :param schema: The schema for the epJSON file. 
+            Optional. If used then validation will be done on the 
+            property name and the property value.
+        :type schema: EPSchema
+        
+        :raises: Exception - if no schema is present to validate against.
+        :raises: jsonschema.exceptions.ValidationError if the .epJSON file is not valid against the schema.
+        
+        .. note::
+        
+           Schema validation occurs in two cases:
+           1. A EPSchema instance is supplied to this method using the `schema` argument;
+           2. The :py:class:`~eprun.epepjson.EPEpJSON` object was initiated with an EPSchema instance.
         
         
+        """
+        
+        # if schema is not supplied, look to see if the EPEpJSON instance has a schema
+        if schema is None:
+            schema=self._schema # if the EPEpJSON instance does not have a schema then this is set to None.
+            
+        if schema is None:
+            raise Exception('No schema is set - please provide a schema to validate against')
+        
+        # takes 10+ seconds to run as the entire .schema.epJSON file is validated first.
+        # see https://python-jsonschema.readthedocs.io/en/latest/validate/
+        try:
+            jsonschema.validate(self._dict,
+                                schema._dict,
+                                jsonschema.Draft4Validator)
+        except jsonschema.exceptions.ValidationError as err:
+            raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0])    
         
         
+    def write(self,fp):
+        """Writes to a .epJSON file.
         
+        :param fp: The filename.
+            This can be relative or absolute.
+        :type fp: str
         
-        
+        """
+        with open(fp,'w') as f:
+            f.write(json.dumps(self._dict,indent=4))
         
         
         
