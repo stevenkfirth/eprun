@@ -3,7 +3,7 @@
 import unittest
 from pprint import pprint
 
-from eprun import EPEpJSON
+from eprun import EPEpJSON, EPSchema
 from eprun.epepjson_object_type import EPEpJSONObjectType
 
 
@@ -29,6 +29,14 @@ class Test_EPEpJSONObjectType(unittest.TestCase):
         ot=j.get_object_type('Building')
         self.assertEqual(str(ot),
                          'EPEpJSONObjectType(name="Building")')
+        
+        
+    def test__get_schema_object(self):
+        ""
+        ot=j.get_object_type('Building')
+        self.assertEqual(str(ot._get_schema_object(s)),
+                         'EPSchemaObject(name="Building")')
+        
         
         
     def test_get_object(self):
@@ -66,4 +74,5 @@ class Test_EPEpJSONObjectType(unittest.TestCase):
 if __name__=='__main__':
     
     j=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
+    s=EPSchema(fp='files/Energy+.schema.epJSON')
     unittest.main(Test_EPEpJSONObjectType())

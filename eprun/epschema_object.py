@@ -309,7 +309,7 @@ class EPSchemaObject():
     
     @property
     def property_names(self):
-        """The propoerty names of the schema object.
+        """The property names of the schema object.
         
         :rtype: list
         

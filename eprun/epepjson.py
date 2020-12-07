@@ -12,6 +12,10 @@ class EPEpJSON():
     :param fp: The filepath of the .epJSON file.
         This can be relative or absolute.
     :type fp: str
+    :param schema: The schema for the epJSON file. 
+            Optional. If used then validation will be done on the 
+            property name and the property value.
+    :type schema: EPSchema
     
     :Example:
         
@@ -58,13 +62,15 @@ class EPEpJSON():
     """
     
     def __init__(self,
-                 fp):
+                 fp,
+                 schema=None):
         ""
         with open(fp,'r') as f:
             d=json.load(f)
         
         self._dict=d
         self._fp=fp
+        self._schema=schema
         
         
     def __getitem__(self,key):

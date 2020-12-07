@@ -38,6 +38,18 @@ class EPEpJSONObjectType():
         return self._epjson._dict[self._name]
     
     
+    def _get_schema_object(self,schema):
+        """Returns the schema object for the object type.
+        
+        :param schema: The schema for the epJSON file. 
+        :type schema: EPSchema
+        
+        rtype: EPSchemaObject
+
+        """
+        return schema.get_object(self.name)
+    
+    
     def get_object(self,name):
         """Returns an object in the epJSON object type. 
         
@@ -48,8 +60,8 @@ class EPEpJSONObjectType():
         
         """
         o=EPEpJSONObject()
-        o._epjson_object_type=self
-        o._name=name
+        o.__dict__['_epjson_object_type']=self
+        o.__dict__['_name']=name
         return o    
     
     
