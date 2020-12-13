@@ -17,6 +17,7 @@ class Test_EPResult(unittest.TestCase):
         ""
         self.assertEqual(list(epresult.files.keys()),
                          ['audit', 'bnd', 'dxf', 'eio', 'end', 'err', 'eso', 'mdd', 'mtd', 'mtr', 'rdd', 'shd', 'csv', 'htm', 'tab', 'txt', 'xml'])
+        print(epresult.files)
     
     
     def test_get_end(self):

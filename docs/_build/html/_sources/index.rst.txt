@@ -6,13 +6,24 @@
 Welcome to eprun's documentation!
 =================================
 
-eprun is a Python package for running EnergyPlus simulations.
+`eprun` is a Python package for running EnergyPlus simulations.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: Start here:
 
    Introduction
+   Demo - Running a Simulation
+   Demo - Results of a Simulation Run
+   Demo - Reading the EnergyPlus output files
+
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials:
+   
+   Reading the eso Output File
+   
    
    
 .. toctree::
@@ -21,18 +32,15 @@ eprun is a Python package for running EnergyPlus simulations.
    
    eprun
    EPResult
+
    
 .. toctree::
    :maxdepth: 1
    :caption: Reference - Input files:
    
    EPSchema   
-   EPSchemaObject
-   EPSchemaName
-   EPSchemaProperty
    EPEpJSON
-   EPEpJSONObjectType
-   EPEpJSONObject
+
    
 .. toctree::
    :maxdepth: 1
@@ -41,17 +49,6 @@ eprun is a Python package for running EnergyPlus simulations.
    EPEnd
    EPErr
    EPEso
-   EPEsoSimulationEnvironment
-   EPEsoIntervalPeriods
-   EPEsoIntervalVariable
-   EPEsoDailyPeriods
-   EPEsoDailyVariable
-   EPEsoMonthlyPeriods
-   EPEsoMonthlyVariable
-   EPEsoRunPeriodPeriods
-   EPEsoRunPeriodVariable
-   EPEsoAnnualPeriods
-   EPEsoAnnualVariable
    
    
    

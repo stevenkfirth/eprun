@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="eprun function" href="eprun.html" />
+    <link rel="next" title="Demo - Running a Simulation" href="Demo - Running a Simulation.html" />
     <link rel="prev" title="Welcome to eprun’s documentation!" href="index.html" /> 
 </head>
 
@@ -80,9 +80,21 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Start here:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comments-and-questions">Comments and Questions?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Demo - Running a Simulation.html">Demo - Running a Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Demo - Results of a Simulation Run.html">Demo - Results of a Simulation Run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Demo - Reading the EnergyPlus output files.html">Demo - Reading the EnergyPlus output files</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Reading the eso Output File.html">Reading the eso Output File</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference - Simulation Run:</span></p>
 <ul>
@@ -92,29 +104,13 @@
 <p class="caption"><span class="caption-text">Reference - Input files:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="EPSchema.html">EPSchema class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPSchemaObject.html">EPSchemaObject class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPSchemaName.html">EPSchemaName class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPSchemaProperty.html">EPSchemaProperty class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPEpJSON.html">EPEpJSON class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEpJSONObjectType.html">EPEpJSONObjectType class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEpJSONObject.html">EPEpJSONObject class</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference - Output files:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="EPEnd.html">EPEnd class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPErr.html">EPErr class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EPEso.html">EPEso class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoSimulationEnvironment.html">EPEsoSimulationEnviroment class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoIntervalPeriods.html">EPEsoIntervalPeriods class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoIntervalVariable.html">EPEsoIntervalVariable class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoDailyPeriods.html">EPEsoDailyPeriods class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoDailyVariable.html">EPEsoDailyVariable class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoMonthlyPeriods.html">EPEsoMonthlyPeriods class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoMonthlyVariable.html">EPEsoMonthlyVariable class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoRunPeriodPeriods.html">EPEsoRunPeriodPeriods class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoRunPeriodVariable.html">EPEsoRunPeriodVariable class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoAnnualPeriods.html">EPEsoAnnualPeriods class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEsoAnnualVariable.html">EPEsoAnnualVariable class</a></li>
 </ul>
 
             
@@ -181,7 +177,25 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p><cite>eprun</cite> is a Python wrapper for the EnergyPlus software.</p>
+<p><cite>eprun</cite> is a Python wrapper for the <a class="reference external" href="https://energyplus.net/">EnergyPlus</a> building simulation software.</p>
+<p>The functions and classes in the <cite>eprun</cite> package provide:</p>
+<ul class="simple">
+<li><p>a method to run EnergyPlus simulations from within a Python script.</p></li>
+<li><p>the ability to view and navigate the results of simulation runs using Python.</p></li>
+<li><p>the means to modify the simulation input files using Python.</p></li>
+</ul>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><cite>eprun</cite> is available on PyPi and can be installed using <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">eprun</span></code>.</p>
+</div>
+<div class="section" id="github">
+<h2>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
+<p><cite>eprun</cite> is available on GitHub here: <a class="reference external" href="https://github.com/stevenkfirth/eprun">https://github.com/stevenkfirth/eprun</a>.</p>
+</div>
+<div class="section" id="comments-and-questions">
+<h2>Comments and Questions?<a class="headerlink" href="#comments-and-questions" title="Permalink to this headline">¶</a></h2>
+<p>Please raise an <a class="reference external" href="https://github.com/stevenkfirth/eprun/issues">issue on GitHub</a> or email the author at <a class="reference external" href="mailto:s&#46;k&#46;firth&#37;&#52;&#48;lboro&#46;ac&#46;uk">s<span>&#46;</span>k<span>&#46;</span>firth<span>&#64;</span>lboro<span>&#46;</span>ac<span>&#46;</span>uk</a>.</p>
+</div>
 </div>
 
 
@@ -192,7 +206,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="eprun.html" class="btn btn-neutral float-right" title="eprun function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Demo - Running a Simulation.html" class="btn btn-neutral float-right" title="Demo - Running a Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to eprun’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
