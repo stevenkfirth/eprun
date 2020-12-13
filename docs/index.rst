@@ -13,9 +13,9 @@ Welcome to eprun's documentation!
    :caption: Start here:
 
    Introduction
-   Demo - Running a Simulation
+   Demo - Running an EnergyPlus Simulation
    Demo - Results of a Simulation Run
-   Demo - Reading the EnergyPlus output files
+   Demo - Reading the Output Files
 
    
 .. toctree::

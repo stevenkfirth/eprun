@@ -41,6 +41,8 @@ class Test_EPEso(unittest.TestCase):
         print(df)
         df.to_csv('test.csv')
         
+        print(se.get_variables())
+        
         
     def test_EPEsoMonthlyPeriods(self):
         ""

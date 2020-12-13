@@ -1,6 +1,6 @@
 
-Demo - Reading the EnergyPlus output files
-==========================================
+Demo - Reading the Output Files
+===============================
 
 A successful EnergyPlus simulation run will generate a series of EnergyPlus output files. 
 
@@ -57,7 +57,7 @@ returns a :py:class:`~eprun.eperr.EPErr` object instance.
 
 - :py:class:`~eprun.epend.EPEnd` for reading '.end' files.
 - :py:class:`~eprun.eperr.EPErr` for reading '.err' files.
-- :py:class:`~eprun.eperr.EPEso` for reading '.eso' files.
+- :py:class:`~eprun.epeso.EPEso` for reading '.eso' files.
 
 Congratulations! You now know how to run an EnergyPlus simulation using the :py:meth:`~eprun.eprun.eprun` function
 and how to access the simulation results and output files using the :py:class:`~eprun.epresult.EPResult` class.

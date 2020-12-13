@@ -42,6 +42,15 @@ class EPEsoIntervalVariable():
         """
         return self._variable_dictionary['quantity']
     
+    @property
+    def report_code(self):
+        """The report code of the interval variable.
+        
+        :rtype: str
+        
+        """
+        return self._report_code
+    
     
     @property
     def unit(self):

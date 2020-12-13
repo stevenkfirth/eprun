@@ -366,3 +366,18 @@ class EPEsoSimulationEnviroment():
         return index,period_frequency,data,columns,column_level_names
     
  
+    def get_variables(self):
+        """Returns all the variables in the simulation environment.
+        
+        :returns: A dictionary with keys as the different variable intervals
+            and values as the interval objects.
+        :rtype: dict
+        
+        """
+        return {'interval':self.get_interval_variables(),
+                'daily':self.get_daily_variables(),
+                'monthly':self.get_monthly_variables(),
+                'runperiod':self.get_run_period_variables(),
+                'annual':self.get_annual_variables()}
+
+        

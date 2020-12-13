@@ -1,6 +1,6 @@
 
-Demo - Running a Simulation
-===========================
+Demo - Running an EnergyPlus Simulation
+=======================================
 
 To run an EnergyPlus simulation we need:
 
