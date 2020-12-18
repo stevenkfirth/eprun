@@ -32,5 +32,5 @@ Further resources
 -----------------
 
 - The documentation for the :py:meth:`~eprun.eprun.eprun` function.
-- This Jupyter Notebook shows the `eprun` function in action.
+- `This Jupyter Notebook <https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/tutorials/Running%20an%20EnergyPlus%20simulation%20with%20eprun/Running%20an%20EnergyPlus%20simulation%20with%20eprun.ipynb>`_ shows the `eprun` function in action.
 - A video tutorial of the `eprun` function is available `here`.

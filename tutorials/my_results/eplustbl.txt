@@ -1,4 +1,4 @@
-Program Version: EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.17 10:11
+Program Version: EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.18 08:14
 Tabular Output Report in Format:  Fixed
 
 Building:        Simple One Zone (Wireframe DXF)
