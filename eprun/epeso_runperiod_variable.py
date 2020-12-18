@@ -8,5 +8,4 @@ class EPEsoRunPeriodVariable():
     
     def __repr__(self):
         ""
-        return 'EPEsoRunPeriodVariable(sim_env="%s", report_code=%s)' % (self._epesose.environment_title,
-                                                                       self._report_code)
+        return 'EPEsoRunPeriodVariable(report_code=%s)' % (self._report_code)

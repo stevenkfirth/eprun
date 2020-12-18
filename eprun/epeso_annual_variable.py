@@ -7,5 +7,4 @@ class EPEsoAnnualVariable():
     
     def __repr__(self):
         ""
-        return 'EPEsoAnnualVariable(sim_env="%s", report_code=%s)' % (self._epesose.environment_title,
-                                                                       self._report_code)
+        return 'EPEsoAnnualVariable(report_code=%s)' % (self._report_code)

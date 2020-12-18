@@ -65,3 +65,14 @@ class EPEsoMonthlyPeriods():
             days_in_month=calendar.monthrange(start_time.year,start_time.month)[1]
             result.append(start_time+datetime.timedelta(days=days_in_month))
         return tuple(result)
+
+
+    def summary(self):
+        """Returns a summary of the interval periods.
+        
+        :rtype: dict
+        
+        """
+        start_times=self.get_start_times()
+        return 'Starts at %s, %s periods @ 1 month intervals' % (start_times[0].isoformat(),
+                                                                 len(start_times))

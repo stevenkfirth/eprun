@@ -205,20 +205,20 @@ class EPEso():
         self._data=data
 
 
-
-    @property
-    def data(self):
-        """A list of the simulation environment data dictionaries.
+    def get_environments(self):
+        """Returns a list of the simulation environments in the .eso file.
         
-        :returns: A list of dictionaries where each dictionary holds the
-            data from a simulation environment such as a winter design day,
-            a summer design day or a full annual simulation. The dictionary
-            has keys 'environment_title', 'latitude', 'longitude',
-            'time_zone', 'elevation', 'interval_data' ,'daily_data',
-            'monthly_data', 'run_period_data' and 'annual_data'.
+        :returns: A list of `EPEsoSimulationEnvironment` instances.
         :rtype: list
+        
         """
-        return self._data
+        result=[]
+        for i in range(len(self._data)):
+            epesose=EPEsoSimulationEnviroment()
+            epesose._epeso=self
+            epesose._index=i
+            result.append(epesose) 
+        return result
 
 
     @property
@@ -254,21 +254,21 @@ class EPEso():
         return self._variable_dictionary
 
 
-    def get_environments(self):
-        """Returns a list of the simulation environments in the .eso file.
-        
-        :returns: A list of `EPEsoSimulationEnvironment` instances.
-        :rtype: list
-        
-        """
-        result=[]
-        for i in range(len(self._data)):
-            epesose=EPEsoSimulationEnviroment()
-            epesose._epeso=self
-            epesose._index=i
-            result.append(epesose) 
-        return result
     
+
+    # @property
+    # def data(self):
+    #     """A list of the simulation environment data dictionaries.
+        
+    #     :returns: A list of dictionaries where each dictionary holds the
+    #         data from a simulation environment such as a winter design day,
+    #         a summer design day or a full annual simulation. The dictionary
+    #         has keys 'environment_title', 'latitude', 'longitude',
+    #         'time_zone', 'elevation', 'interval_data' ,'daily_data',
+    #         'monthly_data', 'run_period_data' and 'annual_data'.
+    #     :rtype: list
+    #     """
+    #     return self._data
     
       
     

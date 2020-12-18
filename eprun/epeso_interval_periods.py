@@ -2,6 +2,7 @@
 
 
 import datetime
+import pandas as pd
 
 
 class EPEsoIntervalPeriods():
@@ -10,7 +11,7 @@ class EPEsoIntervalPeriods():
     
     def __repr__(self):
         ""
-        return 'EPEsoIntervalPeriods(sim_env="%s")' % self._epesose.environment_title
+        return 'EPEsoIntervalPeriods()' 
     
     
     @property
@@ -21,6 +22,7 @@ class EPEsoIntervalPeriods():
         
         """
         return self._epesose._data['interval_data'][2]
+
     
     @property
     def days_of_simulation(self):
@@ -127,3 +129,37 @@ class EPEsoIntervalPeriods():
         return tuple(start_time+datetime.timedelta(minutes=end_minute-start_minute) 
                      for start_time,start_minute,end_minute in x)
  
+    
+    def get_interval(self):
+        """Returns the time interval between periods.
+        
+        :rtype: datetime.timedelta
+        
+        """
+        return datetime.timedelta(minutes=self.end_minutes[0]-self.start_minutes[0])
+        
+    
+    def get_periods(self):
+        """Returns the interval periods as a list of Pandas periods.
+        
+        :rtype: list
+        
+        """
+        start_times=self.get_start_times()
+        period_frequency='%sS' % self.get_interval().total_seconds()
+        return [pd.Period(start_time,period_frequency) for start_time in start_times]
+        
+    
+    def summary(self):
+        """Returns a summary of the interval periods.
+        
+        :rtype: dict
+        
+        """
+        start_times=self.get_start_times()
+        return 'Starts at %s, %s periods @ %s minute intervals' % (start_times[0].isoformat(),
+                                                                  len(start_times),
+                                                                  int(self.get_interval().total_seconds()/60))
+        
+    
+    
