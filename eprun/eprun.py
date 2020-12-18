@@ -11,41 +11,84 @@ def eprun(idf_filepath,
           epw_filepath,
           sim_dir='.',
           ep_dir='C:\EnergyPlusV9-4-0',
-          expand_objects=False,
+          annual=False,
           convert=False,
-          readvars=False):
+          design_day=False,
+          epmacro=False,
+          expand_objects=False,
+          output_prefix='eplus',
+          output_suffix='L',
+          readvars=False,
+          print_call=False):
     """Runs an EnergyPlus simulation and returns the results.
     
     :param idf_filepath: The filepath of the input .idf file.
         This can be relative or absolute.
     :type idf_filepath: str
+    
     :param epw_filepath: The filepath of the climate .epw file.
         This can be relative or absolute.
     :type epw_filepath: str
+    
     :param sim_dir: The directory to hold the simulation files.
         This can be relative or absolute.
         Default is '.' which is the current directory.
     :type sim_dir: str
+    
     :param ep_dir: The EnergyPlus directory where 'energyplus.exe' is installed.
         Default is 'C:\EnergyPlusV9-4-0'.
-    :type ep_folder: str
-    :param expand_objects: If True, the '--expandobjects' argument is included
-        in the call to EnergyPlus.
-        This is the argument for 'Run ExpandObjects prior to simulation'.
+    :type ep_dir: str
+    
+    :param annual: If True, the '--annual' argument is included in the call
+        to EnergyPlus. 
+        This is the argument for 'Forces annual simulation'.
         Default is False.
-    :type expand_objects: bool
+    :type annual: bool
+    
     :param convert: If True, the '--convert' argument is included in the call
         to EnergyPlus. 
         This is the argument for 'Output IDF->epJSON or epJSON->IDF, dependent on
         input file type'.
         Default is False.
     :type convert: bool
+    
+    :param design_day: If True, the '--design-day' argument is included in the call
+        to EnergyPlus. 
+        This is the argument for 'Forces design-day-only simulation'.
+        Default is False.
+    :type design_day: bool
+    
+    :param epmacro: If True, the '--epmacro' argument is included in the call
+        to EnergyPlus. 
+        This is the argument for 'Run EPMacro prior to simulation'.
+        Default is False.
+    :type epmacro: bool
+    
+    :param expand_objects: If True, the '--expandobjects' argument is included
+        in the call to EnergyPlus.
+        This is the argument for 'Run ExpandObjects prior to simulation'.
+        Default is False.
+    :type expand_objects: bool
+    
+    :param output_prefix: Prefic for output file names.
+        Default is 'eplus'.
+    :type ouput_prefix: str
+    
+    :param output_suffix: Suffix style for output names.
+        Should be one of 'L' (legacy), 'C' (capital) or 'D' (dash).
+        Default is 'L'
+    :param output_suffix: str
+    
     :param readvars: If True, the '--readvars' argument is included in the 
         call to EnergyPlus.
         This is the argument for 'Run ReadVarsESO after simulation'.
         Default is False.
     :type readvars: bool
         
+    :param print_call: If True then the call string is printed.
+        Default is False.
+    :param print_call: bool
+    
     :returns: A EPResult object which contains the returncode, stdout and a 
         dictionary of the results files.
     :rtype: eprun.epresult.EPResult
@@ -85,14 +128,22 @@ def eprun(idf_filepath,
     ep_exe=r'%s\EnergyPlus' % ep_dir
     
     # create the Command Prompt string to run EnergyPlus
-    st='"%s" %s %s %s -d "%s" -w "%s" "%s"' % (ep_exe,
-                                            '-x' if expand_objects else '',
-                                            '-c' if convert else '',
-                                            '-r' if readvars else '',
+    st='"%s" %s%s%s%s%s%s--output-prefix %s --output-suffix %s --output-directory "%s" --weather "%s" "%s"' % (ep_exe,
+                                            '--annual ' if annual else '',
+                                            '--convert ' if convert else '',
+                                            '--design-day ' if design_day else '',
+                                            '--epmacro ' if epmacro else '',
+                                            '--expandobjects ' if expand_objects else '',
+                                            '--readvars ' if readvars else '',
+                                            output_prefix,
+                                            output_suffix,
                                             sim_absolute_dir,
                                             epw_absolute_filepath,
                                             idf_absolute_filepath
                                             )
+    
+    # print_call
+    if print_call: print(st)
     
     # get simulation start time in seconds since the epoch
     simulation_start_time=time.time()
