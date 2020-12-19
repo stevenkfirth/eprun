@@ -174,7 +174,7 @@
 <h1>eprun function<a class="headerlink" href="#eprun-function" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="eprun.eprun.eprun">
-<code class="sig-prename descclassname">eprun.eprun.</code><code class="sig-name descname">eprun</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idf_filepath</span></em>, <em class="sig-param"><span class="n">epw_filepath</span></em>, <em class="sig-param"><span class="n">sim_dir</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">ep_dir</span><span class="o">=</span><span class="default_value">'C:\\EnergyPlusV9-4-0'</span></em>, <em class="sig-param"><span class="n">expand_objects</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">convert</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">readvars</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eprun/eprun.html#eprun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eprun.eprun" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eprun.eprun.</code><code class="sig-name descname">eprun</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idf_filepath</span></em>, <em class="sig-param"><span class="n">epw_filepath</span></em>, <em class="sig-param"><span class="n">sim_dir</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em class="sig-param"><span class="n">ep_dir</span><span class="o">=</span><span class="default_value">'C:\\EnergyPlusV9-4-0'</span></em>, <em class="sig-param"><span class="n">annual</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">convert</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">design_day</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">epmacro</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">expand_objects</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">output_prefix</span><span class="o">=</span><span class="default_value">'eplus'</span></em>, <em class="sig-param"><span class="n">output_suffix</span><span class="o">=</span><span class="default_value">'L'</span></em>, <em class="sig-param"><span class="n">readvars</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">print_call</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eprun/eprun.html#eprun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eprun.eprun.eprun" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs an EnergyPlus simulation and returns the results.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -186,21 +186,42 @@ This can be relative or absolute.</p></li>
 <li><p><strong>sim_dir</strong> (<em>str</em>) – The directory to hold the simulation files.
 This can be relative or absolute.
 Default is ‘.’ which is the current directory.</p></li>
-<li><p><strong>ep_dir</strong> – The EnergyPlus directory where ‘energyplus.exe’ is installed.
+<li><p><strong>ep_dir</strong> (<em>str</em>) – The EnergyPlus directory where ‘energyplus.exe’ is installed.
 Default is ‘C:EnergyPlusV9-4-0’.</p></li>
-<li><p><strong>expand_objects</strong> (<em>bool</em>) – If True, the ‘–expandobjects’ argument is included
-in the call to EnergyPlus.
-This is the argument for ‘Run ExpandObjects prior to simulation’.
+<li><p><strong>annual</strong> (<em>bool</em>) – If True, the ‘–annual’ argument is included in the call
+to EnergyPlus. 
+This is the argument for ‘Forces annual simulation’.
 Default is False.</p></li>
 <li><p><strong>convert</strong> (<em>bool</em>) – If True, the ‘–convert’ argument is included in the call
 to EnergyPlus. 
 This is the argument for ‘Output IDF-&gt;epJSON or epJSON-&gt;IDF, dependent on
 input file type’.
 Default is False.</p></li>
+<li><p><strong>design_day</strong> (<em>bool</em>) – If True, the ‘–design-day’ argument is included in the call
+to EnergyPlus. 
+This is the argument for ‘Forces design-day-only simulation’.
+Default is False.</p></li>
+<li><p><strong>epmacro</strong> (<em>bool</em>) – If True, the ‘–epmacro’ argument is included in the call
+to EnergyPlus. 
+This is the argument for ‘Run EPMacro prior to simulation’.
+Default is False.</p></li>
+<li><p><strong>expand_objects</strong> (<em>bool</em>) – If True, the ‘–expandobjects’ argument is included
+in the call to EnergyPlus.
+This is the argument for ‘Run ExpandObjects prior to simulation’.
+Default is False.</p></li>
+<li><p><strong>output_prefix</strong> – Prefic for output file names.
+Default is ‘eplus’.</p></li>
+<li><p><strong>output_suffix</strong> – Suffix style for output names.
+Should be one of ‘L’ (legacy), ‘C’ (capital) or ‘D’ (dash).
+Default is ‘L’</p></li>
+<li><p><strong>output_suffix</strong> – str</p></li>
 <li><p><strong>readvars</strong> (<em>bool</em>) – If True, the ‘–readvars’ argument is included in the 
 call to EnergyPlus.
 This is the argument for ‘Run ReadVarsESO after simulation’.
 Default is False.</p></li>
+<li><p><strong>print_call</strong> – If True then the call string is printed.
+Default is False.</p></li>
+<li><p><strong>print_call</strong> – bool</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

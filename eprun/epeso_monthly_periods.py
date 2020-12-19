@@ -2,6 +2,7 @@
 
 import datetime
 import calendar
+import pandas as pd
 
 
 class EPEsoMonthlyPeriods():
@@ -31,27 +32,6 @@ class EPEsoMonthlyPeriods():
         """
         return tuple(int(x) for x in self._data[0])
     
-    @property
-    def months(self):
-        """The months for the monthly periods.
-        
-        :rtype: tuple
-        
-        """
-        return tuple(int(x) for x in self._data[1])
-    
-    
-    def get_start_times(self):
-        """Returns the start times for the monthly periods.
-        
-        :returns: A tuple of datetime.datetime instances
-        :rtype: tuple
-        
-        """
-        x=self.months
-        return tuple(datetime.datetime(2001,m,1,tzinfo=self._epesose.get_timezone())
-                for m in x)
-    
     
     def get_end_times(self):
         """Returns the end times for the monthly periods.
@@ -65,6 +45,39 @@ class EPEsoMonthlyPeriods():
             days_in_month=calendar.monthrange(start_time.year,start_time.month)[1]
             result.append(start_time+datetime.timedelta(days=days_in_month))
         return tuple(result)
+    
+    
+    def get_periods(self):
+        """Returns the interval periods as a list of Pandas periods.
+        
+        :rtype: list
+        
+        """
+        start_times=self.get_start_times()
+        period_frequency='1M' 
+        return [pd.Period(start_time,period_frequency) for start_time in start_times]   
+    
+    
+    def get_start_times(self):
+        """Returns the start times for the monthly periods.
+        
+        :returns: A tuple of datetime.datetime instances
+        :rtype: tuple
+        
+        """
+        x=self.months
+        return tuple(datetime.datetime(2001,m,1,tzinfo=self._epesose.get_timezone())
+                for m in x)
+        
+
+    @property
+    def months(self):
+        """The months for the monthly periods.
+        
+        :rtype: tuple
+        
+        """
+        return tuple(int(x) for x in self._data[1])
 
 
     def summary(self):

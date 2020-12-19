@@ -81,7 +81,7 @@ class EPEsoMonthlyVariable():
         :rtype: tuple
         
         """
-        month_start_times=self._monthly_periods().get_start_times()
+        month_start_times=self._monthly_periods.get_start_times()
         result=[]
         for month_start_time,max_day,max_hour,max_minute in zip(month_start_times,
                                                                 self.max_days,
@@ -106,7 +106,7 @@ class EPEsoMonthlyVariable():
         :rtype: tuple
         
         """
-        month_start_times=self._monthly_periods().get_start_times()
+        month_start_times=self._monthly_periods.get_start_times()
         result=[]
         for month_start_time,min_day,min_hour,min_minute in zip(month_start_times,
                                                                 self.min_days,

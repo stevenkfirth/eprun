@@ -180,41 +180,84 @@
           <span class="n">epw_filepath</span><span class="p">,</span>
           <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
           <span class="n">ep_dir</span><span class="o">=</span><span class="s1">&#39;C:\EnergyPlusV9-4-0&#39;</span><span class="p">,</span>
-          <span class="n">expand_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">annual</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
           <span class="n">convert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-          <span class="n">readvars</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+          <span class="n">design_day</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">epmacro</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">expand_objects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">output_prefix</span><span class="o">=</span><span class="s1">&#39;eplus&#39;</span><span class="p">,</span>
+          <span class="n">output_suffix</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span>
+          <span class="n">readvars</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">print_call</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Runs an EnergyPlus simulation and returns the results.</span>
 <span class="sd">    </span>
 <span class="sd">    :param idf_filepath: The filepath of the input .idf file.</span>
 <span class="sd">        This can be relative or absolute.</span>
 <span class="sd">    :type idf_filepath: str</span>
+<span class="sd">    </span>
 <span class="sd">    :param epw_filepath: The filepath of the climate .epw file.</span>
 <span class="sd">        This can be relative or absolute.</span>
 <span class="sd">    :type epw_filepath: str</span>
+<span class="sd">    </span>
 <span class="sd">    :param sim_dir: The directory to hold the simulation files.</span>
 <span class="sd">        This can be relative or absolute.</span>
 <span class="sd">        Default is &#39;.&#39; which is the current directory.</span>
 <span class="sd">    :type sim_dir: str</span>
+<span class="sd">    </span>
 <span class="sd">    :param ep_dir: The EnergyPlus directory where &#39;energyplus.exe&#39; is installed.</span>
 <span class="sd">        Default is &#39;C:\EnergyPlusV9-4-0&#39;.</span>
-<span class="sd">    :type ep_folder: str</span>
-<span class="sd">    :param expand_objects: If True, the &#39;--expandobjects&#39; argument is included</span>
-<span class="sd">        in the call to EnergyPlus.</span>
-<span class="sd">        This is the argument for &#39;Run ExpandObjects prior to simulation&#39;.</span>
+<span class="sd">    :type ep_dir: str</span>
+<span class="sd">    </span>
+<span class="sd">    :param annual: If True, the &#39;--annual&#39; argument is included in the call</span>
+<span class="sd">        to EnergyPlus. </span>
+<span class="sd">        This is the argument for &#39;Forces annual simulation&#39;.</span>
 <span class="sd">        Default is False.</span>
-<span class="sd">    :type expand_objects: bool</span>
+<span class="sd">    :type annual: bool</span>
+<span class="sd">    </span>
 <span class="sd">    :param convert: If True, the &#39;--convert&#39; argument is included in the call</span>
 <span class="sd">        to EnergyPlus. </span>
 <span class="sd">        This is the argument for &#39;Output IDF-&gt;epJSON or epJSON-&gt;IDF, dependent on</span>
 <span class="sd">        input file type&#39;.</span>
 <span class="sd">        Default is False.</span>
 <span class="sd">    :type convert: bool</span>
+<span class="sd">    </span>
+<span class="sd">    :param design_day: If True, the &#39;--design-day&#39; argument is included in the call</span>
+<span class="sd">        to EnergyPlus. </span>
+<span class="sd">        This is the argument for &#39;Forces design-day-only simulation&#39;.</span>
+<span class="sd">        Default is False.</span>
+<span class="sd">    :type design_day: bool</span>
+<span class="sd">    </span>
+<span class="sd">    :param epmacro: If True, the &#39;--epmacro&#39; argument is included in the call</span>
+<span class="sd">        to EnergyPlus. </span>
+<span class="sd">        This is the argument for &#39;Run EPMacro prior to simulation&#39;.</span>
+<span class="sd">        Default is False.</span>
+<span class="sd">    :type epmacro: bool</span>
+<span class="sd">    </span>
+<span class="sd">    :param expand_objects: If True, the &#39;--expandobjects&#39; argument is included</span>
+<span class="sd">        in the call to EnergyPlus.</span>
+<span class="sd">        This is the argument for &#39;Run ExpandObjects prior to simulation&#39;.</span>
+<span class="sd">        Default is False.</span>
+<span class="sd">    :type expand_objects: bool</span>
+<span class="sd">    </span>
+<span class="sd">    :param output_prefix: Prefic for output file names.</span>
+<span class="sd">        Default is &#39;eplus&#39;.</span>
+<span class="sd">    :type ouput_prefix: str</span>
+<span class="sd">    </span>
+<span class="sd">    :param output_suffix: Suffix style for output names.</span>
+<span class="sd">        Should be one of &#39;L&#39; (legacy), &#39;C&#39; (capital) or &#39;D&#39; (dash).</span>
+<span class="sd">        Default is &#39;L&#39;</span>
+<span class="sd">    :param output_suffix: str</span>
+<span class="sd">    </span>
 <span class="sd">    :param readvars: If True, the &#39;--readvars&#39; argument is included in the </span>
 <span class="sd">        call to EnergyPlus.</span>
 <span class="sd">        This is the argument for &#39;Run ReadVarsESO after simulation&#39;.</span>
 <span class="sd">        Default is False.</span>
 <span class="sd">    :type readvars: bool</span>
 <span class="sd">        </span>
+<span class="sd">    :param print_call: If True then the call string is printed.</span>
+<span class="sd">        Default is False.</span>
+<span class="sd">    :param print_call: bool</span>
+<span class="sd">    </span>
 <span class="sd">    :returns: A EPResult object which contains the returncode, stdout and a </span>
 <span class="sd">        dictionary of the results files.</span>
 <span class="sd">    :rtype: eprun.epresult.EPResult</span>
@@ -254,14 +297,22 @@
     <span class="n">ep_exe</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">\EnergyPlus&#39;</span> <span class="o">%</span> <span class="n">ep_dir</span>
     
     <span class="c1"># create the Command Prompt string to run EnergyPlus</span>
-    <span class="n">st</span><span class="o">=</span><span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> -d &quot;</span><span class="si">%s</span><span class="s1">&quot; -w &quot;</span><span class="si">%s</span><span class="s1">&quot; &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ep_exe</span><span class="p">,</span>
-                                            <span class="s1">&#39;-x&#39;</span> <span class="k">if</span> <span class="n">expand_objects</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                                            <span class="s1">&#39;-c&#39;</span> <span class="k">if</span> <span class="n">convert</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                                            <span class="s1">&#39;-r&#39;</span> <span class="k">if</span> <span class="n">readvars</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">st</span><span class="o">=</span><span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; </span><span class="si">%s%s%s%s%s%s</span><span class="s1">--output-prefix </span><span class="si">%s</span><span class="s1"> --output-suffix </span><span class="si">%s</span><span class="s1"> --output-directory &quot;</span><span class="si">%s</span><span class="s1">&quot; --weather &quot;</span><span class="si">%s</span><span class="s1">&quot; &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ep_exe</span><span class="p">,</span>
+                                            <span class="s1">&#39;--annual &#39;</span> <span class="k">if</span> <span class="n">annual</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;--convert &#39;</span> <span class="k">if</span> <span class="n">convert</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;--design-day &#39;</span> <span class="k">if</span> <span class="n">design_day</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;--epmacro &#39;</span> <span class="k">if</span> <span class="n">epmacro</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;--expandobjects &#39;</span> <span class="k">if</span> <span class="n">expand_objects</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;--readvars &#39;</span> <span class="k">if</span> <span class="n">readvars</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                            <span class="n">output_prefix</span><span class="p">,</span>
+                                            <span class="n">output_suffix</span><span class="p">,</span>
                                             <span class="n">sim_absolute_dir</span><span class="p">,</span>
                                             <span class="n">epw_absolute_filepath</span><span class="p">,</span>
                                             <span class="n">idf_absolute_filepath</span>
                                             <span class="p">)</span>
+    
+    <span class="c1"># print_call</span>
+    <span class="k">if</span> <span class="n">print_call</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
     
     <span class="c1"># get simulation start time in seconds since the epoch</span>
     <span class="n">simulation_start_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
