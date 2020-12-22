@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import jsonschema
+
 
 class EPSchemaProperty():
     """A class representing a property of an EPSchemaObject.
@@ -43,26 +45,6 @@ class EPSchemaProperty():
 
 
     @property
-    def name(self):
-        """The name of the schema property.
-        
-        :rtype: str
-        
-        """
-        return self._name
-    
-    
-    @property
-    def field_name(self):
-        """The field_name of the schema property.
-        
-        :returns: The 'legacy_idd' field name of the property. 
-        
-        """
-        return self._epso._dict['legacy_idd']['field_info'][self._name]['field_name']
-    
-    
-    @property
     def anyOf(self):
         """The anyOf property of the schema property object.
         
@@ -71,8 +53,8 @@ class EPSchemaProperty():
         
         """
         return self._dict.get('anyOf',None)
-    
-    
+
+
     @property
     def data_type(self):
         """The data type property of the schema property object.
@@ -137,6 +119,16 @@ class EPSchemaProperty():
         
         """
         return self._dict.get('external_list',None)
+    
+    
+    @property
+    def field_name(self):
+        """The field_name of the schema property.
+        
+        :returns: The 'legacy_idd' field name of the property. 
+        
+        """
+        return self._epso._dict['legacy_idd']['field_info'][self._name]['field_name']
     
 
     @property
@@ -204,6 +196,16 @@ class EPSchemaProperty():
         """
         return self._dict.get('minimum',None)
     
+    
+    @property
+    def name(self):
+        """The name of the schema property.
+        
+        :rtype: str
+        
+        """
+        return self._name
+
 
     @property
     def note(self):
@@ -282,4 +284,19 @@ class EPSchemaProperty():
         return self._dict.get('unitsBasedOnField',None)
     
 
+    def validate_value(self,value):
+        """Validates a possible value for the property.
+        
+        :param value: The value to be validated.
+        
+        raises: jsonschema.exceptions.ValidationError - if the value is not valid
 
+        """
+        try:
+            jsonschema.validate(value,
+                                self._dict,
+                                jsonschema.Draft4Validator)
+        except jsonschema.exceptions.ValidationError as err:
+            raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0]) 
+            
+        

@@ -30,9 +30,18 @@ class Test_EPEpJSON(unittest.TestCase):
         
     def test_get_object_type(self):
         ""
+        # valid object type name
         ot=j.get_object_type('Building')
         self.assertEqual(str(ot),
                          'EPEpJSONObjectType(name="Building")')
+        
+         # invalid name, but no schema validation
+        ot=j.get_object_type('MyObjectType')
+        
+        # invalid name, schema validation
+        self.assertRaises(IndexError,
+                          j.get_object_type,
+                          'MyObjectType',schema=s)
         
         
     def test_get_object_types(self):
@@ -76,6 +85,14 @@ class Test_EPEpJSON(unittest.TestCase):
                           'Zone'])
     
     
+    def test_remove_object_type(self):
+        ""
+        j1=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
+        j1.remove_object_type('Building')
+        self.assertFalse('Building' in j1.object_type_names)
+    
+    
+    
     def test_summary(self):
         ""
         self.assertEqual(j.summary,
@@ -110,16 +127,27 @@ class Test_EPEpJSON(unittest.TestCase):
     
     def test_validate(self):
         ""
+        
+        return
+        
+        #no schema
+        self.assertRaises(Exception,
+                          j.validate)
+        # "Exception: No schema is set - please provide a schema to validate against"
+        
         #passes
         j.validate(schema=s)
+        
+        return
         
         #fails
         j1=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
         del j1._dict['Building']
-        # COMMENTED OUT AS IT TAKES 10+ SECONDS TO RUN.
-        # self.assertRaises(jsonschema.exceptions.ValidationError,
-        #                   j1.validate,
-        #                   s)
+        # COULD COMMENT OUT BELOW AS IT TAKES 10+ SECONDS TO RUN.
+        self.assertRaises(jsonschema.exceptions.ValidationError,
+                          j1.validate,
+                          s)
+        # "jsonschema.exceptions.ValidationError: 'Building' is a required property"
         
         
     def test_write(self):

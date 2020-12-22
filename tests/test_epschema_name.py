@@ -2,6 +2,7 @@
 
 import unittest
 from pprint import pprint
+import jsonschema
 
 from eprun import EPSchema
 
@@ -114,6 +115,15 @@ class Test_EPSchemaName(unittest.TestCase):
                         True)
        
    
+   def test_validate_value(self):
+        ""
+        so=s.get_object('Building')
+        n=so.get_name()
+        n.validate_value('my_string')
+    
+        self.assertRaises(jsonschema.exceptions.ValidationError,
+                          n.validate_value,
+                          0)
 
     
 if __name__=='__main__':

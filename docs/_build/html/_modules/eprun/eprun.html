@@ -176,7 +176,7 @@
 <span class="kn">from</span> <span class="nn">.epresult</span> <span class="kn">import</span> <span class="n">EPResult</span>
 
         
-<div class="viewcode-block" id="eprun"><a class="viewcode-back" href="../../eprun.html#eprun.eprun.eprun">[docs]</a><span class="k">def</span> <span class="nf">eprun</span><span class="p">(</span><span class="n">idf_filepath</span><span class="p">,</span>
+<div class="viewcode-block" id="eprun"><a class="viewcode-back" href="../../eprun.html#eprun.eprun.eprun">[docs]</a><span class="k">def</span> <span class="nf">eprun</span><span class="p">(</span><span class="n">input_filepath</span><span class="p">,</span>
           <span class="n">epw_filepath</span><span class="p">,</span>
           <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
           <span class="n">ep_dir</span><span class="o">=</span><span class="s1">&#39;C:\EnergyPlusV9-4-0&#39;</span><span class="p">,</span>
@@ -191,9 +191,10 @@
           <span class="n">print_call</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Runs an EnergyPlus simulation and returns the results.</span>
 <span class="sd">    </span>
-<span class="sd">    :param idf_filepath: The filepath of the input .idf file.</span>
+<span class="sd">    :param input_filepath: The filepath of the input file.</span>
+<span class="sd">        This can be either an .idf file or an .epJSON file.</span>
 <span class="sd">        This can be relative or absolute.</span>
-<span class="sd">    :type idf_filepath: str</span>
+<span class="sd">    :type input_filepath: str</span>
 <span class="sd">    </span>
 <span class="sd">    :param epw_filepath: The filepath of the climate .epw file.</span>
 <span class="sd">        This can be relative or absolute.</span>
@@ -289,7 +290,7 @@
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The sim_dir directory does not exist: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sim_dir</span><span class="p">)</span>
     
     <span class="c1"># get absolute filepaths</span>
-    <span class="n">idf_absolute_filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">idf_filepath</span><span class="p">)</span>
+    <span class="n">input_absolute_filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">input_filepath</span><span class="p">)</span>
     <span class="n">epw_absolute_filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">epw_filepath</span><span class="p">)</span>
     <span class="n">sim_absolute_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">sim_dir</span><span class="p">)</span>
     
@@ -308,7 +309,7 @@
                                             <span class="n">output_suffix</span><span class="p">,</span>
                                             <span class="n">sim_absolute_dir</span><span class="p">,</span>
                                             <span class="n">epw_absolute_filepath</span><span class="p">,</span>
-                                            <span class="n">idf_absolute_filepath</span>
+                                            <span class="n">input_absolute_filepath</span>
                                             <span class="p">)</span>
     
     <span class="c1"># print_call</span>

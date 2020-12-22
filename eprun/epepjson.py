@@ -11,12 +11,12 @@ from .epepjson_object_type import EPEpJSONObjectType
 class EPEpJSON():
     """A class for an EnergyPlus .epJSON input file.
     
-    :param fp: The filepath of the .epJSON file.
+    :param fp: The filepath of a .epJSON file.
         This can be relative or absolute.
+        Optional, if not used then a blank EPEpJSON object is returned.
     :type fp: str
     :param schema: The schema for the epJSON file. 
-            Optional. If used then validation will be done on the 
-            property name and the property value.
+            Optional. If used then validation will be done using this schema.
     :type schema: EPSchema
     
     :Example:
@@ -64,13 +64,15 @@ class EPEpJSON():
     """
     
     def __init__(self,
-                 fp,
+                 fp=None,
                  schema=None):
         ""
-        with open(fp,'r') as f:
-            d=json.load(f)
-        
-        self._dict=d
+        if fp is None:
+            self._dict={}
+        else:
+            with open(fp,'r') as f:
+                self._dict=json.load(f)
+    
         self._fp=fp
         self._schema=schema
         
@@ -89,13 +91,33 @@ class EPEpJSON():
         return 'EPEpJSON(fp="%s")' % self._fp 
         
     
-    def add_object(self,name,object_type):
-        """
+    def _get_schema(self,schema=None):
+        """Returns the schema to be used in a validation method
+        
+        :param schema: The schema for the epJSON file. 
+            Optional. If used then validation will be done on against this schema.
+        :type schema: EPSchema
+        
+        :returns: If `schema` is provided, then this is returned. 
+            If not, then if the object was initialized with a schema then this schema is returned.
+            Else `None` is returned.
+            
+        :rtype: EPSchema or None
         
         """
+        if not schema is None:
+            return schema
+        
+        elif not self._schema is None:
+            return self._schema
+        
+        else:
+            return None
+        
     
-    
-    def get_object_type(self,name):
+    def get_object_type(self,
+                        name,
+                        schema=None):
         """Returns an object type in the .epJSON file.
         
         :param name: The name of the object type.
@@ -104,6 +126,12 @@ class EPEpJSON():
         :rtype: EPEpJSONObjectType
         
         """
+        
+        schema=self._get_schema(schema)
+        if not schema is None: # if a schema exists
+            if not name in schema.object_names:
+                raise IndexError('Object type name "%s" does not exist in schema.' % name)
+            
         ot=EPEpJSONObjectType()
         ot._epjson=self
         ot._name=name
@@ -129,6 +157,16 @@ class EPEpJSON():
         return list(self._dict.keys())
     
     
+    def remove_object_type(self,name):
+        """Removes the object type and all associated objects from the .epJSON file.
+        
+        :param name: The name of the object type.
+        :type name: str
+        
+        """
+        del self._dict[name]
+    
+    
     @property
     def summary(self):
         """A count of each object type in the .epJSON file.
@@ -143,8 +181,7 @@ class EPEpJSON():
         """Validates the .epJSON file against a schema.
         
         :param schema: The schema for the epJSON file. 
-            Optional. If used then validation will be done on the 
-            property name and the property value.
+            Optional. If used then validation will be done on against this schema.
         :type schema: EPSchema
         
         :raises: Exception - if no schema is present to validate against.
@@ -158,22 +195,13 @@ class EPEpJSON():
         
         
         """
+        schema=self._get_schema(schema)
         
-        # if schema is not supplied, look to see if the EPEpJSON instance has a schema
-        if schema is None:
-            schema=self._schema # if the EPEpJSON instance does not have a schema then this is set to None.
-            
-        if schema is None:
+        try:
+            schema.validate_epjson(self._dict)
+        except AttributeError:
             raise Exception('No schema is set - please provide a schema to validate against')
         
-        # takes 10+ seconds to run as the entire .schema.epJSON file is validated first.
-        # see https://python-jsonschema.readthedocs.io/en/latest/validate/
-        try:
-            jsonschema.validate(self._dict,
-                                schema._dict,
-                                jsonschema.Draft4Validator)
-        except jsonschema.exceptions.ValidationError as err:
-            raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0])    
         
         
     def write(self,fp):

@@ -38,6 +38,13 @@ class Test_EPEpJSONObjectType(unittest.TestCase):
                          'EPSchemaObject(name="Building")')
         
         
+    def test_add_object(self):
+        ""
+        epj=EPEpJSON()
+        epj['Building'].add_object('my_building')
+        self.assertEqual(epj._dict,
+                         {'Building': {'my_building': {}}})
+        
         
     def test_get_object(self):
         ""
@@ -62,6 +69,19 @@ class Test_EPEpJSONObjectType(unittest.TestCase):
         ot=j.get_object_type('Building')
         self.assertEqual(ot.object_names,
                          ['Simple One Zone (Wireframe DXF)'])
+        
+        
+    def test_remove_object(self):
+        ""
+        epj=EPEpJSON()
+        ot=epj['Building']
+        ot.add_object('my_building')
+        self.assertEqual(epj._dict,
+                         {'Building': {'my_building': {}}})
+    
+        ot.remove_object('my_building')
+        self.assertEqual(epj._dict,
+                         {})
         
         
     def test_name(self):

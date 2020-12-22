@@ -2,6 +2,7 @@
 
 import unittest
 from pprint import pprint
+import jsonschema
 
 from eprun import EPSchema
 
@@ -72,21 +73,6 @@ class Test_EPSchemaProperty(unittest.TestCase):
         #  'unitsBasedOnField': 'ScheduleTypeLimits__lower_limit_value'}
         
         
-    def test_name(self):
-        ""
-        so=s.get_object('Version')
-        p=so.get_property('version_identifier')
-        self.assertEqual(p.name,
-                         'version_identifier')
-        
-        
-    def test_field_name(self):
-        ""
-        so=s.get_object('Version')
-        p=so.get_property('version_identifier')
-        self.assertEqual(p.field_name,
-                         'Version Identifier')
-        
         
     def test_anyOf(self):
         ""
@@ -146,6 +132,14 @@ class Test_EPSchemaProperty(unittest.TestCase):
         p=so.get_property('output_variable_or_output_meter_name')
         self.assertEqual(p.external_list,
                          ['autoRDDvariableMeter'])
+    
+    
+    def test_field_name(self):
+        ""
+        so=s.get_object('Version')
+        p=so.get_property('version_identifier')
+        self.assertEqual(p.field_name,
+                         'Version Identifier')
         
 
     def test_ip_units(self):
@@ -202,6 +196,15 @@ class Test_EPSchemaProperty(unittest.TestCase):
         p=so.get_property('maximum_number_of_hvac_sizing_simulation_passes')
         self.assertEqual(p.minimum,
                          1.0)
+        
+    
+    def test_name(self):
+        ""
+        so=s.get_object('Version')
+        p=so.get_property('version_identifier')
+        self.assertEqual(p.name,
+                         'version_identifier')
+        
         
 
     def test_note(self):
@@ -260,6 +263,15 @@ class Test_EPSchemaProperty(unittest.TestCase):
                          'unit_type')
         
 
+    def test_validate_value(self):
+        ""
+        so=s.get_object('Version')
+        p=so.get_property('version_identifier')
+        p.validate_value('my_string')
+    
+        self.assertRaises(jsonschema.exceptions.ValidationError,
+                          p.validate_value,
+                          2)
     
     
 if __name__=='__main__':

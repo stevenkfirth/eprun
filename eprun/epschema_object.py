@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import jsonschema
+
 from .epschema_name import EPSchemaName
 from .epschema_property import EPSchemaProperty
 
@@ -331,6 +333,32 @@ class EPSchemaObject():
         return result
         
         
+    def validate_property_name(self,property_name):
+        """Validates if a property name is valid for the schema object.
+        
+        :param property_name: The name of the property.
+        :type property_name: str
+        
+        :raises: IndexError - if the property_name does not exist in `self.property_names`
+
+        """
+        if not property_name in self.property_names:
+            raise IndexError('"%s" is not a property of a "%s" schema object' % (property_name,self.name))
     
     
+    def validate_object(self,obj_dict):
+        """Validates a .epJSON object against the schema object.
+        
+        :param obj_dict: the JSON for the .epJSON object.
+        :type obj_dict: dict
+        
+        :raises: jsonschema.exceptions.ValidationError - if the .epJSON object is not valid
+    
+        """
+        try:
+            jsonschema.validate(obj_dict,
+                                self._dict,
+                                jsonschema.Draft4Validator)
+        except jsonschema.exceptions.ValidationError as err:
+            raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0]) 
     

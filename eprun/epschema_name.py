@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import jsonschema
+
 
 class EPSchemaName():
     """A class representing a name object of a EPSchemaObject.
@@ -122,3 +124,19 @@ class EPSchemaName():
         
         """
         return self._dict.get('retaincase',None)
+
+
+    def validate_value(self,value):
+        """Validates a possible value for the name object.
+        
+        :param value: The value to be validated.
+        
+        raises: jsonschema.exceptions.ValidationError - if the value is not valid
+
+        """
+        try:
+            jsonschema.validate(value,
+                                self._dict,
+                                jsonschema.Draft4Validator)
+        except jsonschema.exceptions.ValidationError as err:
+            raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0]) 

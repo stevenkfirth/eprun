@@ -7,7 +7,7 @@ import time
 from .epresult import EPResult
 
         
-def eprun(idf_filepath,
+def eprun(input_filepath,
           epw_filepath,
           sim_dir='.',
           ep_dir='C:\EnergyPlusV9-4-0',
@@ -22,9 +22,10 @@ def eprun(idf_filepath,
           print_call=False):
     """Runs an EnergyPlus simulation and returns the results.
     
-    :param idf_filepath: The filepath of the input .idf file.
+    :param input_filepath: The filepath of the input file.
+        This can be either an .idf file or an .epJSON file.
         This can be relative or absolute.
-    :type idf_filepath: str
+    :type input_filepath: str
     
     :param epw_filepath: The filepath of the climate .epw file.
         This can be relative or absolute.
@@ -120,7 +121,7 @@ def eprun(idf_filepath,
             raise Exception('The sim_dir directory does not exist: %s' % sim_dir)
     
     # get absolute filepaths
-    idf_absolute_filepath=os.path.abspath(idf_filepath)
+    input_absolute_filepath=os.path.abspath(input_filepath)
     epw_absolute_filepath=os.path.abspath(epw_filepath)
     sim_absolute_dir=os.path.abspath(sim_dir)
     
@@ -139,7 +140,7 @@ def eprun(idf_filepath,
                                             output_suffix,
                                             sim_absolute_dir,
                                             epw_absolute_filepath,
-                                            idf_absolute_filepath
+                                            input_absolute_filepath
                                             )
     
     # print_call

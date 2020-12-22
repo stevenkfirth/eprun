@@ -161,6 +161,7 @@ class Test_EPEpJSONObject(unittest.TestCase):
         self.assertRaises(ValueError,
                           o.set_property_value,
                           'terrain',0,schema=s)
+        # ValueError: 0 is not of type 'string' in property 'terrain'
 
         # type validation error - number - passes
         o.set_property_value('north_axis',180,schema=s)

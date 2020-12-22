@@ -9,7 +9,7 @@ class Test_eprun(unittest.TestCase):
     
     def test_eprun(self):
         ""
-        result=eprun.eprun(idf_filepath=r'files\1ZoneUncontrolled.idf',
+        result=eprun.eprun(input_filepath=r'files\1ZoneUncontrolled.idf',
                            epw_filepath=r'files\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
                            sim_dir='sim',
                            print_call=True,

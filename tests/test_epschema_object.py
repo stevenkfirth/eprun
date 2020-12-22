@@ -3,6 +3,7 @@
 import unittest
 from pprint import pprint
 
+import jsonschema
 from eprun import EPSchema
 
 
@@ -160,10 +161,48 @@ class Test_EPSchemaObject(unittest.TestCase):
                          ['version_identifier'])
         
         
+    def test_validate_property_name(self):
+        ""
+        so=s.get_object('Version')
+        so.validate_property_name('version_identifier')
         
+        self.assertRaises(IndexError,
+                          so.validate_property_name,
+                          'my_property')
         
     
+    def test_validate_object(self):
+        ""
+        so=s.get_object('Building')
+        building={
+                    "Simple One Zone (Wireframe DXF)": {
+                        "loads_convergence_tolerance_value": 0.04,
+                        "maximum_number_of_warmup_days": 30,
+                        "minimum_number_of_warmup_days": 6,
+                        "north_axis": 0,
+                        "solar_distribution": "MinimalShadowing",
+                        "temperature_convergence_tolerance_value": 0.004,
+                        "terrain": "Suburbs"
+                    }
+                }
+        so.validate_object(building)
+        
+        building={}
+        self.assertRaises(jsonschema.exceptions.ValidationError,
+                          so.validate_object,
+                          building)
+        # jsonschema.exceptions.ValidationError: {} does not have enough properties
     
+        building='my_building'
+        self.assertRaises(jsonschema.exceptions.ValidationError,
+                          so.validate_object,
+                          building)
+        # jsonschema.exceptions.ValidationError: 'my_building' is not of type 'object'
+        
+        building={'my_building':{}}
+        so.validate_object(building)
+        
+        
 if __name__=='__main__':
     
     s=EPSchema(fp='files/Energy+.schema.epJSON')

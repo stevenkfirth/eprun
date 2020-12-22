@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import jsonschema
 
 from .epschema_object import EPSchemaObject
 
@@ -53,6 +54,26 @@ class EPSchema():
         
         """
         return self.__dict
+    
+    
+    @property
+    def _validator(self):
+        """The jsonschema Draft4Validator object for the schema
+        
+        :rtype: jsonschema.Draft4Validator
+        
+        .. note::
+            
+           The first time this is requested, the schema itself is validated and
+           the Draft4Validator object is placed in a cache.
+        
+        """
+        if hasattr(self,'_validator_cache') and self._validator_cache:
+            return self._validator_cache
+        else:
+            jsonschema.Draft4Validator.check_schema(self._dict)
+            self._validator_cache=jsonschema.Draft4Validator(schema=self._dict)
+            return self._validator_cache
     
     
     @property
@@ -174,6 +195,21 @@ class EPSchema():
         """
         return self._dict['required']
     
+    
+    def validate_epjson(self,epjson_dict):
+        """Validates an .epJSON file against the schema.
+        
+        :param epjson_dict: The JSON dictionary of a .epJSON file.        
+        :type epjson_dict: dict
+        
+        :raises: jsonschema.exceptions.ValidationError - if the .epJSON file is not valid
+        
+        """
+        try:
+            self._validator.validate(epjson_dict)
+        except jsonschema.exceptions.ValidationError as err:
+            raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0])  
+        
     
     @property
     def version(self):
