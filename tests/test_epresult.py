@@ -51,7 +51,7 @@ class Test_EPResult(unittest.TestCase):
     
 if __name__=='__main__':
     
-    epresult=eprun.eprun(idf_filepath=r'files\1ZoneUncontrolled.idf',
+    epresult=eprun.eprun(input_filepath=r'files\1ZoneUncontrolled.idf',
                          epw_filepath=r'files\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
                          sim_dir='sim',
                          readvars=False)
