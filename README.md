@@ -70,7 +70,7 @@ The `plot` method can be used to create a quick time series plot of the hourly d
 Here the hourly values for the 'ZONE ONE - Zone Mean Air Temperature' variable are shown.
 
 ```python
-   >>> epresult.get_eso().get_environment('RUN PERIOD 1').get_interval_variable(75).plot()
+>>> epresult.get_eso().get_environment('RUN PERIOD 1').get_interval_variable(75).plot()
 ```
 
 ![alt text](docs/_static/quick_demo.png)
