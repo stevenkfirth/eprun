@@ -172,51 +172,56 @@
   <div class="section" id="welcome-to-eprun-s-documentation">
 <h1>Welcome to eprun’s documentation!<a class="headerlink" href="#welcome-to-eprun-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p><cite>eprun</cite> is a Python package for running EnergyPlus simulations.</p>
+<div class="section" id="quick-demo">
+<h2>Quick Demo<a class="headerlink" href="#quick-demo" title="Permalink to this headline">¶</a></h2>
+<p><cite>eprun</cite> uses the <a class="reference internal" href="eprun.html#eprun.eprun.eprun" title="eprun.eprun.eprun"><code class="xref py py-meth docutils literal notranslate"><span class="pre">eprun()</span></code></a> function to run an EnergyPlus simulation.
+The code below runs an EnergyPlus simulation on an ‘.idf’ input file and an ‘.epw’ weather file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">eprun</span> <span class="kn">import</span> <span class="n">eprun</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epresult</span><span class="o">=</span><span class="n">eprun</span><span class="p">(</span><span class="n">ep_dir</span><span class="o">=</span><span class="s1">&#39;C:\EnergyPlusV9-4-0&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">input_filepath</span><span class="o">=</span><span class="s1">&#39;1ZoneUncontrolled.idf&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">epw_filepath</span><span class="o">=</span><span class="s1">&#39;USA_CO_Golden-NREL.724666_TMY3.epw&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;my_results&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">epresult</span><span class="p">))</span>
+<span class="go">eprun.epresult.EPResult</span>
+</pre></div>
+</div>
+<p>We can see that the simulation was successful by looking at the single line ‘.end’ file,
+one of the output files produced by the simulation run.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">epresult</span><span class="o">.</span><span class="n">get_end</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+<span class="go">EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.39sec</span>
+</pre></div>
+</div>
+<p>The simulation outputs are located in the ‘.eso’ file, another of the simulation output files.
+We can see a summary of the interval (hourly) results in the ‘RUN PERIOD 1’ section of the ‘.eso’ file by using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_interval_summary()</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">epresult</span><span class="o">.</span><span class="n">get_eso</span><span class="p">()</span><span class="o">.</span><span class="n">get_environment</span><span class="p">(</span><span class="s1">&#39;RUN PERIOD 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_interval_summary</span><span class="p">())</span>
+<span class="go">Starts at 2001-01-01T00:00:00+00:00, 8760 periods @ 60 minute intervals</span>
+<span class="go">7 - Environment - Site Outdoor Air Drybulb Temperature (C)</span>
+<span class="go">47 - ZONE ONE - Zone Total Internal Latent Gain Energy (J)</span>
+<span class="go">74 - ZONE ONE - Zone Mean Radiant Temperature (C)</span>
+<span class="go">75 - ZONE ONE - Zone Mean Air Temperature (C)</span>
+<span class="go">76 - ZONE ONE - Zone Air Heat Balance Surface Convection Rate (W)</span>
+<span class="go">77 - ZONE ONE - Zone Air Heat Balance Air Energy Storage Rate (W)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="EPEsoIntervalVariable.html#eprun.epeso_interval_variable.EPEsoIntervalVariable.plot" title="eprun.epeso_interval_variable.EPEsoIntervalVariable.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> method can be used to create a quick time series plot of the hourly data.
+Here the hourly values for the ‘ZONE ONE - Zone Mean Air Temperature’ variable are shown.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">epresult</span><span class="o">.</span><span class="n">get_eso</span><span class="p">()</span><span class="o">.</span><span class="n">get_environment</span><span class="p">(</span><span class="s1">&#39;RUN PERIOD 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_interval_variable</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/quick_demo.png" src="_images/quick_demo.png" />
+<p>The next section gives more details and examples of how to use the <cite>eprun</cite> methods and classes.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Start here:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Demo - Running an EnergyPlus Simulation.html">Demo - Running an EnergyPlus Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Demo - Results of a Simulation Run.html">Demo - Results of a Simulation Run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Demo - Reading the Output Files.html">Demo - Reading the Output Files</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Reading the eso Output File.html">Reading the eso Output File</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Reference - Simulation Run:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="eprun.html">eprun function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPResult.html">EPResult class</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Reference - Input files:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="EPSchema.html">EPSchema class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEpJSON.html">EPEpJSON class</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Reference - Output files:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="EPEnd.html">EPEnd class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPErr.html">EPErr class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="EPEso.html">EPEso class</a></li>
-</ul>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
 </div>
 
 

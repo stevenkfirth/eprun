@@ -4,7 +4,7 @@ Introduction
 
 `eprun` is a Python wrapper for the `EnergyPlus <https://energyplus.net/>`_ building simulation software.
 
-The functions and classes in the `eprun` package provide:
+The aim of `eprun` is to provide:
 
 - a method to run EnergyPlus simulations from within a Python script.
 - the ability to view and navigate the results of simulation runs using Python.

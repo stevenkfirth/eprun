@@ -205,6 +205,24 @@ class EPEso():
         self._data=data
 
 
+    def get_environment(self,environment_title):
+        """Returns a simulation environment in the .eso file.
+        
+        :param environment_title: The name of the simulation environment.
+        :type environment_title: str
+        
+        :raises: IndexError - if environment_title does not match any of the simulation environments.
+        
+        :rtype: EPEsiSimulationEnvironment
+        
+        """
+        for se in self.get_environments():
+            if environment_title == se.environment_title:
+                return se
+        raise IndexError('Simulation environment "%s" does not exist in the .eso file')
+
+
+
     def get_environments(self):
         """Returns a list of the simulation environments in the .eso file.
         

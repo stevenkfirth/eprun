@@ -15,7 +15,7 @@ Using these four pieces of information, `eprun` can now run an EnergyPlus simula
 
    >>> from eprun import eprun
    >>> result=eprun(ep_dir='C:\EnergyPlusV9-4-0',
-   >>>              idf_filepath='1ZoneUncontrolled.idf',
+   >>>              input_filepath='1ZoneUncontrolled.idf',
    >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
    >>>              sim_dir='my_results')
    >>> print(type(result))

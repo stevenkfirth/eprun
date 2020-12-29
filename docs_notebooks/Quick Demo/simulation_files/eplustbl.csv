@@ -1,8 +1,8 @@
-Program Version:,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.23 07:29
+Program Version:,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.29 04:53
 Tabular Output Report in Format: ,Comma
 
 Building:,Simple One Zone (Wireframe DXF)
-Environment:,RUN PERIOD 1 ** San Francisco Intl Ap CA USA TMY3 WMO#=724940
+Environment:,RUN PERIOD 1 ** Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666
 
 ----------------------------------------------------------------------------------------------------
 REPORT:,Annual Building Utility Performance Summary
@@ -12,10 +12,10 @@ Values gathered over      8760.00 hours
 Site and Source Energy
 
 ,,Total Energy [GJ],Energy Per Total Building Area [MJ/m2],Energy Per Conditioned Building Area [MJ/m2]
-,Total Site Energy,82.43,354.92,
-,Net Site Energy,82.43,354.92,
-,Total Source Energy,261.06,1124.02,
-,Net Source Energy,261.06,1124.02,
+,Total Site Energy,82.42,354.86,
+,Net Site Energy,82.42,354.86,
+,Total Source Energy,261.02,1123.83,
+,Net Source Energy,261.02,1123.83,
 
 
 Site to Source Energy Conversion Factors
@@ -50,7 +50,7 @@ End Uses
 ,Heating,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Cooling,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Lighting,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-,Exterior Lighting,82.43,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Exterior Lighting,82.42,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Equipment,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Exterior Equipment,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Fans,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
@@ -62,7 +62,7 @@ End Uses
 ,Refrigeration,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Generators,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,,,,,,,,,,,,,,
-,Total End Uses,82.43,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Total End Uses,82.42,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 
 
 End Uses By Subcategory
@@ -71,7 +71,7 @@ End Uses By Subcategory
 ,Heating,General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Cooling,General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Lighting,General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-,Exterior Lighting,Grounds Lights,82.43,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Exterior Lighting,Grounds Lights,82.42,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Equipment,General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Exterior Equipment,General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Fans,General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
@@ -97,10 +97,10 @@ Utility Use Per Conditioned Floor Area
 Utility Use Per Total Floor Area
 
 ,,Electricity Intensity [MJ/m2],Natural Gas Intensity [MJ/m2],Gasoline Intensity [MJ/m2],Diesel Intensity [MJ/m2],Coal Intensity [MJ/m2],Fuel Oil No 1 Intensity [MJ/m2],Fuel Oil No 2 Intensity [MJ/m2],Propane Intensity [MJ/m2],Other Fuel 1 Intensity [MJ/m2],Other Fuel 2 Intensity [MJ/m2],District Cooling Intensity [MJ/m2],District Heating Intensity [MJ/m2],Water Intensity [m3/m2]
-,Lighting,354.92,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Lighting,354.86,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,HVAC,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Other,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-,Total,354.92,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Total,354.86,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 
 
 Electric Loads Satisfied
@@ -114,12 +114,12 @@ Electric Loads Satisfied
 ,Net Decrease in On-Site Storage,0.000,0.00
 ,Total On-Site Electric Sources,0.000,0.00
 ,,,
-,Electricity Coming From Utility,82.432,100.00
+,Electricity Coming From Utility,82.418,100.00
 ,Surplus Electricity Going To Utility,0.000,0.00
-,Net Electricity From Utility,82.432,100.00
+,Net Electricity From Utility,82.418,100.00
 ,,,
-,Total On-Site and Utility Electric Sources,82.432,100.00
-,Total Electricity End Uses,82.432,100.00
+,Total On-Site and Utility Electric Sources,82.418,100.00
+,Total Electricity End Uses,82.418,100.00
 
 
 On-Site Thermal Sources
@@ -174,13 +174,13 @@ FOR:,Entire Facility
 General
 
 ,,Value
-,Program Version and Build,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.23 07:29
+,Program Version and Build,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.29 04:53
 ,RunPeriod,RUN PERIOD 1
-,Weather File,San Francisco Intl Ap CA USA TMY3 WMO#=724940
-,Latitude [deg],37.62
-,Longitude [deg],-122.4
-,Elevation [m],2.00
-,Time Zone,-8.0
+,Weather File,Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666
+,Latitude [deg],39.74
+,Longitude [deg],-105.2
+,Elevation [m],1829.00
+,Time Zone,-7.0
 ,North Axis Angle [deg],0.00
 ,Rotation for Appendix G [deg],0.00
 ,Hours Simulated [hrs],8760.00
@@ -281,7 +281,7 @@ Source Energy End Use Components Summary
 ,Heating,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Cooling,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Lighting,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-,Exterior Lighting,261.06,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Exterior Lighting,261.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Equipment,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Exterior Equipment,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Fans,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
@@ -293,7 +293,7 @@ Source Energy End Use Components Summary
 ,Refrigeration,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Generators,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,,,,,,,,,,,,,
-,Total Source Energy End Use Components,261.06,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Total Source Energy End Use Components,261.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 
 
 Normalized Metrics
@@ -324,7 +324,7 @@ Source Energy End Use Components Per Total Floor Area
 ,Heating,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Cooling,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Lighting,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-,Exterior Lighting,1124.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Exterior Lighting,1123.83,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Equipment,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Exterior Equipment,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Fans,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
@@ -336,7 +336,7 @@ Source Energy End Use Components Per Total Floor Area
 ,Refrigeration,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Generators,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,,,,,,,,,,,,,
-,Total Source Energy End Use Components,1124.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Total Source Energy End Use Components,1123.83,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 
 
 ----------------------------------------------------------------------------------------------------
@@ -403,7 +403,7 @@ Site:GroundTemperature:BuildingSurface
 Site:GroundTemperature:FCfactorMethod
 
 ,,Jan{C},Feb{C},Mar{C},Apr{C},May{C},Jun{C},Jul{C},Aug{C},Sep{C},Oct{C},Nov{C},Dec{C}
-,1,10.86,10.57,11.08,11.88,13.97,15.58,16.67,17.00,16.44,15.19,13.51,11.96
+,1,-0.60,1.34,5.12,8.69,15.46,19.02,20.00,18.20,14.02,8.83,3.71,0.32
 
 
 Site:GroundTemperature:Shallow
@@ -451,7 +451,7 @@ Environment:Weather Station
 Site:Location
 
 ,,Location Name,Latitude {N+/S- Deg},Longitude {E+/W- Deg},Time Zone Number {GMT+/-},Elevation {m},Standard Pressure at Elevation {Pa},Standard RhoAir at Elevation
-,1,San Francisco Intl Ap CA USA TMY3 WMO#=724940,37.62,-122.40,-8.00,2.00,101301,1.2040
+,1,Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666,39.74,-105.18,-7.00,1829.00,81198,0.9651
 
 
 Site Water Mains Temperature Information
@@ -656,14 +656,14 @@ Environment:WarmupDays
 ,,NumberofWarmupDays
 ,1,22
 ,2,16
-,3,18
+,3,20
 
 
 Environment:Design Day Data
 
 ,,Max Dry-Bulb Temp {C},Temp Range {dC},Temp Range Ind Type,Hum Ind Type,Hum Ind Value at Max Temp,Hum Ind Units,Pressure {Pa},Wind Direction {deg CW from N},Wind Speed {m/s},Clearness,Rain,Snow
-,1,-15.50,0.00,DefaultMultipliers,Wetbulb,-15.50,{C},101301,340,3.0,0.00,No,No
-,2,32.00,15.20,DefaultMultipliers,Wetbulb,15.50,{C},101301,0,4.9,1.00,No,No
+,1,-15.50,0.00,DefaultMultipliers,Wetbulb,-15.50,{C},81198,340,3.0,0.00,No,No
+,2,32.00,15.20,DefaultMultipliers,Wetbulb,15.50,{C},81198,0,4.9,1.00,No,No
 
 
 Environment:Design Day Misc
@@ -676,9 +676,9 @@ Environment:Design Day Misc
 Warmup Convergence Information
 
 ,,Zone Name,Environment Type/Name,Average Warmup Temperature Difference {deltaC},Std Dev Warmup Temperature Difference {deltaC},Max Temperature Pass/Fail Convergence,Min Temperature Pass/Fail Convergence,Average Warmup Load Difference {W},Std Dev Warmup Load Difference {W},Heating Load Pass/Fail Convergence,Cooling Load Pass/Fail Convergence
-,1,ZONE ONE,SizingPeriod: DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB,1.8461349374E-005,2.0188730673E-006,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
-,2,ZONE ONE,SizingPeriod: DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=>MWB,8.0264166209E-002,3.5356242825E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
-,3,ZONE ONE,RunPeriod: RUN PERIOD 1,8.9403295225E-002,7.4509629018E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
+,1,ZONE ONE,SizingPeriod: DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB,1.7248720387E-005,1.9005108179E-006,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
+,2,ZONE ONE,SizingPeriod: DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=>MWB,8.0903254840E-002,3.6793642234E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
+,3,ZONE ONE,RunPeriod: RUN PERIOD 1,6.0339322260E-002,7.9625727099E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
 
 
 ----------------------------------------------------------------------------------------------------
@@ -687,7 +687,7 @@ FOR:,Entire Facility
 Heat Emission by Components
 
 ,,Envelope Convection,Zone Exfiltration,Zone Exhaust Air,HVAC Relief Air,HVAC Reject Heat,Total
-,Heat Emissions [GJ],877.89,0.00,0.00,0.00,0.00,877.89
+,Heat Emissions [GJ],780.99,0.00,0.00,0.00,0.00,781.00
 
 
 ----------------------------------------------------------------------------------------------------
@@ -784,8 +784,8 @@ Daylighting
 Exterior Lighting
 
 ,,Total Watts,Astronomical Clock/Schedule,Schedule Name,Scheduled Hours/Week [hr],Hours/Week > 1% [hr],Full Load Hours/Week [hr],Consumption [GJ]
-,EXTLIGHTS,5250.00,AstronomicalClock,-,,83.65,83.65,82.43
-,Exterior Lighting Total,5250.00,,,,,,82.43
+,EXTLIGHTS,5250.00,AstronomicalClock,-,,83.63,83.63,82.42
+,Exterior Lighting Total,5250.00,,,,,,82.42
 
 
 ----------------------------------------------------------------------------------------------------
@@ -987,21 +987,21 @@ FOR:,Entire Facility
 Annual and Peak Values - Electricity
 
 ,,Electricity Annual Value [GJ],Electricity Minimum Value [W],Timestamp of Minimum {TIMESTAMP},Electricity Maximum Value [W],Timestamp of Maximum {TIMESTAMP}
-,Electricity:Facility,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,ExteriorLights:Electricity,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,Grounds Lights:ExteriorLights:Electricity,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,ElectricityPurchased:Facility,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,ElectricityPurchased:Plant,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,Cogeneration:ElectricityPurchased,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,General:Cogeneration:ElectricityPurchased,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,Electricity:Facility,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,ExteriorLights:Electricity,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,Grounds Lights:ExteriorLights:Electricity,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,ElectricityPurchased:Facility,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,ElectricityPurchased:Plant,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,Cogeneration:ElectricityPurchased,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,General:Cogeneration:ElectricityPurchased,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
 ,ElectricitySurplusSold:Facility,0.00,0.00,01-JAN-00:15,0.00,01-JAN-00:15
 ,ElectricitySurplusSold:Plant,0.00,0.00,01-JAN-00:15,0.00,01-JAN-00:15
 ,Cogeneration:ElectricitySurplusSold,0.00,0.00,01-JAN-00:15,0.00,01-JAN-00:15
 ,General:Cogeneration:ElectricitySurplusSold,0.00,0.00,01-JAN-00:15,0.00,01-JAN-00:15
-,ElectricityNet:Facility,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,ElectricityNet:Plant,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,Cogeneration:ElectricityNet,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
-,General:Cogeneration:ElectricityNet,82.43,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,ElectricityNet:Facility,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,ElectricityNet:Plant,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,Cogeneration:ElectricityNet,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
+,General:Cogeneration:ElectricityNet,82.42,0.00,01-JAN-07:30,5250.00,01-JAN-00:15
 
 
 Annual and Peak Values - Natural Gas
@@ -1085,7 +1085,7 @@ FOR:,Entire Facility
 Sec1.1A-General Information
 
 ,,Data
-,Weather File,RUN PERIOD 1 ** San Francisco Intl Ap CA USA TMY3 WMO#=724940
+,Weather File,RUN PERIOD 1 ** Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666
 ,Total gross floor area [m2],232.26
 
 
@@ -1116,7 +1116,7 @@ EAp2-4/5. Performance Rating Method Compliance
 ,Heating -- General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Cooling -- General,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Lighting -- Not Subdivided,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-,Exterior Lighting -- Grounds Lights,82.43,5250.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+,Exterior Lighting -- Grounds Lights,82.42,5250.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Interior Equipment -- Not Subdivided,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Exterior Equipment -- Not Subdivided,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
 ,Fans -- Not Subdivided,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
@@ -1132,10 +1132,10 @@ EAp2-4/5. Performance Rating Method Compliance
 EAp2-6. Energy Use Summary
 
 ,,Process Subtotal [GJ],Total Energy Use [GJ]
-,Electricity,0.00,82.43
+,Electricity,0.00,82.42
 ,Natural Gas,0.00,0.00
 ,Additional,0.00,0.00
-,Total,0.00,82.43
+,Total,0.00,82.42
 
 
 EAp2-7. Energy Cost Summary
@@ -1164,8 +1164,8 @@ EAp2-17a. Energy Use Intensity - Electricity
 ,Fans (All),0.00
 ,Service Water Heating,0.00
 ,Receptacle Equipment,0.00
-,Miscellaneous (All),354.92
-,Subtotal,354.92
+,Miscellaneous (All),354.86
+,Subtotal,354.86
 
 
 EAp2-17b. Energy Use Intensity - Natural Gas
@@ -1214,11 +1214,11 @@ FOR:,Entire Facility
 Heat Index Hours
 
 ,,Safe (≤ 26.7°C) [hr],Caution (> 26.7, ≤ 32.2°C) [hr],Extreme Caution (> 32.2, ≤ 39.4°C) [hr],Danger (> 39.4, ≤ 51.7°C) [hr],Extreme Danger (> 51.7°C) [hr]
-,ZONE ONE,8760.00,0.00,0.00,0.00,0.00
-,Min,8760.00,0.00,0.00,0.00,0.00
-,Max,8760.00,0.00,0.00,0.00,0.00
-,Average,8760.00,0.00,0.00,0.00,0.00
-,Sum,8760.00,0.00,0.00,0.00,0.00
+,ZONE ONE,8148.00,612.00,0.00,0.00,0.00
+,Min,8148.00,612.00,0.00,0.00,0.00
+,Max,8148.00,612.00,0.00,0.00,0.00
+,Average,8148.00,612.00,0.00,0.00,0.00
+,Sum,8148.00,612.00,0.00,0.00,0.00
 
 
 Heat Index OccupantHours
@@ -1234,11 +1234,11 @@ Heat Index OccupantHours
 Humidex Hours
 
 ,,Little to no Discomfort (≤ 29) [hr],Some Discomfort (> 29, ≤ 40) [hr],Great Discomfort; Avoid Exertion (> 40, ≤ 45) [hr],Dangerous (> 45, ≤ 50) [hr],Heat Stroke Quite Possible (> 50) [hr]
-,ZONE ONE,8760.00,0.00,0.00,0.00,0.00
-,Min,8760.00,0.00,0.00,0.00,0.00
-,Max,8760.00,0.00,0.00,0.00,0.00
-,Average,8760.00,0.00,0.00,0.00,0.00
-,Sum,8760.00,0.00,0.00,0.00,0.00
+,ZONE ONE,8725.25,34.75,0.00,0.00,0.00
+,Min,8725.25,34.75,0.00,0.00,0.00
+,Max,8725.25,34.75,0.00,0.00,0.00
+,Average,8725.25,34.75,0.00,0.00,0.00
+,Sum,8725.25,34.75,0.00,0.00,0.00
 
 
 Humidex OccupantHours

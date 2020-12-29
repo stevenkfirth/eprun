@@ -2,14 +2,14 @@
 <EnergyPlusTabularReports>
   <BuildingName>Simple One Zone (Wireframe DXF)</BuildingName>
   <EnvironmentName>RUN PERIOD 1</EnvironmentName>
-  <WeatherFileLocationTitle>San Francisco Intl Ap CA USA TMY3 WMO#=724940</WeatherFileLocationTitle>
-  <ProgramVersion>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.23 07:29</ProgramVersion>
+  <WeatherFileLocationTitle>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFileLocationTitle>
+  <ProgramVersion>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.29 04:53</ProgramVersion>
   <SimulationTimestamp>
     <Date>
-      2020-12-23
+      2020-12-29
     </Date>
     <Time>
-      07:29:29
+      04:53:39
     </Time>
   </SimulationTimestamp>
 
@@ -18,23 +18,23 @@
 <note>Values gathered over      8760.00 hours</note>
   <SiteAndSourceEnergy>
     <name>TotalSiteEnergy</name>
-    <TotalEnergy units="GJ">82.43</TotalEnergy>
-    <EnergyPerTotalBuildingArea units="MJ/m2">354.92</EnergyPerTotalBuildingArea>
+    <TotalEnergy units="GJ">82.42</TotalEnergy>
+    <EnergyPerTotalBuildingArea units="MJ/m2">354.86</EnergyPerTotalBuildingArea>
   </SiteAndSourceEnergy>
   <SiteAndSourceEnergy>
     <name>NetSiteEnergy</name>
-    <TotalEnergy units="GJ">82.43</TotalEnergy>
-    <EnergyPerTotalBuildingArea units="MJ/m2">354.92</EnergyPerTotalBuildingArea>
+    <TotalEnergy units="GJ">82.42</TotalEnergy>
+    <EnergyPerTotalBuildingArea units="MJ/m2">354.86</EnergyPerTotalBuildingArea>
   </SiteAndSourceEnergy>
   <SiteAndSourceEnergy>
     <name>TotalSourceEnergy</name>
-    <TotalEnergy units="GJ">261.06</TotalEnergy>
-    <EnergyPerTotalBuildingArea units="MJ/m2">1124.02</EnergyPerTotalBuildingArea>
+    <TotalEnergy units="GJ">261.02</TotalEnergy>
+    <EnergyPerTotalBuildingArea units="MJ/m2">1123.83</EnergyPerTotalBuildingArea>
   </SiteAndSourceEnergy>
   <SiteAndSourceEnergy>
     <name>NetSourceEnergy</name>
-    <TotalEnergy units="GJ">261.06</TotalEnergy>
-    <EnergyPerTotalBuildingArea units="MJ/m2">1124.02</EnergyPerTotalBuildingArea>
+    <TotalEnergy units="GJ">261.02</TotalEnergy>
+    <EnergyPerTotalBuildingArea units="MJ/m2">1123.83</EnergyPerTotalBuildingArea>
   </SiteAndSourceEnergy>
   <SiteToSourceEnergyConversionFactors>
     <name>SiteSourceConversionFactor</name>
@@ -108,7 +108,7 @@
   </EndUses>
   <EndUses>
     <name>ExteriorLighting</name>
-    <Electricity units="GJ">82.43</Electricity>
+    <Electricity units="GJ">82.42</Electricity>
     <NaturalGas units="GJ">0.00</NaturalGas>
     <Gasoline units="GJ">0.00</Gasoline>
     <Diesel units="GJ">0.00</Diesel>
@@ -284,7 +284,7 @@
   </EndUses>
   <EndUses>
     <name>TotalEndUses</name>
-    <Electricity units="GJ">82.43</Electricity>
+    <Electricity units="GJ">82.42</Electricity>
     <NaturalGas units="GJ">0.00</NaturalGas>
     <Gasoline units="GJ">0.00</Gasoline>
     <Diesel units="GJ">0.00</Diesel>
@@ -352,7 +352,7 @@
   <EndUsesBySubcategory>
     <name>ExteriorLighting</name>
     <Subcategory>Grounds Lights</Subcategory>
-    <Electricity units="GJ">82.43</Electricity>
+    <Electricity units="GJ">82.42</Electricity>
     <NaturalGas units="GJ">0.00</NaturalGas>
     <Gasoline units="GJ">0.00</Gasoline>
     <Diesel units="GJ">0.00</Diesel>
@@ -539,7 +539,7 @@
 <note>Normalized Metrics</note>
   <UtilityUsePerTotalFloorArea>
     <name>Lighting</name>
-    <ElectricityIntensity units="MJ/m2">354.92</ElectricityIntensity>
+    <ElectricityIntensity units="MJ/m2">354.86</ElectricityIntensity>
     <NaturalGasIntensity units="MJ/m2">0.00</NaturalGasIntensity>
     <GasolineIntensity units="MJ/m2">0.00</GasolineIntensity>
     <DieselIntensity units="MJ/m2">0.00</DieselIntensity>
@@ -587,7 +587,7 @@
   </UtilityUsePerTotalFloorArea>
   <UtilityUsePerTotalFloorArea>
     <name>Total</name>
-    <ElectricityIntensity units="MJ/m2">354.92</ElectricityIntensity>
+    <ElectricityIntensity units="MJ/m2">354.86</ElectricityIntensity>
     <NaturalGasIntensity units="MJ/m2">0.00</NaturalGasIntensity>
     <GasolineIntensity units="MJ/m2">0.00</GasolineIntensity>
     <DieselIntensity units="MJ/m2">0.00</DieselIntensity>
@@ -638,7 +638,7 @@
   </ElectricLoadsSatisfied>
   <ElectricLoadsSatisfied>
     <name>ElectricityComingFromUtility</name>
-    <Electricity units="GJ">82.432</Electricity>
+    <Electricity units="GJ">82.418</Electricity>
     <PercentElectricity units="%">100.00</PercentElectricity>
   </ElectricLoadsSatisfied>
   <ElectricLoadsSatisfied>
@@ -648,17 +648,17 @@
   </ElectricLoadsSatisfied>
   <ElectricLoadsSatisfied>
     <name>NetElectricityFromUtility</name>
-    <Electricity units="GJ">82.432</Electricity>
+    <Electricity units="GJ">82.418</Electricity>
     <PercentElectricity units="%">100.00</PercentElectricity>
   </ElectricLoadsSatisfied>
   <ElectricLoadsSatisfied>
     <name>TotalOnSiteAndUtilityElectricSources</name>
-    <Electricity units="GJ">82.432</Electricity>
+    <Electricity units="GJ">82.418</Electricity>
     <PercentElectricity units="%">100.00</PercentElectricity>
   </ElectricLoadsSatisfied>
   <ElectricLoadsSatisfied>
     <name>TotalElectricityEndUses</name>
-    <Electricity units="GJ">82.432</Electricity>
+    <Electricity units="GJ">82.418</Electricity>
     <PercentElectricity units="%">100.00</PercentElectricity>
   </ElectricLoadsSatisfied>
   <OnSiteThermalSources>
@@ -771,16 +771,16 @@
   <for>Entire Facility</for>
   <General>
     <name>Value</name>
-    <ProgramVersionAndBuild>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.23 07:29</ProgramVersionAndBuild>
+    <ProgramVersionAndBuild>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.29 04:53</ProgramVersionAndBuild>
     <Runperiod>RUN PERIOD 1</Runperiod>
-    <WeatherFile>San Francisco Intl Ap CA USA TMY3 WMO#=724940</WeatherFile>
+    <WeatherFile>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFile>
     <Latitude units="deg">
-37.62</Latitude>
+39.74</Latitude>
     <Longitude units="deg">
--122.4</Longitude>
+-105.2</Longitude>
     <Elevation units="m">
-2.00</Elevation>
-    <TimeZone>-8.0</TimeZone>
+1829.00</Elevation>
+    <TimeZone>-7.0</TimeZone>
     <NorthAxisAngle units="deg">
 0.00</NorthAxisAngle>
     <RotationForAppendixG units="deg">
@@ -1481,7 +1481,7 @@
   </SourceEnergyEndUseComponentsSummaryRecord>
   <SourceEnergyEndUseComponentsSummaryRecord>
     <name>ExteriorLighting</name>
-    <SourceElectricity units="GJ">261.06</SourceElectricity>
+    <SourceElectricity units="GJ">261.02</SourceElectricity>
     <SourceNaturalGas units="GJ">0.00</SourceNaturalGas>
     <SourceGasoline units="GJ">0.00</SourceGasoline>
     <SourceDiesel units="GJ">0.00</SourceDiesel>
@@ -1646,7 +1646,7 @@
   </SourceEnergyEndUseComponentsSummaryRecord>
   <SourceEnergyEndUseComponentsSummaryRecord>
     <name>TotalSourceEnergyEndUseComponents</name>
-    <SourceElectricity units="GJ">261.06</SourceElectricity>
+    <SourceElectricity units="GJ">261.02</SourceElectricity>
     <SourceNaturalGas units="GJ">0.00</SourceNaturalGas>
     <SourceGasoline units="GJ">0.00</SourceGasoline>
     <SourceDiesel units="GJ">0.00</SourceDiesel>
@@ -1707,7 +1707,7 @@
   </SourceEnergyEndUseComponentsPerTotalFloorArea>
   <SourceEnergyEndUseComponentsPerTotalFloorArea>
     <name>ExteriorLighting</name>
-    <SourceElectricity units="MJ/m2">1124.02</SourceElectricity>
+    <SourceElectricity units="MJ/m2">1123.83</SourceElectricity>
     <SourceNaturalGas units="MJ/m2">0.00</SourceNaturalGas>
     <SourceGasoline units="MJ/m2">0.00</SourceGasoline>
     <SourceDiesel units="MJ/m2">0.00</SourceDiesel>
@@ -1872,7 +1872,7 @@
   </SourceEnergyEndUseComponentsPerTotalFloorArea>
   <SourceEnergyEndUseComponentsPerTotalFloorArea>
     <name>TotalSourceEnergyEndUseComponents</name>
-    <SourceElectricity units="MJ/m2">1124.02</SourceElectricity>
+    <SourceElectricity units="MJ/m2">1123.83</SourceElectricity>
     <SourceNaturalGas units="MJ/m2">0.00</SourceNaturalGas>
     <SourceGasoline units="MJ/m2">0.00</SourceGasoline>
     <SourceDiesel units="MJ/m2">0.00</SourceDiesel>
@@ -1954,18 +1954,18 @@
   </SiteGroundtemperatureBuildingsurface>
   <SiteGroundtemperatureFcfactormethod>
     <name>t1</name>
-    <JanC>10.86</JanC>
-    <FebC>10.57</FebC>
-    <MarC>11.08</MarC>
-    <AprC>11.88</AprC>
-    <MayC>13.97</MayC>
-    <JunC>15.58</JunC>
-    <JulC>16.67</JulC>
-    <AugC>17.00</AugC>
-    <SepC>16.44</SepC>
-    <OctC>15.19</OctC>
-    <NovC>13.51</NovC>
-    <DecC>11.96</DecC>
+    <JanC>-0.60</JanC>
+    <FebC>1.34</FebC>
+    <MarC>5.12</MarC>
+    <AprC>8.69</AprC>
+    <MayC>15.46</MayC>
+    <JunC>19.02</JunC>
+    <JulC>20.00</JulC>
+    <AugC>18.20</AugC>
+    <SepC>14.02</SepC>
+    <OctC>8.83</OctC>
+    <NovC>3.71</NovC>
+    <DecC>0.32</DecC>
   </SiteGroundtemperatureFcfactormethod>
   <SiteGroundtemperatureShallow>
     <name>t1</name>
@@ -2058,13 +2058,13 @@
   </EnvironmentWeatherStation>
   <SiteLocation>
     <name>t1</name>
-    <LocationName>San Francisco Intl Ap CA USA TMY3 WMO#=724940</LocationName>
-    <LatitudeNSDeg>37.62</LatitudeNSDeg>
-    <LongitudeEWDeg>-122.40</LongitudeEWDeg>
-    <TimeZoneNumberGmt>-8.00</TimeZoneNumberGmt>
-    <ElevationM>2.00</ElevationM>
-    <StandardPressureAtElevationPa>101301</StandardPressureAtElevationPa>
-    <StandardRhoairAtElevation>1.2040</StandardRhoairAtElevation>
+    <LocationName>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</LocationName>
+    <LatitudeNSDeg>39.74</LatitudeNSDeg>
+    <LongitudeEWDeg>-105.18</LongitudeEWDeg>
+    <TimeZoneNumberGmt>-7.00</TimeZoneNumberGmt>
+    <ElevationM>1829.00</ElevationM>
+    <StandardPressureAtElevationPa>81198</StandardPressureAtElevationPa>
+    <StandardRhoairAtElevation>0.9651</StandardRhoairAtElevation>
   </SiteLocation>
   <SiteWaterMainsTemperatureInformation>
     <name>t1</name>
@@ -2478,7 +2478,7 @@
     <name>Numberofwarmupdays</name>
     <t1>22</t1>
     <t2>16</t2>
-    <t3>18</t3>
+    <t3>20</t3>
   </EnvironmentWarmupdays>
   <EnvironmentDesignDayData>
     <name>t1</name>
@@ -2488,7 +2488,7 @@
     <HumIndType>Wetbulb</HumIndType>
     <HumIndValueAtMaxTemp>-15.50</HumIndValueAtMaxTemp>
     <HumIndUnits>{C}</HumIndUnits>
-    <PressurePa>101301</PressurePa>
+    <PressurePa>81198</PressurePa>
     <WindDirectionDegCwFromN>340</WindDirectionDegCwFromN>
     <WindSpeedMS>3.0</WindSpeedMS>
     <Clearness>0.00</Clearness>
@@ -2503,7 +2503,7 @@
     <HumIndType>Wetbulb</HumIndType>
     <HumIndValueAtMaxTemp>15.50</HumIndValueAtMaxTemp>
     <HumIndUnits>{C}</HumIndUnits>
-    <PressurePa>101301</PressurePa>
+    <PressurePa>81198</PressurePa>
     <WindDirectionDegCwFromN>0</WindDirectionDegCwFromN>
     <WindSpeedMS>4.9</WindSpeedMS>
     <Clearness>1.00</Clearness>
@@ -2536,8 +2536,8 @@
     <name>t1</name>
     <ZoneName>ZONE ONE</ZoneName>
     <EnvironmentTypeName>SizingPeriod: DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB</EnvironmentTypeName>
-    <AverageWarmupTemperatureDifferenceDeltac>1.8461349374E-005</AverageWarmupTemperatureDifferenceDeltac>
-    <StdDevWarmupTemperatureDifferenceDeltac>2.0188730673E-006</StdDevWarmupTemperatureDifferenceDeltac>
+    <AverageWarmupTemperatureDifferenceDeltac>1.7248720387E-005</AverageWarmupTemperatureDifferenceDeltac>
+    <StdDevWarmupTemperatureDifferenceDeltac>1.9005108179E-006</StdDevWarmupTemperatureDifferenceDeltac>
     <MaxTemperaturePassFailConvergence>Pass</MaxTemperaturePassFailConvergence>
     <MinTemperaturePassFailConvergence>Pass</MinTemperaturePassFailConvergence>
     <AverageWarmupLoadDifferenceW>0.0000000000</AverageWarmupLoadDifferenceW>
@@ -2549,8 +2549,8 @@
     <name>t2</name>
     <ZoneName>ZONE ONE</ZoneName>
     <EnvironmentTypeName>SizingPeriod: DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=&gt;MWB</EnvironmentTypeName>
-    <AverageWarmupTemperatureDifferenceDeltac>8.0264166209E-002</AverageWarmupTemperatureDifferenceDeltac>
-    <StdDevWarmupTemperatureDifferenceDeltac>3.5356242825E-002</StdDevWarmupTemperatureDifferenceDeltac>
+    <AverageWarmupTemperatureDifferenceDeltac>8.0903254840E-002</AverageWarmupTemperatureDifferenceDeltac>
+    <StdDevWarmupTemperatureDifferenceDeltac>3.6793642234E-002</StdDevWarmupTemperatureDifferenceDeltac>
     <MaxTemperaturePassFailConvergence>Pass</MaxTemperaturePassFailConvergence>
     <MinTemperaturePassFailConvergence>Pass</MinTemperaturePassFailConvergence>
     <AverageWarmupLoadDifferenceW>0.0000000000</AverageWarmupLoadDifferenceW>
@@ -2562,8 +2562,8 @@
     <name>t3</name>
     <ZoneName>ZONE ONE</ZoneName>
     <EnvironmentTypeName>RunPeriod: RUN PERIOD 1</EnvironmentTypeName>
-    <AverageWarmupTemperatureDifferenceDeltac>8.9403295225E-002</AverageWarmupTemperatureDifferenceDeltac>
-    <StdDevWarmupTemperatureDifferenceDeltac>7.4509629018E-002</StdDevWarmupTemperatureDifferenceDeltac>
+    <AverageWarmupTemperatureDifferenceDeltac>6.0339322260E-002</AverageWarmupTemperatureDifferenceDeltac>
+    <StdDevWarmupTemperatureDifferenceDeltac>7.9625727099E-002</StdDevWarmupTemperatureDifferenceDeltac>
     <MaxTemperaturePassFailConvergence>Pass</MaxTemperaturePassFailConvergence>
     <MinTemperaturePassFailConvergence>Pass</MinTemperaturePassFailConvergence>
     <AverageWarmupLoadDifferenceW>0.0000000000</AverageWarmupLoadDifferenceW>
@@ -2576,12 +2576,12 @@
   <for>Entire Facility</for>
   <HeatEmissionByComponents>
     <name>HeatEmissions</name>
-    <EnvelopeConvection>877.89</EnvelopeConvection>
+    <EnvelopeConvection>780.99</EnvelopeConvection>
     <ZoneExfiltration>0.00</ZoneExfiltration>
     <ZoneExhaustAir>0.00</ZoneExhaustAir>
     <HvacReliefAir>0.00</HvacReliefAir>
     <HvacRejectHeat>0.00</HvacRejectHeat>
-    <Total>877.89</Total>
+    <Total>781.00</Total>
   </HeatEmissionByComponents>
 </AnnualHeatEmissionsSummary>
 <ClimaticDataSummary>
@@ -2723,14 +2723,14 @@
     <TotalWatts>5250.00</TotalWatts>
     <AstronomicalClockSchedule>AstronomicalClock</AstronomicalClockSchedule>
     <ScheduleName>-</ScheduleName>
-    <HoursWeek1 units="hr">83.65</HoursWeek1>
-    <FullLoadHoursWeek units="hr">83.65</FullLoadHoursWeek>
-    <Consumption units="GJ">82.43</Consumption>
+    <HoursWeek1 units="hr">83.63</HoursWeek1>
+    <FullLoadHoursWeek units="hr">83.63</FullLoadHoursWeek>
+    <Consumption units="GJ">82.42</Consumption>
   </ExteriorLighting>
   <ExteriorLighting>
     <name>ExteriorLightingTotal</name>
     <TotalWatts>5250.00</TotalWatts>
-    <Consumption units="GJ">82.43</Consumption>
+    <Consumption units="GJ">82.42</Consumption>
   </ExteriorLighting>
 </LightingSummary>
 <EquipmentSummary>
@@ -2871,7 +2871,7 @@
   <for>Entire Facility</for>
   <AnnualAndPeakValuesElectricity>
     <name>ElectricityFacility</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2879,7 +2879,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>ExteriorlightsElectricity</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2887,7 +2887,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>GroundsLightsExteriorlightsElectricity</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2895,7 +2895,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>ElectricitypurchasedFacility</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2903,7 +2903,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>ElectricitypurchasedPlant</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2911,7 +2911,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>CogenerationElectricitypurchased</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2919,7 +2919,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>GeneralCogenerationElectricitypurchased</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2959,7 +2959,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>ElectricitynetFacility</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2967,7 +2967,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>ElectricitynetPlant</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2975,7 +2975,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>CogenerationElectricitynet</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -2983,7 +2983,7 @@
   </AnnualAndPeakValuesElectricity>
   <AnnualAndPeakValuesElectricity>
     <name>GeneralCogenerationElectricitynet</name>
-    <ElectricityAnnualValue units="GJ">82.43</ElectricityAnnualValue>
+    <ElectricityAnnualValue units="GJ">82.42</ElectricityAnnualValue>
     <ElectricityMinimumValue units="W">0.00</ElectricityMinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-07:30</TimestampOfMinimumTimestamp>
     <ElectricityMaximumValue units="W">5250.00</ElectricityMaximumValue>
@@ -3215,7 +3215,7 @@
   <for>Entire Facility</for>
   <Sec11aGeneralInformation>
     <name>Data</name>
-    <WeatherFile>RUN PERIOD 1 ** San Francisco Intl Ap CA USA TMY3 WMO#=724940</WeatherFile>
+    <WeatherFile>RUN PERIOD 1 ** Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFile>
     <TotalGrossFloorArea units="m2">
 232.26</TotalGrossFloorArea>
   </Sec11aGeneralInformation>
@@ -3321,7 +3321,7 @@
   </Eap245PerformanceRatingMethodCompliance>
   <Eap245PerformanceRatingMethodCompliance>
     <name>ExteriorLightingGroundsLights</name>
-    <ElectricityEnergyUse units="GJ">82.43</ElectricityEnergyUse>
+    <ElectricityEnergyUse units="GJ">82.42</ElectricityEnergyUse>
     <ElectricityDemand units="W">5250.00</ElectricityDemand>
     <NaturalGasEnergyUse units="GJ">0.00</NaturalGasEnergyUse>
     <NaturalGasDemand units="W">0.00</NaturalGasDemand>
@@ -3619,7 +3619,7 @@
   <Eap26EnergyUseSummary>
     <name>Electricity</name>
     <ProcessSubtotal units="GJ">0.00</ProcessSubtotal>
-    <TotalEnergyUse units="GJ">82.43</TotalEnergyUse>
+    <TotalEnergyUse units="GJ">82.42</TotalEnergyUse>
   </Eap26EnergyUseSummary>
   <Eap26EnergyUseSummary>
     <name>NaturalGas</name>
@@ -3634,7 +3634,7 @@
   <Eap26EnergyUseSummary>
     <name>Total</name>
     <ProcessSubtotal units="GJ">0.00</ProcessSubtotal>
-    <TotalEnergyUse units="GJ">82.43</TotalEnergyUse>
+    <TotalEnergyUse units="GJ">82.42</TotalEnergyUse>
   </Eap26EnergyUseSummary>
   <Eap27EnergyCostSummary>
     <name>Electricity</name>
@@ -3671,8 +3671,8 @@
     <FansAll>0.00</FansAll>
     <ServiceWaterHeating>0.00</ServiceWaterHeating>
     <ReceptacleEquipment>0.00</ReceptacleEquipment>
-    <MiscellaneousAll>354.92</MiscellaneousAll>
-    <Subtotal>354.92</Subtotal>
+    <MiscellaneousAll>354.86</MiscellaneousAll>
+    <Subtotal>354.86</Subtotal>
   </Eap217aEnergyUseIntensityElectricity>
   <Eap217bEnergyUseIntensityNaturalGas>
     <name units="MJ/m2">NaturalGas</name>
@@ -3701,40 +3701,40 @@
   <for>Entire Facility</for>
   <HeatIndexHours>
     <name>ZoneOne</name>
-    <Safe267C units="hr">8760.00</Safe267C>
-    <Caution267322C units="hr">0.00</Caution267322C>
+    <Safe267C units="hr">8148.00</Safe267C>
+    <Caution267322C units="hr">612.00</Caution267322C>
     <ExtremeCaution322394C units="hr">0.00</ExtremeCaution322394C>
     <Danger394517C units="hr">0.00</Danger394517C>
     <ExtremeDanger517C units="hr">0.00</ExtremeDanger517C>
   </HeatIndexHours>
   <HeatIndexHours>
     <name>Min</name>
-    <Safe267C units="hr">8760.00</Safe267C>
-    <Caution267322C units="hr">0.00</Caution267322C>
+    <Safe267C units="hr">8148.00</Safe267C>
+    <Caution267322C units="hr">612.00</Caution267322C>
     <ExtremeCaution322394C units="hr">0.00</ExtremeCaution322394C>
     <Danger394517C units="hr">0.00</Danger394517C>
     <ExtremeDanger517C units="hr">0.00</ExtremeDanger517C>
   </HeatIndexHours>
   <HeatIndexHours>
     <name>Max</name>
-    <Safe267C units="hr">8760.00</Safe267C>
-    <Caution267322C units="hr">0.00</Caution267322C>
+    <Safe267C units="hr">8148.00</Safe267C>
+    <Caution267322C units="hr">612.00</Caution267322C>
     <ExtremeCaution322394C units="hr">0.00</ExtremeCaution322394C>
     <Danger394517C units="hr">0.00</Danger394517C>
     <ExtremeDanger517C units="hr">0.00</ExtremeDanger517C>
   </HeatIndexHours>
   <HeatIndexHours>
     <name>Average</name>
-    <Safe267C units="hr">8760.00</Safe267C>
-    <Caution267322C units="hr">0.00</Caution267322C>
+    <Safe267C units="hr">8148.00</Safe267C>
+    <Caution267322C units="hr">612.00</Caution267322C>
     <ExtremeCaution322394C units="hr">0.00</ExtremeCaution322394C>
     <Danger394517C units="hr">0.00</Danger394517C>
     <ExtremeDanger517C units="hr">0.00</ExtremeDanger517C>
   </HeatIndexHours>
   <HeatIndexHours>
     <name>Sum</name>
-    <Safe267C units="hr">8760.00</Safe267C>
-    <Caution267322C units="hr">0.00</Caution267322C>
+    <Safe267C units="hr">8148.00</Safe267C>
+    <Caution267322C units="hr">612.00</Caution267322C>
     <ExtremeCaution322394C units="hr">0.00</ExtremeCaution322394C>
     <Danger394517C units="hr">0.00</Danger394517C>
     <ExtremeDanger517C units="hr">0.00</ExtremeDanger517C>
@@ -3781,40 +3781,40 @@
   </HeatIndexOccupanthours>
   <HumidexHours>
     <name>ZoneOne</name>
-    <LittleToNoDiscomfort29 units="hr">8760.00</LittleToNoDiscomfort29>
-    <SomeDiscomfort2940 units="hr">0.00</SomeDiscomfort2940>
+    <LittleToNoDiscomfort29 units="hr">8725.25</LittleToNoDiscomfort29>
+    <SomeDiscomfort2940 units="hr">34.75</SomeDiscomfort2940>
     <GreatDiscomfortAvoidExertion4045 units="hr">0.00</GreatDiscomfortAvoidExertion4045>
     <Dangerous4550 units="hr">0.00</Dangerous4550>
     <HeatStrokeQuitePossible50 units="hr">0.00</HeatStrokeQuitePossible50>
   </HumidexHours>
   <HumidexHours>
     <name>Min</name>
-    <LittleToNoDiscomfort29 units="hr">8760.00</LittleToNoDiscomfort29>
-    <SomeDiscomfort2940 units="hr">0.00</SomeDiscomfort2940>
+    <LittleToNoDiscomfort29 units="hr">8725.25</LittleToNoDiscomfort29>
+    <SomeDiscomfort2940 units="hr">34.75</SomeDiscomfort2940>
     <GreatDiscomfortAvoidExertion4045 units="hr">0.00</GreatDiscomfortAvoidExertion4045>
     <Dangerous4550 units="hr">0.00</Dangerous4550>
     <HeatStrokeQuitePossible50 units="hr">0.00</HeatStrokeQuitePossible50>
   </HumidexHours>
   <HumidexHours>
     <name>Max</name>
-    <LittleToNoDiscomfort29 units="hr">8760.00</LittleToNoDiscomfort29>
-    <SomeDiscomfort2940 units="hr">0.00</SomeDiscomfort2940>
+    <LittleToNoDiscomfort29 units="hr">8725.25</LittleToNoDiscomfort29>
+    <SomeDiscomfort2940 units="hr">34.75</SomeDiscomfort2940>
     <GreatDiscomfortAvoidExertion4045 units="hr">0.00</GreatDiscomfortAvoidExertion4045>
     <Dangerous4550 units="hr">0.00</Dangerous4550>
     <HeatStrokeQuitePossible50 units="hr">0.00</HeatStrokeQuitePossible50>
   </HumidexHours>
   <HumidexHours>
     <name>Average</name>
-    <LittleToNoDiscomfort29 units="hr">8760.00</LittleToNoDiscomfort29>
-    <SomeDiscomfort2940 units="hr">0.00</SomeDiscomfort2940>
+    <LittleToNoDiscomfort29 units="hr">8725.25</LittleToNoDiscomfort29>
+    <SomeDiscomfort2940 units="hr">34.75</SomeDiscomfort2940>
     <GreatDiscomfortAvoidExertion4045 units="hr">0.00</GreatDiscomfortAvoidExertion4045>
     <Dangerous4550 units="hr">0.00</Dangerous4550>
     <HeatStrokeQuitePossible50 units="hr">0.00</HeatStrokeQuitePossible50>
   </HumidexHours>
   <HumidexHours>
     <name>Sum</name>
-    <LittleToNoDiscomfort29 units="hr">8760.00</LittleToNoDiscomfort29>
-    <SomeDiscomfort2940 units="hr">0.00</SomeDiscomfort2940>
+    <LittleToNoDiscomfort29 units="hr">8725.25</LittleToNoDiscomfort29>
+    <SomeDiscomfort2940 units="hr">34.75</SomeDiscomfort2940>
     <GreatDiscomfortAvoidExertion4045 units="hr">0.00</GreatDiscomfortAvoidExertion4045>
     <Dangerous4550 units="hr">0.00</Dangerous4550>
     <HeatStrokeQuitePossible50 units="hr">0.00</HeatStrokeQuitePossible50>

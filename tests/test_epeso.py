@@ -15,10 +15,16 @@ class Test_EPEso(unittest.TestCase):
                               EPEso)
         
         
+    def test_get_environment(self):
+        ""
+        se=e.get_environment('RUN PERIOD 1')
+        self.assertEqual(str(se),
+                         'EPEsoSimuationEnvironment(environment_title="RUN PERIOD 1")')
+        
     def test_get_environments(self):
         ""
         envs=e.get_environments()
-        print(str(envs))
+        #print(str(envs))
         self.assertIsInstance(envs,
                               list)
         self.assertEqual(len(envs),
