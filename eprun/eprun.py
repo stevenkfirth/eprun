@@ -88,7 +88,7 @@ def eprun(input_filepath,
         
     :param print_call: If True then the call string is printed.
         Default is False.
-    :param print_call: bool
+    :type print_call: bool
     
     :returns: A EPResult object which contains the returncode, stdout and a 
         dictionary of the results files.
@@ -99,9 +99,9 @@ def eprun(input_filepath,
     .. code-block:: python
            
        >>> from eprun import eprun
-       >>> result=eprun(idf_filepath='1ZoneUncontrolled.idf',
+       >>> result=eprun(input_filepath='1ZoneUncontrolled.idf',
        >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
-       >>>              sim_dir='sim')
+       >>>              sim_dir='simulation_files')
        >>> print(type(result))
        <class 'eprun.eprun.EPResult'>
        >>> print(list(result.files.keys()))

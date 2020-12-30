@@ -220,9 +220,8 @@ Default is ‘L’</p></li>
 call to EnergyPlus.
 This is the argument for ‘Run ReadVarsESO after simulation’.
 Default is False.</p></li>
-<li><p><strong>print_call</strong> – If True then the call string is printed.
+<li><p><strong>print_call</strong> (<em>bool</em>) – If True then the call string is printed.
 Default is False.</p></li>
-<li><p><strong>print_call</strong> – bool</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -236,9 +235,9 @@ dictionary of the results files.</p>
 <dd class="field-even"><p></p></dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">eprun</span> <span class="kn">import</span> <span class="n">eprun</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">=</span><span class="n">eprun</span><span class="p">(</span><span class="n">idf_filepath</span><span class="o">=</span><span class="s1">&#39;1ZoneUncontrolled.idf&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">=</span><span class="n">eprun</span><span class="p">(</span><span class="n">input_filepath</span><span class="o">=</span><span class="s1">&#39;1ZoneUncontrolled.idf&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>             <span class="n">epw_filepath</span><span class="o">=</span><span class="s1">&#39;USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>             <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;sim&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>             <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;simulation_files&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 <span class="go">&lt;class &#39;eprun.eprun.EPResult&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>

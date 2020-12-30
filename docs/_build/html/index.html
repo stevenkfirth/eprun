@@ -180,9 +180,9 @@ The code below runs an EnergyPlus simulation on an ‘.idf’ input file and an 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">epresult</span><span class="o">=</span><span class="n">eprun</span><span class="p">(</span><span class="n">ep_dir</span><span class="o">=</span><span class="s1">&#39;C:\EnergyPlusV9-4-0&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>               <span class="n">input_filepath</span><span class="o">=</span><span class="s1">&#39;1ZoneUncontrolled.idf&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>               <span class="n">epw_filepath</span><span class="o">=</span><span class="s1">&#39;USA_CO_Golden-NREL.724666_TMY3.epw&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>               <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;my_results&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">sim_dir</span><span class="o">=</span><span class="s1">&#39;simulation_files&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">epresult</span><span class="p">))</span>
-<span class="go">eprun.epresult.EPResult</span>
+<span class="go">&lt;class &#39;eprun.epresult.EPResult&#39;&gt;</span>
 </pre></div>
 </div>
 <p>We can see that the simulation was successful by looking at the single line ‘.end’ file,
@@ -192,7 +192,7 @@ one of the output files produced by the simulation run.</p>
 </pre></div>
 </div>
 <p>The simulation outputs are located in the ‘.eso’ file, another of the simulation output files.
-We can see a summary of the interval (hourly) results in the ‘RUN PERIOD 1’ section of the ‘.eso’ file by using the
+We can see a summary of the interval (hourly) results in the ‘RUN PERIOD 1’ simulation environment section of the ‘.eso’ file by using the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_interval_summary()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">epresult</span><span class="o">.</span><span class="n">get_eso</span><span class="p">()</span><span class="o">.</span><span class="n">get_environment</span><span class="p">(</span><span class="s1">&#39;RUN PERIOD 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_interval_summary</span><span class="p">())</span>
 <span class="go">Starts at 2001-01-01T00:00:00+00:00, 8760 periods @ 60 minute intervals</span>
@@ -210,7 +210,7 @@ Here the hourly values for the ‘ZONE ONE - Zone Mean Air Temperature’ variab
 </pre></div>
 </div>
 <img alt="_images/quick_demo.png" src="_images/quick_demo.png" />
-<p>The next section gives more details and examples of how to use the <cite>eprun</cite> methods and classes.</p>
+<p>The next section introduces the <cite>eprun</cite> package and gives more details and examples of how to use the <cite>eprun</cite> methods and classes.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">

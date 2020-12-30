@@ -16,10 +16,10 @@ Using these four pieces of information, `eprun` can now run an EnergyPlus simula
    >>> from eprun import eprun
    >>> result=eprun(ep_dir='C:\EnergyPlusV9-4-0',
    >>>              input_filepath='1ZoneUncontrolled.idf',
-   >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
-   >>>              sim_dir='my_results')
+   >>>              epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
+   >>>              sim_dir='simulation_results')
    >>> print(type(result))
-   eprun.epresult.EPResult
+   <class 'eprun.epresult.EPResult'>
    
 The :py:meth:`~eprun.eprun.eprun` function calls the energyplus.exe application in the EnergyPlus install directory using 
 the python `subprocess.run <https://docs.python.org/3/library/subprocess.html#using-the-subprocess-module>`_ method.
@@ -34,3 +34,6 @@ Further resources
 - The documentation for the :py:meth:`~eprun.eprun.eprun` function.
 - `This Jupyter Notebook <https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/tutorials/Running%20an%20EnergyPlus%20simulation%20with%20eprun.ipynb>`_ shows the `eprun` function in action.
 - A video tutorial of the `eprun` function is available `here`.
+- The EnergyPlus QuickStart guide: https://energyplus.net/quickstart
+- The 'Running EnergyPlus: Command Line' section in the `EnergyPlus Essentials <https://energyplus.net/sites/all/modules/custom/nrel_custom/pdfs/pdfs_v9.4.0/EnergyPlusEssentials.pdf>`_ documentation.
+
