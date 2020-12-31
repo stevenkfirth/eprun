@@ -211,7 +211,7 @@ class EPEpJSONObject():
         
            When setting a property value, the name and value can be validated against a JSON schema.
            Schema validation occurs in two cases:
-           1. A EPSchema instance is supplied to this method using the `schema` argument;
+           1. A EPSchema instance is supplied to this method using the ``schema`` argument;
            2. The parent :py:class:`~eprun.epepjson.EPEpJSON` object was initiated with an EPSchema instance.
         
         """

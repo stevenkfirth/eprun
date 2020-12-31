@@ -1,20 +1,16 @@
-.. eprun documentation master file, created by
-   sphinx-quickstart on Thu Nov 12 05:35:52 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to eprun's documentation!
 =================================
 
-`eprun` is a Python package for running EnergyPlus simulations.
+*eprun* is a Python package for running EnergyPlus simulations.
 
 Quick Demo
 ----------
 
-`eprun` uses the :py:meth:`~eprun.eprun.eprun` function to run an EnergyPlus simulation. 
-The code below runs an EnergyPlus simulation on an '.idf' input file and an '.epw' weather file.
+*eprun* uses the `eprun` function to run an EnergyPlus simulation. 
+The code below runs an EnergyPlus simulation on an EnergyPlus input file (.idf) and an EnergyPlus weather file (.epw).
 
 .. code-block:: python
+   :lineno-start: 1
 
    >>> from eprun import eprun
    >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-4-0',
@@ -28,15 +24,17 @@ We can see that the simulation was successful by looking at the single line '.en
 one of the output files produced by the simulation run.
 
 .. code-block:: python
+   :lineno-start: 8
 
    >>> print(epresult.get_end().line)
    EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.39sec
 
 The simulation outputs are located in the '.eso' file, another of the simulation output files. 
-We can see a summary of the interval (hourly) results in the 'RUN PERIOD 1' simulation environment section of the '.eso' file by using the
-:py:meth:`~eprun.epeso_simulation_environment.EPEsoSimulationEnvironment.get_interval_summary` method:
+We can see a summary of the interval (hourly) results in the 'RUN PERIOD 1' simulation environment section 
+of the *eso* file by using the `EPEsoSimulationEnvironment.get_interval_summary` method:
 
 .. code-block:: python
+   :lineno-start: 10
 
    >>> print(epresult.get_eso().get_environment('RUN PERIOD 1').get_interval_summary())
    Starts at 2001-01-01T00:00:00+00:00, 8760 periods @ 60 minute intervals
@@ -47,17 +45,21 @@ We can see a summary of the interval (hourly) results in the 'RUN PERIOD 1' simu
    76 - ZONE ONE - Zone Air Heat Balance Surface Convection Rate (W)
    77 - ZONE ONE - Zone Air Heat Balance Air Energy Storage Rate (W)
 
-The :py:meth:`~eprun.epeso_interval_variable.EPEsoIntervalVariable.plot` method can be used to create a quick time series plot of the hourly data.
+The `EPEsoIntervalVariable.plot` method can be used to create a quick time series plot of the hourly data.
 Here the hourly values for the 'ZONE ONE - Zone Mean Air Temperature' variable are shown.
 
 .. code-block:: python
+   :lineno-start: 18
 
    >>> epresult.get_eso().get_environment('RUN PERIOD 1').get_interval_variable(75).plot()
 
 .. image:: _static/quick_demo.png
+   :alt: Plot of hourly intervals vs. zone mean air temperature for ZONE ONE.
 
-The next section introduces the `eprun` package and gives more details and examples of how to use the `eprun` methods and classes.
+The next section introduces the *eprun* package and gives more details and examples of how to use the *eprun* methods and classes.
 
+
+.. :py:meth:`~eprun.epeso_interval_variable.EPEsoIntervalVariable.plot`
 
 .. toctree::
    :maxdepth: 1
@@ -82,8 +84,8 @@ The next section introduces the `eprun` package and gives more details and examp
    :caption: Reference - Simulation Run:
    :hidden:
    
-   eprun
-   EPResult
+   eprun_function
+   EPResult_class
 
    
 .. toctree::
@@ -91,8 +93,8 @@ The next section introduces the `eprun` package and gives more details and examp
    :caption: Reference - Input files:
    :hidden:
    
-   EPSchema   
-   EPEpJSON
+   EPSchema_class   
+   EPEpJSON_class
 
    
 .. toctree::
@@ -100,10 +102,9 @@ The next section introduces the `eprun` package and gives more details and examp
    :caption: Reference - Output files:
    :hidden:
    
-   EPEnd
-   EPErr
-   EPEso
-   
+   EPEnd_class
+   EPErr_class
+   EPEso_class
    
    
 ..

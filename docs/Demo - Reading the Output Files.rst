@@ -1,4 +1,3 @@
-
 Demo - Reading the Output Files
 ===============================
 
@@ -17,11 +16,11 @@ A successful EnergyPlus simulation run will generate a series of EnergyPlus outp
    ['audit', 'bnd', 'dxf', 'eio', 'end', 'err', 'eso', 'mdd', 'mtd', 'mtr', 
     'rdd', 'shd', 'csv', 'htm', 'tab', 'txt', 'xml']
    
-The EnergyPlus output files are text files and can be read with the Python built-in `open` method.
+The EnergyPlus output files are text files and can be read with the Python built-in *open* method.
 However the format of the text files is non-standard so additional processing is almost always required.
 
 `eprun` provides a series of classes for viewing the contents of the EnergyPlus output files.
-These classes are accessed using the `get_` methods of the :py:class:`~eprun.epresult.EPResult` object.
+These classes are accessed using the ``get_`` methods of the :py:class:`~eprun.epresult.EPResult` object.
 
 The simplest output file is the '.end' file which contains a single line of information. 
 This is accessed using the :py:meth:`~eprun.epresult.EPResult.get_end` method which
@@ -68,5 +67,5 @@ Further resources
 
 - The documentation for the :py:class:`~eprun.epresult.EPResult` class.
 - This Jupyter Notebook shows the `EPResult` class in action.
-- A video tutorial of the `EPResult` class is available `here`.
+- A video tutorial of the `EPResult` class: #### TO DO ###
 

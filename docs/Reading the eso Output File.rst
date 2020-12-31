@@ -1,4 +1,3 @@
-
 Reading the eso Output File
 ===========================
 
@@ -8,10 +7,10 @@ Reading the eso Output File
 The .eso output file of an EnergyPlus simulation contains the main results of the simulation such as the hourly air temperatures or monthly energy consumption. 
 The .eso file is a text file in a non-standard format.
 
-Some, but not all, of the contents of a .eso file can be viewed as a .csv file by including the `--readvars` argument when running an EnergyPlus simulation.
+Some, but not all, of the contents of a .eso file can be viewed as a .csv file by including the ``--readvars`` argument when running an EnergyPlus simulation.
 This runs an additional programme after the main simulation which converts some contents in the .eso file to a .csv file. 
 
-`eprun` provides the :py:class:`~eprun.epeso.EPEso` class to directly read the .eso file and avoid the need for the `--readvars` step.
+`eprun` provides the :py:class:`~eprun.epeso.EPEso` class to directly read the .eso file and avoid the need for the ``--readvars`` step.
 
 2. Accessing an EPEso object instance
 ------------------------------------- 

@@ -30,7 +30,7 @@ class Test_EPEso(unittest.TestCase):
         self.assertEqual(len(envs),
                          3)
         self.assertIsInstance(envs[0],
-                              eprun.epeso_simulation_environment.EPEsoSimulationEnviroment)
+                              eprun.epeso_simulation_environment.EPEsoSimulationEnvironment)
         
         
     def test_programme_version_statement(self):

@@ -1,10 +1,9 @@
-
 Introduction
 ============
 
-`eprun` is a Python wrapper for the `EnergyPlus <https://energyplus.net/>`_ building simulation software.
+*eprun* is a Python wrapper for the `EnergyPlus <https://energyplus.net/>`_ building simulation software.
 
-The aim of `eprun` is to provide:
+The aim of *eprun* is to provide:
 
 - a method to run EnergyPlus simulations from within a Python script.
 - the ability to view, plot and export the results of simulation runs using Python.
@@ -14,14 +13,14 @@ The aim of `eprun` is to provide:
 Installation
 ------------
 
-`eprun` is available on PyPi here:
+*eprun* is available on PyPi here: ### TO DO ###
 
 It can be installed using :code:`pip install eprun`
 
 GitHub
 ------
 
-`eprun` is available on GitHub here: https://github.com/stevenkfirth/eprun
+*eprun* is available on GitHub here: https://github.com/stevenkfirth/eprun
 
 
 Comments and Questions?

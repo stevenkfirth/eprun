@@ -15,7 +15,7 @@ import datetime
 import pandas as pd
 
 
-class EPEsoSimulationEnviroment():
+class EPEsoSimulationEnvironment():
     """A class representing the results from a simulation environment section of an EnergyPlus .eso file.
     
     
@@ -91,7 +91,8 @@ class EPEsoSimulationEnviroment():
         :rtype: str
         
         """
-        return '--- TO DO ---'
+        return ''
+        #return '--- TO DO ---'
     
 
     def get_annual_variables(self):
@@ -440,7 +441,8 @@ class EPEsoSimulationEnviroment():
         """
         
         """
-        return '--- TO DO ---'
+        return ''
+        #return '--- TO DO ---'
     
     
     def get_run_period_variables(self):

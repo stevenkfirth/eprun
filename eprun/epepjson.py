@@ -190,7 +190,7 @@ class EPEpJSON():
         .. note::
         
            Schema validation occurs in two cases:
-           1. A EPSchema instance is supplied to this method using the `schema` argument;
+           1. A EPSchema instance is supplied to this method using the ``schema`` argument;
            2. The :py:class:`~eprun.epepjson.EPEpJSON` object was initiated with an EPSchema instance.
         
         

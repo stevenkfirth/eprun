@@ -339,7 +339,7 @@ class EPSchemaObject():
         :param property_name: The name of the property.
         :type property_name: str
         
-        :raises: IndexError - if the property_name does not exist in `self.property_names`
+        :raises: IndexError - if the property_name does not exist in *self.property_names*
 
         """
         if not property_name in self.property_names:

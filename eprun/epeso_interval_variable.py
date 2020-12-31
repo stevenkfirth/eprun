@@ -103,6 +103,7 @@ class EPEsoIntervalVariable():
         
         ax.plot(self.values)
         ax.set_title('%s' % (self.summary()))
+        ax.set_xlabel('Period number')
         ax.set_ylabel('%s' % (self.unit))
         
         return ax

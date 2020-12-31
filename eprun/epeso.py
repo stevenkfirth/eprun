@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .epeso_simulation_environment import EPEsoSimulationEnviroment
+from .epeso_simulation_environment import EPEsoSimulationEnvironment
 
 
 class EPEso():
@@ -232,7 +232,7 @@ class EPEso():
         """
         result=[]
         for i in range(len(self._data)):
-            epesose=EPEsoSimulationEnviroment()
+            epesose=EPEsoSimulationEnvironment()
             epesose._epeso=self
             epesose._index=i
             result.append(epesose) 
