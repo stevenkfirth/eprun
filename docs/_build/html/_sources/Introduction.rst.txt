@@ -5,10 +5,10 @@ Introduction
 
 The aim of *eprun* is to provide:
 
-- a method to run EnergyPlus simulations from within a Python script.
-- the ability to view, plot and export the results of simulation runs using Python.
-- the means to modify the simulation input files using Python. 
-- the means to modify the EnergyPlus weather files using Python.
+* a method to run EnergyPlus simulations from within a Python script.
+* the ability to view, plot and export the results of simulation runs using Python.
+* the means to modify the simulation input files using Python. 
+* the means to modify the EnergyPlus weather files using Python.
 
 Installation
 ------------

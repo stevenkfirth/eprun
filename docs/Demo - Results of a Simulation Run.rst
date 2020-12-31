@@ -10,7 +10,7 @@ In the previous section we ran an EnergyPlus simulation using the `eprun` functi
    >>> result=eprun(ep_dir='C:\EnergyPlusV9-4-0',
    >>>              input_filepath='1ZoneUncontrolled.idf',
    >>>              epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
-   >>>              sim_dir='my_results')
+   >>>              sim_dir='simulation_results')
    >>> print(type(result))
    <class 'eprun.epresult.EPResult'>
    
@@ -178,9 +178,10 @@ These files contain the results of the EnergyPlus simulation. How to view the co
 Further resources
 -----------------
 
-- `The documentation for the eprun function <EPResult_class>`
-- `This Jupyter Notebook`_ shows the eprun function in action.
-- The EnergyPlus QuickStart guide: https://energyplus.net/quickstart
+* The documentation for the `EPResult class <EPResult_class>`
+* The '`Running an EnergyPlus simulation on the 1ZoneUncontrolled file`_' Jupyter Notebook shows the eprun function in action.
+* The EnergyPlus QuickStart guide: https://energyplus.net/quickstart
+* The 'Running EnergyPlus: Command Line' section on p15 in the `EnergyPlus Essentials`_ documentation.
 
-.. _This Jupyter Notebook:
-
+.. _Running an EnergyPlus simulation on the 1ZoneUncontrolled file: https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/examples/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file.ipynb
+.. _EnergyPlus Essentials: https://energyplus.net/quickstart#reading

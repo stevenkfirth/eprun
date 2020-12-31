@@ -3,10 +3,10 @@ Demo - Running an EnergyPlus Simulation
 
 To run an EnergyPlus simulation we need:
 
-- the directory on the local machine where EnergyPlus is installed.
-- the filepath of an EnergyPlus input file (either an .idf or an .epJSON file).
-- the filepath of an EnergyPlus weather file (an .epw file).
-- the directory on the local machine where the simulation results will be stored.
+* the directory on the local machine where EnergyPlus is installed.
+* the filepath of an EnergyPlus input file (either an .idf or an .epJSON file).
+* the filepath of an EnergyPlus weather file (an .epw file).
+* the directory on the local machine where the simulation results will be stored.
 
 Using these four pieces of information, the `eprun` function can now run an EnergyPlus simulation. 
 
@@ -33,10 +33,10 @@ The next section describes the `EPResult` object in more detail.
 Further resources
 -----------------
 
-- `The documentation for the eprun function <eprun_function>`
-- `This Jupyter Notebook`_ shows the eprun function in action.
-- The EnergyPlus QuickStart guide: https://energyplus.net/quickstart
-- The 'Running EnergyPlus: Command Line' section in the `EnergyPlus Essentials`_ documentation.
+* The documentation for the `eprun function <eprun_function>`
+* The '`Running an EnergyPlus simulation on the 1ZoneUncontrolled file`_' Jupyter Notebook shows the eprun function in action.
+* The EnergyPlus QuickStart guide: https://energyplus.net/quickstart
+* The 'Running EnergyPlus: Command Line' section on p15 in the `EnergyPlus Essentials`_ documentation.
 
-.. _This Jupyter Notebook: https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/examples/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file.ipynb
+.. _Running an EnergyPlus simulation on the 1ZoneUncontrolled file: https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/examples/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file.ipynb
 .. _EnergyPlus Essentials: https://energyplus.net/quickstart#reading
