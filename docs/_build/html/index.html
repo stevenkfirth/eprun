@@ -172,7 +172,29 @@
             
   <div class="section" id="welcome-to-eprun-s-documentation">
 <h1>Welcome to eprun’s documentation!<a class="headerlink" href="#welcome-to-eprun-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p><em>eprun</em> is a Python package for running EnergyPlus simulations.</p>
+<p><em>eprun</em> is a Python package for running <a class="reference external" href="https://energyplus.net/">EnergyPlus</a> simulations.</p>
+<div class="section" id="what-is-eprun">
+<h2>What is <em>eprun</em>?<a class="headerlink" href="#what-is-eprun" title="Permalink to this headline">¶</a></h2>
+<p><em>eprun</em> is a Python package which can be used to run EnergyPlus simulations for modelling the energy and environmental performance of buildings.</p>
+<p><em>eprun</em> contains Python functions and classes which can:</p>
+<ul class="simple">
+<li><p>run an EnergyPlus simulation within the Python environment</p></li>
+<li><p>view the data in EnergyPlus output files (such as .end, .err and .eso files)</p></li>
+<li><p>create and/or modify EnergyPlus input files (such as .idf, .epJSON and .epw files)</p></li>
+</ul>
+</div>
+<div class="section" id="why-use-eprun">
+<h2>Why use <em>eprun</em>?<a class="headerlink" href="#why-use-eprun" title="Permalink to this headline">¶</a></h2>
+<p><em>eprun</em> enables EnergyPlus to be used entirely within a Python environment. This can be useful for:</p>
+<ul class="simple">
+<li><p>Using Python statements (such as <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#for" title="(in Python v3.9)"><code class="xref any docutils literal notranslate"><span class="pre">for</span></code></a> loops) to run multiple simulations for batch processing or parametric analysis</p></li>
+<li><p>Analysing the simulation results using Python data analysis tools such as <a class="reference external" href="https://pandas.pydata.org/">pandas</a> and <a class="reference external" href="https://matplotlib.org/3.3.3/index.html">matplotlib</a></p></li>
+<li><p>Creating simulation input files from scratch using Python statements</p></li>
+<li><p>Modifying simulation input files and weather files directly for setting up multiple simulation runs</p></li>
+<li><p>Collaborating on and version controlling EnergyPlus workflows (for example using <a class="reference external" href="https://github.com/">GitHub</a>)</p></li>
+<li><p>Publishing academic papers and reports based on EnergyPlus simulations, with the option to publish the Python code which created the results as part of an Open Science workflow</p></li>
+</ul>
+</div>
 <div class="section" id="quick-demo">
 <h2>Quick Demo<a class="headerlink" href="#quick-demo" title="Permalink to this headline">¶</a></h2>
 <p><em>eprun</em> uses the <a class="reference internal" href="eprun_function.html#eprun.eprun.eprun" title="eprun.eprun.eprun"><code class="xref any py py-func docutils literal notranslate"><span class="pre">eprun</span></code></a> function to run an EnergyPlus simulation.

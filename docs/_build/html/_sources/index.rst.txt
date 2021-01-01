@@ -1,7 +1,30 @@
 Welcome to eprun's documentation!
 =================================
 
-*eprun* is a Python package for running EnergyPlus simulations.
+*eprun* is a Python package for running `EnergyPlus <https://energyplus.net/>`_ simulations.
+
+What is *eprun*?
+----------------
+
+*eprun* is a Python package which can be used to run EnergyPlus simulations for modelling the energy and environmental performance of buildings. 
+
+*eprun* contains Python functions and classes which can:
+
+* run an EnergyPlus simulation within the Python environment
+* view the data in EnergyPlus output files (such as .end, .err and .eso files)
+* create and/or modify EnergyPlus input files (such as .idf, .epJSON and .epw files)
+
+Why use *eprun*?
+----------------
+
+*eprun* enables EnergyPlus to be used entirely within a Python environment. This can be useful for:
+
+* Using Python statements (such as `for <for>` loops) to run multiple simulations for batch processing or parametric analysis
+* Analysing the simulation results using Python data analysis tools such as `pandas <https://pandas.pydata.org/>`_ and `matplotlib <https://matplotlib.org/3.3.3/index.html>`_
+* Creating simulation input files from scratch using Python statements
+* Modifying simulation input files and weather files directly for setting up multiple simulation runs 
+* Collaborating on and version controlling EnergyPlus workflows (for example using `GitHub <https://github.com/>`_)
+* Publishing academic papers and reports based on EnergyPlus simulations, with the option to publish the Python code which created the results as part of an Open Science workflow
 
 Quick Demo
 ----------
