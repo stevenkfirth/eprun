@@ -1,4 +1,4 @@
-Program Version:,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.30 06:40
+Program Version:,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54
 Tabular Output Report in Format: ,Comma
 
 Building:,Simple One Zone (Wireframe DXF)
@@ -174,7 +174,7 @@ FOR:,Entire Facility
 General
 
 ,,Value
-,Program Version and Build,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.30 06:40
+,Program Version and Build,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54
 ,RunPeriod,RUN PERIOD 1
 ,Weather File,Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666
 ,Latitude [deg],39.74

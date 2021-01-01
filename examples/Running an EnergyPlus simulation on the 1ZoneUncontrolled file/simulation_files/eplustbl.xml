@@ -3,13 +3,13 @@
   <BuildingName>Simple One Zone (Wireframe DXF)</BuildingName>
   <EnvironmentName>RUN PERIOD 1</EnvironmentName>
   <WeatherFileLocationTitle>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFileLocationTitle>
-  <ProgramVersion>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.30 06:40</ProgramVersion>
+  <ProgramVersion>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54</ProgramVersion>
   <SimulationTimestamp>
     <Date>
-      2020-12-30
+      2021-01-01
     </Date>
     <Time>
-      06:40:27
+      04:54:24
     </Time>
   </SimulationTimestamp>
 
@@ -771,7 +771,7 @@
   <for>Entire Facility</for>
   <General>
     <name>Value</name>
-    <ProgramVersionAndBuild>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.30 06:40</ProgramVersionAndBuild>
+    <ProgramVersionAndBuild>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54</ProgramVersionAndBuild>
     <Runperiod>RUN PERIOD 1</Runperiod>
     <WeatherFile>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFile>
     <Latitude units="deg">

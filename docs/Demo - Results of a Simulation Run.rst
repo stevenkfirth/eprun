@@ -155,23 +155,23 @@ These files are stored in the designated simulation directory and are accessed u
    :lineno-start: 124
 
    >>> print(epresult.files)
-   {'audit': 'C:\\my_results\\eplusout.audit', 
-    'bnd': 'C:\\my_results\\eplusout.bnd', 
-    'dxf': 'C:\\my_results\\eplusout.dxf', 
-    'eio': 'C:\\my_results\\eplusout.eio', 
-    'end': 'C:\\my_results\\eplusout.end', 
-    'err': 'C:\\my_results\\eplusout.err', 
-    'eso': 'C:\\my_results\\eplusout.eso', 
-    'mdd': 'C:\\my_results\\eplusout.mdd', 
-    'mtd': 'C:\\my_results\\eplusout.mtd', 
-    'mtr': 'C:\\my_results\\eplusout.mtr', 
-    'rdd': 'C:\\my_results\\eplusout.rdd', 
-    'shd': 'C:\\my_results\\eplusout.shd', 
-    'csv': 'C:\\my_results\\eplustbl.csv', 
-    'htm': 'C:\\my_results\\eplustbl.htm', 
-    'tab': 'C:\\my_results\\eplustbl.tab', 
-    'txt': 'C:\\my_results\\eplustbl.txt', 
-    'xml': 'C:\\my_results\\eplustbl.xml'}
+   {'audit': 'C:\\simulation_results\\eplusout.audit', 
+    'bnd': 'C:\\simulation_results\\eplusout.bnd', 
+    'dxf': 'C:\\simulation_results\\eplusout.dxf', 
+    'eio': 'C:\\simulation_results\\eplusout.eio', 
+    'end': 'C:\\simulation_results\\eplusout.end', 
+    'err': 'C:\\simulation_results\\eplusout.err', 
+    'eso': 'C:\\simulation_results\\eplusout.eso', 
+    'mdd': 'C:\\simulation_results\\eplusout.mdd', 
+    'mtd': 'C:\\simulation_results\\eplusout.mtd', 
+    'mtr': 'C:\\simulation_results\\eplusout.mtr', 
+    'rdd': 'C:\\simulation_results\\eplusout.rdd', 
+    'shd': 'C:\\simulation_results\\eplusout.shd', 
+    'csv': 'C:\\simulation_results\\eplustbl.csv', 
+    'htm': 'C:\\simulation_results\\eplustbl.htm', 
+    'tab': 'C:\\simulation_results\\eplustbl.tab', 
+    'txt': 'C:\\simulation_results\\eplustbl.txt', 
+    'xml': 'C:\\simulation_results\\eplustbl.xml'}
 
 These files contain the results of the EnergyPlus simulation. How to view the contents of these files is described in the next section.
 
