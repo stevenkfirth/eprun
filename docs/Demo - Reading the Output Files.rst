@@ -7,7 +7,7 @@ A successful EnergyPlus simulation run will generate a series of EnergyPlus outp
    :lineno-start: 1
 
    >>> from eprun import eprun
-   >>> result=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+   >>> result=eprun(ep_dir=r'C:\EnergyPlusV9-4-0',
    >>>              input_filepath='1ZoneUncontrolled.idf',
    >>>              epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
    >>>              sim_dir='simulation_results')
