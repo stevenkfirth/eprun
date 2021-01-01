@@ -9,7 +9,7 @@ class EPEso():
     :param fp: The filepath for the .eso file.
     :type fp: str
     
-    :Example:
+    .. rubric:: Code Example
         
     .. code-block:: python
            

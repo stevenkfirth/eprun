@@ -24,7 +24,7 @@ The simulation is run using the 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw' E
 .. code-block:: python
 
    >>> from eprun import eprun
-   >>> result=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+   >>> result=eprun(ep_dir=r'C:\EnergyPlusV9-4-0',
    >>>              input_filepath='1ZoneUncontrolled.idf',
    >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
    >>>              sim_dir='my_results')

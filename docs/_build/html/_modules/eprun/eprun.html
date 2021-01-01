@@ -87,6 +87,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Working with Errors.html">Working with Errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reading the eso Output File.html">Reading the eso Output File</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference - Simulation Run:</span></p>
@@ -94,16 +95,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../eprun_function.html">eprun function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../EPResult_class.html">EPResult class</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference - Input files:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../EPSchema_class.html">EPSchema class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../EPEpJSON_class.html">EPEpJSON class</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Reference - Output files:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../EPEnd_class.html">EPEnd class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../EPErr_class.html">EPErr class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../EPEso_class.html">EPEso class</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference - Input files:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../EPSchema_class.html">EPSchema class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EPEpJSON_class.html">EPEpJSON class</a></li>
 </ul>
 
             
@@ -242,12 +243,12 @@
 <span class="sd">    </span>
 <span class="sd">    :param output_prefix: Prefic for output file names.</span>
 <span class="sd">        Default is &#39;eplus&#39;.</span>
-<span class="sd">    :type ouput_prefix: str</span>
+<span class="sd">    :type output_prefix: str</span>
 <span class="sd">    </span>
 <span class="sd">    :param output_suffix: Suffix style for output names.</span>
 <span class="sd">        Should be one of &#39;L&#39; (legacy), &#39;C&#39; (capital) or &#39;D&#39; (dash).</span>
 <span class="sd">        Default is &#39;L&#39;</span>
-<span class="sd">    :param output_suffix: str</span>
+<span class="sd">    :type output_suffix: str</span>
 <span class="sd">    </span>
 <span class="sd">    :param readvars: If True, the &#39;--readvars&#39; argument is included in the </span>
 <span class="sd">        call to EnergyPlus.</span>
@@ -261,26 +262,27 @@
 <span class="sd">    </span>
 <span class="sd">    :returns: A EPResult object which contains the returncode, stdout and a </span>
 <span class="sd">        dictionary of the results files.</span>
-<span class="sd">    :rtype: eprun.epresult.EPResult</span>
+<span class="sd">    :rtype: EPResult</span>
 <span class="sd">    </span>
-<span class="sd">    :Example:</span>
-<span class="sd">        </span>
+<span class="sd">    .. rubric:: Code Example</span>
+<span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">           </span>
 <span class="sd">       &gt;&gt;&gt; from eprun import eprun</span>
-<span class="sd">       &gt;&gt;&gt; result=eprun(input_filepath=&#39;1ZoneUncontrolled.idf&#39;,</span>
-<span class="sd">       &gt;&gt;&gt;              epw_filepath=&#39;USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw&#39;,</span>
-<span class="sd">       &gt;&gt;&gt;              sim_dir=&#39;simulation_files&#39;)</span>
-<span class="sd">       &gt;&gt;&gt; print(type(result))</span>
-<span class="sd">       &lt;class &#39;eprun.eprun.EPResult&#39;&gt;</span>
-<span class="sd">       &gt;&gt;&gt; print(list(result.files.keys()))</span>
+<span class="sd">       &gt;&gt;&gt; epresult=eprun(ep_dir=&#39;C:\EnergyPlusV9-4-0&#39;,</span>
+<span class="sd">       &gt;&gt;&gt;                input_filepath=&#39;1ZoneUncontrolled.idf&#39;,</span>
+<span class="sd">       &gt;&gt;&gt;                epw_filepath=&#39;USA_CO_Golden-NREL.724666_TMY3.epw&#39;,</span>
+<span class="sd">       &gt;&gt;&gt;                sim_dir=&#39;simulation_files&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; print(type(epresult))</span>
+<span class="sd">       &lt;class &#39;eprun.epresult.EPResult&#39;&gt;</span>
+<span class="sd">       &gt;&gt;&gt; print(list(epresult.files.keys()))</span>
 <span class="sd">       [&#39;audit&#39;, &#39;bnd&#39;, &#39;dxf&#39;, &#39;eio&#39;, &#39;end&#39;, &#39;err&#39;, &#39;eso&#39;, &#39;mdd&#39;, &#39;mtd&#39;, </span>
 <span class="sd">        &#39;mtr&#39;, &#39;rdd&#39;, &#39;shd&#39;, &#39;csv&#39;, &#39;htm&#39;, &#39;tab&#39;, &#39;txt&#39;, &#39;xml&#39;]</span>
 <span class="sd">               </span>
 <span class="sd">    .. seealso::</span>
 <span class="sd">    </span>
 <span class="sd">       EnergyPlus Essentials, pages 15 and 16.</span>
-<span class="sd">       https://energyplus.net/quickstart</span>
+<span class="sd">       https://energyplus.net/quickstart#reading</span>
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     

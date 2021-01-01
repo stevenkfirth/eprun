@@ -10,21 +10,22 @@ class EPResult():
     
     .. note::
         
-       An EPResult instance is returned as the result of the :py:meth:`~eprun.eprun.eprun` function.
+       An EPResult instance is returned as the result of the `eprun` function.
        It should not be instantiated directly.
     
-    :Example:
+    .. rubric:: Code Example
         
     .. code-block:: python
            
        >>> from eprun import eprun
-       >>> result=eprun(idf_filepath='1ZoneUncontrolled.idf',
-       >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
-       >>>              sim_dir='sim')
-       >>> print(type(result))
+       >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+       >>>                input_filepath='1ZoneUncontrolled.idf',
+       >>>                epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
+       >>>                sim_dir='simulation_files')
+       >>> print(type(epresult))
        <class 'eprun.epresult.EPResult'>
-       >>> print(result.returncode)
-       1
+       >>> print(epresult.returncode)
+       0
 
     """
     
@@ -43,7 +44,7 @@ class EPResult():
     def get_end(self):
         """Gets the .end output file.
         
-        :rtype: eprun.eprun.EPEnd        
+        :rtype: EPEnd        
         
         """
         fp=self.files['end']
@@ -53,7 +54,7 @@ class EPResult():
     def get_err(self):
         """Gets the .err output file.
         
-        :rtype: eprun.eprun.EPErr        
+        :rtype: EPErr        
         
         """
         fp=self.files['err']
@@ -63,7 +64,7 @@ class EPResult():
     def get_eso(self):
         """Gets the .eso output file.
         
-        :rtype: eprun.eprun.EPEso       
+        :rtype: EPEso       
         
         """
         fp=self.files['eso']
@@ -72,21 +73,23 @@ class EPResult():
     
     @property
     def returncode(self):
-        """The returncode of the `subprocess.run <https://docs.python.org/3/library/subprocess.html>`_ call to the EnergyPlus exe file.
+        """The returncode of the `subprocess.run` call to the EnergyPlus exe file.
         This indicates if the call to EnergyPlus was successful.
         0 means success. 1 means failure.
         
         :rtype: int
+        
         """
         return self._returncode
     
     
     @property
     def stdout(self):
-        """The stdout of the `subprocess.run <https://docs.python.org/3/library/subprocess.html>`_ call to the EnergyPlus exe file.
+        """The stdout of the `subprocess.run` call to the EnergyPlus exe file.
         This is the text that would appear in the CommandPromt if the command was run there.
         
         :rtype: str
+        
         """
         return self._stdout
     

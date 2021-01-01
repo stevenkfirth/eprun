@@ -17,6 +17,9 @@ Installation
 
 It can be installed using :code:`pip install eprun`
 
+**Recommended method**: As *eprun* has dependencies to other packages (i.e. Pandas, Matplotlib, jsonschema), 
+it is recommended to first download the `Anaconda distribution <https://www.anaconda.com/products/individual>`_ and then install.
+
 GitHub
 ------
 

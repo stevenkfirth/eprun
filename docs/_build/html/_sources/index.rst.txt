@@ -13,7 +13,7 @@ The code below runs an EnergyPlus simulation on an EnergyPlus input file (.idf) 
    :lineno-start: 1
 
    >>> from eprun import eprun
-   >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+   >>> epresult=eprun(ep_dir=r'C:\EnergyPlusV9-4-0',
    >>>                input_filepath='1ZoneUncontrolled.idf',
    >>>                epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
    >>>                sim_dir='simulation_files')
@@ -76,6 +76,7 @@ The next section introduces the *eprun* package and gives more details and examp
    :caption: Tutorials:
    :hidden:
    
+   Working with Errors
    Reading the eso Output File
    
    
@@ -90,6 +91,16 @@ The next section introduces the *eprun* package and gives more details and examp
    
 .. toctree::
    :maxdepth: 1
+   :caption: Reference - Output files:
+   :hidden:
+   
+   EPEnd_class
+   EPErr_class
+   EPEso_class
+   
+   
+.. toctree::
+   :maxdepth: 1
    :caption: Reference - Input files:
    :hidden:
    
@@ -97,14 +108,7 @@ The next section introduces the *eprun* package and gives more details and examp
    EPEpJSON_class
 
    
-.. toctree::
-   :maxdepth: 1
-   :caption: Reference - Output files:
-   :hidden:
-   
-   EPEnd_class
-   EPErr_class
-   EPEso_class
+
    
    
 ..

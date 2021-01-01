@@ -64,7 +64,7 @@ This is accessed using the `get_err` method which returns a `EPErr` object insta
       ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
       ************* EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.21sec
 
-Much more complex is the '.eso' file which contains the results of the simulation calculations. 
+Another output file is the '.eso' file which contains the results of the simulation calculations. 
 Instructions on how to view these results is described in the tutorial `Reading the eso Output File`.
 
 Congratulations! You now know how to run an EnergyPlus simulation using the `eprun` function

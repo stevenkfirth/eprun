@@ -6,19 +6,21 @@ class EPEnd():
     :param fp: The filepath for the .end file.
     :type fp: str
     
-    :Example:
+    .. rubric:: Code Example
         
     .. code-block:: python
            
-       >>> from eprun import EPRun
-       >>> e=EPEnd(fp='eplusout.end')
-       >>> print(e.line)
-       EnergyPlus Completed Successfully-- 3 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.33sec
+       >>> from eprun import EPEnd
+       >>> end=EPEnd(r'simulation_files\eplusout.end')
+       >>> print(type(end))
+       <class 'eprun.epend.EPEnd'>
+       >>> print(end.line)
+       EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.21sec
     
     .. seealso::
     
        Output Details and Examples, page 125.
-       https://energyplus.net/quickstart
+       https://energyplus.net/quickstart#reading
     
     """        
     
@@ -26,6 +28,7 @@ class EPEnd():
         ""
         with open(fp,'r') as f:
             self._line=f.readline()
+            
             
     @property
     def line(self):

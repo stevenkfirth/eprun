@@ -73,12 +73,12 @@ def eprun(input_filepath,
     
     :param output_prefix: Prefic for output file names.
         Default is 'eplus'.
-    :type ouput_prefix: str
+    :type output_prefix: str
     
     :param output_suffix: Suffix style for output names.
         Should be one of 'L' (legacy), 'C' (capital) or 'D' (dash).
         Default is 'L'
-    :param output_suffix: str
+    :type output_suffix: str
     
     :param readvars: If True, the '--readvars' argument is included in the 
         call to EnergyPlus.
@@ -92,26 +92,27 @@ def eprun(input_filepath,
     
     :returns: A EPResult object which contains the returncode, stdout and a 
         dictionary of the results files.
-    :rtype: eprun.epresult.EPResult
+    :rtype: EPResult
     
-    :Example:
-        
+    .. rubric:: Code Example
+    
     .. code-block:: python
            
        >>> from eprun import eprun
-       >>> result=eprun(input_filepath='1ZoneUncontrolled.idf',
-       >>>              epw_filepath='USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
-       >>>              sim_dir='simulation_files')
-       >>> print(type(result))
-       <class 'eprun.eprun.EPResult'>
-       >>> print(list(result.files.keys()))
+       >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+       >>>                input_filepath='1ZoneUncontrolled.idf',
+       >>>                epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
+       >>>                sim_dir='simulation_files')
+       >>> print(type(epresult))
+       <class 'eprun.epresult.EPResult'>
+       >>> print(list(epresult.files.keys()))
        ['audit', 'bnd', 'dxf', 'eio', 'end', 'err', 'eso', 'mdd', 'mtd', 
         'mtr', 'rdd', 'shd', 'csv', 'htm', 'tab', 'txt', 'xml']
                
     .. seealso::
     
        EnergyPlus Essentials, pages 15 and 16.
-       https://energyplus.net/quickstart
+       https://energyplus.net/quickstart#reading
     
     """
     
