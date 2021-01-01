@@ -31,7 +31,7 @@ Please see the [eprun package homepage] for the full documentation.
 * Creating simulation input files from scratch using Python statements
 * Modifying simulation input files and weather files directly for setting up multiple simulation runs 
 * Collaborating on and version controlling [EnergyPlus] workflows (for example using [GitHub])
-* Publishing academic papers and reports based on [EnergyPlus] simulations, with the option to publish the Python code which created the results as part of an Open Science workflo
+* Publishing academic papers and reports based on [EnergyPlus] simulations, with the option to publish the Python code which created the results as part of an Open Science workflow
 
 
 
