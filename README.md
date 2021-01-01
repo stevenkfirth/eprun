@@ -14,7 +14,7 @@ Please see the *eprun* package documentation here: https://eprun.readthedocs.io/
 
 ## Quick Demo
 
-*eprun* uses the `eprun` function to run an EnergyPlus simulation. 
+*eprun* uses the [`eprun`] function to run an EnergyPlus simulation. 
 The code below runs an EnergyPlus simulation on an '.idf' input file and an '.epw' weather file.
 
 ```python
@@ -76,8 +76,12 @@ Here the hourly values for the 'ZONE ONE - Zone Mean Air Temperature' variable a
 
 ## Further resources
 
-* [The Running an EnergyPlus simulation on the 1ZoneUncontrolled file](https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/examples/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file.ipynb)  Jupyter Notebook shows the `eprun` function in action.
-
+* The [Running an EnergyPlus simulation on the 1ZoneUncontrolled file]  Jupyter Notebook shows the `eprun` function in action.
 * The [Examples] folder with further examples using Jupyter Notebooks.
 
+[`eprun`]: https://eprun.readthedocs.io/en/latest/eprun_function.html
+
+[Running an EnergyPlus simulation on the 1ZoneUncontrolled file]: https://nbviewer.jupyter.org/github/stevenkfirth/eprun/blob/main/examples/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file/Running%20an%20EnergyPlus%20simulation%20on%20the%201ZoneUncontrolled%20file.ipynb
+
 [Examples]: https://nbviewer.jupyter.org/github/stevenkfirth/eprun/tree/main/examples/
+
