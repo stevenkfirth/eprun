@@ -5,7 +5,29 @@ import pandas as pd
 
 
 class EPEsoIntervalVariable():
-    """A class for a interval variable recorded in a EPEsoSimulationEnviroment instance.
+    """A class for an interval variable recorded in an `EPEsoSimulationEnvironment` instance.
+    
+    .. note::
+        
+       An EPEsoIntervalVariable instance is returned as the result of 
+       the `get_interval_variable` or `get_interval_variables` function.
+       It should not be instantiated directly.
+    
+    .. rubric:: Code Example
+        
+    .. code-block:: python
+    
+       >>> from eprun import EPEso
+       >>> eso=EPEso(r'simulation_files\eplusout.eso')
+       >>> env=eso.get_environment('RUN PERIOD 1')
+       >>> iv=env.get_interval_variables()[0]
+       >>> print(type(iv))
+       <class 'eprun.epeso_interval_variable.EPEsoIntervalVariable'>
+       >>> print(iv.summary())
+       7 - Environment - Site Outdoor Air Drybulb Temperature (C)
+       >>> print(iv.values[:5])
+       (-4.5, -3.0, -3.625, -2.75, -2.0)
+    
     """
     
     def __repr__(self):
@@ -92,9 +114,13 @@ class EPEsoIntervalVariable():
              **kwargs):
         """Plots the interval variable on the supplied axes.
         
-        :param ax: An Axes instance.
+        :param ax: An Axes instance. 
+            Optional, if not supplied then automatically created.
         :type ax: matplotlib.axes.Axes
         :param kwargs: Keyword arguments to be supplied to the matplotlib plot call.
+        
+        :returns: The Axes instance.
+        :rtype: matplotlib.axes.Axes
         
         """
         if not ax:
@@ -154,8 +180,7 @@ class EPEsoIntervalVariable():
     def values(self):
         """The (mean) values of the interval variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[0])

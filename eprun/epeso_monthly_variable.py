@@ -7,7 +7,29 @@ import pandas as pd
 
 
 class EPEsoMonthlyVariable():
-    """A class for a monthly variable recorded in a EPEsoSimulationEnviroment instance.
+    """A class for a monthly variable recorded in an `EPEsoSimulationEnvironment` instance.
+    
+    .. note::
+        
+       An EPEsoMonthlyVariable instance is returned as the result of 
+       the `get_monthly_variable` or `get_monthly_variables` function.
+       It should not be instantiated directly.
+    
+    .. rubric:: Code Example
+        
+    .. code-block:: python
+    
+       >>> from eprun import EPEso
+       >>> eso=EPEso(r'simulation_files\eplusout.eso')
+       >>> env=eso.get_environment('RUN PERIOD 1')
+       >>> mv=env.get_monthly_variables()[0]
+       >>> print(type(mv))
+       <class 'eprun.epeso_monthly_variable.EPEsoMonthlyVariable'>
+       >>> print(mv.summary())
+       48 - TEST 352A - Other Equipment Total Heating Energy (J)
+       >>> print(mv.values[:5])
+       (942796800.0, 851558400.0, 942796800.0, 912384000.0, 942796800.0)
+    
     """
         
     def __repr__(self):
@@ -77,8 +99,7 @@ class EPEsoMonthlyVariable():
     def get_max_times(self):
         """Returns the times when the maximum values occur.
         
-        :returns: A tuple of datetime.datetime instances.
-        :rtype: tuple
+        :rtype: tuple (datetime.datetime)
         
         """
         month_start_times=self._monthly_periods.get_start_times()
@@ -102,8 +123,7 @@ class EPEsoMonthlyVariable():
     def get_min_times(self):
         """Returns the times when the minumum values occur.
         
-        :returns: A tuple of datetime.datetime instances.
-        :rtype: tuple
+        :rtype: tuple (datetime.datetime)
         
         """
         month_start_times=self._monthly_periods.get_start_times()
@@ -127,8 +147,7 @@ class EPEsoMonthlyVariable():
     def max_days(self):
         """The day numbers for the maximum values of the monthly variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[6])
@@ -138,8 +157,7 @@ class EPEsoMonthlyVariable():
     def max_hours(self):
         """The hour numbers for the maximum values of the monthly variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[7])
@@ -149,8 +167,7 @@ class EPEsoMonthlyVariable():
     def max_minutes(self):
         """The minute numbers for the maximum values of the monthly variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[8])
@@ -160,8 +177,7 @@ class EPEsoMonthlyVariable():
     def max_values(self):
         """The maximum values of the monthly variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[5])
@@ -171,8 +187,7 @@ class EPEsoMonthlyVariable():
     def min_days(self):
         """The day numbers for the minimum values of the monthly variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[2])
@@ -182,8 +197,7 @@ class EPEsoMonthlyVariable():
     def min_hours(self):
         """The hour numbers for the minimum values of the monthly variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[3])
@@ -193,8 +207,7 @@ class EPEsoMonthlyVariable():
     def min_minutes(self):
         """The minute numbers for the minimum values of the monthly variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[4])
@@ -204,8 +217,7 @@ class EPEsoMonthlyVariable():
     def min_values(self):
         """The minimum values of the monthly variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[1])
@@ -224,11 +236,15 @@ class EPEsoMonthlyVariable():
     def plot(self,
              ax=None,
              **kwargs):
-        """Plots the daily variable values on the supplied axes.
+        """Plots the monthly variable on the supplied axes.
         
-        :param ax: An Axes instance.
+        :param ax: An Axes instance. 
+            Optional, if not supplied then automatically created.
         :type ax: matplotlib.axes.Axes
         :param kwargs: Keyword arguments to be supplied to the matplotlib plot call.
+        
+        :returns: The Axes instance.
+        :rtype: matplotlib.axes.Axes
         
         """
         if not ax:
@@ -287,8 +303,7 @@ class EPEsoMonthlyVariable():
     def values(self):
         """The (mean) values of the monthly variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[0])

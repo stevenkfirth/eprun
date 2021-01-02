@@ -5,7 +5,31 @@ import pandas as pd
 
 
 class EPEsoDailyPeriods():
-    """A class for the daily time periods recorded in a EPEsoSimulationEnviroment instance.
+    """A class for the daily time periods recorded in an `EPEsoSimulationEnvironment` instance.
+    
+    .. note::
+        
+       An EPEsoDailyPeriods instance is returned as the result of 
+       the `get_daily_periods` function.
+       It should not be instantiated directly.
+    
+    .. rubric:: Code Example
+        
+    .. code-block:: python
+    
+       >>> from eprun import EPEso
+       >>> eso=EPEso(r'simulation_files\eplusout.eso')
+       >>> env=eso.get_environment('RUN PERIOD 1')
+       >>> dp=env.get_daily_periods()
+       >>> print(type(dp))
+       <class 'eprun.epeso_daily_periods.EPEsoDailyPeriods'>
+       >>> print(dp.get_start_times()[:5])
+       (datetime.datetime(2001, 1, 1, 0, 0, tzinfo=datetime.timezone.utc), 
+        datetime.datetime(2001, 1, 2, 0, 0, tzinfo=datetime.timezone.utc), 
+        datetime.datetime(2001, 1, 3, 0, 0, tzinfo=datetime.timezone.utc), 
+        datetime.datetime(2001, 1, 4, 0, 0, tzinfo=datetime.timezone.utc), 
+        datetime.datetime(2001, 1, 5, 0, 0, tzinfo=datetime.timezone.utc))
+       
     """
     
     def __repr__(self):
@@ -26,7 +50,7 @@ class EPEsoDailyPeriods():
     def cumulative_days_of_simulation(self):
         """The 'cumulative days of simulation' for the daily periods.
         
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[0])
@@ -36,7 +60,7 @@ class EPEsoDailyPeriods():
     def days_of_month(self):
         """The days in the month for the daily periods.
         
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[2])
@@ -46,7 +70,7 @@ class EPEsoDailyPeriods():
     def day_types(self):
         """The day types for the daily periods.
         
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(str(x) for x in self._data[7])
@@ -56,7 +80,7 @@ class EPEsoDailyPeriods():
     def dst_indicators(self):
         """The daylight saving time indicators for the daily periods.
         
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[3])
@@ -66,8 +90,7 @@ class EPEsoDailyPeriods():
     def get_end_times(self):
         """Returns the end times for the daily periods.
         
-        :returns: A tuple of datetime.datetime instances
-        :rtype: tuple
+        :rtype: tuple (datetime.datetime)
         
         """
         return tuple(start_time+datetime.timedelta(days=1) 
@@ -87,7 +110,7 @@ class EPEsoDailyPeriods():
     def get_periods(self):
         """Returns the interval periods as a list of Pandas periods.
         
-        :rtype: list
+        :rtype: list (pandas.Period)
         
         """
         start_times=self.get_start_times()
@@ -98,21 +121,20 @@ class EPEsoDailyPeriods():
     def get_start_times(self):
         """Returns the start times for the daily periods.
         
-        :returns: A tuple of datetime.datetime instances
-        :rtype: tuple
+        :rtype: tuple (datetime.datetime)
         
         """
         x=zip(self.months,self.days_of_month)
         return tuple(datetime.datetime(2001,m,d,
                                   tzinfo=self._epesose.get_timezone())
                      for m,d in x)
-    
+
 
     @property
     def months(self):
         """The months for the daily periods.
         
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[1])
@@ -121,7 +143,7 @@ class EPEsoDailyPeriods():
     def summary(self):
         """Returns a summary of the interval periods.
         
-        :rtype: dict
+        :rtype: str
         
         """
         start_times=self.get_start_times()

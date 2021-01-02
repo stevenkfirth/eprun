@@ -81,7 +81,7 @@ class EPErr():
     def lines(self):
         """The lines recorded in the .err file.
         
-        :rtype: list
+        :rtype: list(str)
         
         """
         return self._lines
@@ -91,7 +91,7 @@ class EPErr():
     def warnings(self):
         """The warnings recorded in the .err file.
         
-        :rtype: list
+        :rtype: list (str)
         
         """
         return self._warnings

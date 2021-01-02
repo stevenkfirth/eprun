@@ -14,12 +14,14 @@ class EPEso():
     .. code-block:: python
            
        >>> from eprun import EPEso
-       >>> e=EPEso(fp='eplusout.eso')
-       >>> print(e.programme_version_statement)
-       {'programme': 'EnergyPlus',
-        'timestamp': 'YMD=2020.11.13 06:25',
-        'version': 'Version 9.4.0-998c4b761e'}
-       >>> print(e.standard_items_dictionary[1])
+       >>> eso=EPEso(r'simulation_files\eplusout.eso')
+       >>> print(type(eso))
+       <class 'eprun.epeso.EPEso'>
+       >>> print(eso.programme_version_statement)
+       {'programme': 'EnergyPlus', 
+        'version': 'Version 9.4.0-998c4b761e', 
+        'timestamp': 'YMD=2020.12.31 08:53'}
+       >>> print(eso.standard_items_dictionary[1])
        {'comment': None,
         'items': [{'name': 'Environment Title', 'unit': None},
                   {'name': 'Latitude', 'unit': 'deg'},
@@ -27,13 +29,13 @@ class EPEso():
                   {'name': 'Time Zone', 'unit': None},
                   {'name': 'Elevation', 'unit': 'm'}],
         'number_of_values': 5}
-       >>> print(e.variable_dictionary[7])
+       >>> print(eso.variable_dictionary[7])
        {'comment': 'Hourly',
         'number_of_values': 1,
         'object_name': 'Environment',
         'quantity': 'Site Outdoor Air Drybulb Temperature',
         'unit': 'C'}
-       >>> print(e.get_environments())
+       >>> print(eso.get_environments())
        [EPEsoSimuationEnvironment("DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB"),
         EPEsoSimuationEnvironment("DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=>MWB"),
         EPEsoSimuationEnvironment("RUN PERIOD 1")]
@@ -47,7 +49,6 @@ class EPEso():
 
     def __init__(self,fp):
         ""
-        
         programme_version_statement_flag=True # True if in his section
         data_dictionary_flag=False # True if in this section
         data_flag=False # True if in this section
@@ -211,9 +212,9 @@ class EPEso():
         :param environment_title: The name of the simulation environment.
         :type environment_title: str
         
-        :raises: IndexError - if environment_title does not match any of the simulation environments.
+        :raises IndexError: If `environment_title` does not match any of the simulation environments.
         
-        :rtype: EPEsiSimulationEnvironment
+        :rtype: EPEsoSimulationEnvironment
         
         """
         for se in self.get_environments():
@@ -222,12 +223,11 @@ class EPEso():
         raise IndexError('Simulation environment "%s" does not exist in the .eso file')
 
 
-
     def get_environments(self):
         """Returns a list of the simulation environments in the .eso file.
         
         :returns: A list of `EPEsoSimulationEnvironment` instances.
-        :rtype: list
+        :rtype: list (EPEsoSimulationEnvironment)
         
         """
         result=[]
@@ -244,7 +244,8 @@ class EPEso():
         """A dictionary of the programme version statement.
         
         :returns: A dictionary with keys 'programme', 'version' and 'timestamp'.
-        :rtype: dict
+        :rtype: dict (str, str)
+        
         """
         return self._programme_version_statement
     
@@ -255,7 +256,7 @@ class EPEso():
         
         :returns: A dictionary with the keys based on the report codes and the values given 
             by a dictionary with keys 'number_of_values', 'items' and 'comment'.
-        :rtype: dict
+        :rtype: dict (int,dict)
         """
         return self._standard_items_dictionary
 
@@ -267,28 +268,11 @@ class EPEso():
         :returns: A dictionary with the keys based on the report codes and the values given 
             by a dictionary with keys 'number_of_values', 'object_name', 'quantity', 
             'unit' and 'comment'.
-        :rtype: dict
+        :rtype: dict (int,dict)
         """
         return self._variable_dictionary
 
 
-    
-
-    # @property
-    # def data(self):
-    #     """A list of the simulation environment data dictionaries.
-        
-    #     :returns: A list of dictionaries where each dictionary holds the
-    #         data from a simulation environment such as a winter design day,
-    #         a summer design day or a full annual simulation. The dictionary
-    #         has keys 'environment_title', 'latitude', 'longitude',
-    #         'time_zone', 'elevation', 'interval_data' ,'daily_data',
-    #         'monthly_data', 'run_period_data' and 'annual_data'.
-    #     :rtype: list
-    #     """
-    #     return self._data
-    
-      
     
     
     

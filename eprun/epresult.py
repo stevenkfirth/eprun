@@ -35,7 +35,7 @@ class EPResult():
         The keys of the dictionary are the file extensions e.g. 'eso', 'err' etc.
         The values of the dictionary are the absolute filepaths of the files.
         
-        :rtype: dict
+        :rtype: dict (str,str)
         
         """
         return self._files

@@ -6,7 +6,29 @@ import pandas as pd
 
 
 class EPEsoDailyVariable():
-    """A class for a daily variable recorded in a EPEsoSimulationEnviroment instance.
+    """A class for a daily variable recorded in an `EPEsoSimulationEnvironment` instance.
+    
+    .. note::
+        
+       An EPEsoDailyVariable instance is returned as the result of 
+       the `get_daily_variable` or `get_daily_variables` function.
+       It should not be instantiated directly.
+    
+    .. rubric:: Code Example
+        
+    .. code-block:: python
+    
+       >>> from eprun import EPEso
+       >>> eso=EPEso(r'simulation_files\eplusout.eso')
+       >>> env=eso.get_environment('RUN PERIOD 1')
+       >>> dv=env.get_daily_variables()[0]
+       >>> print(type(dv))
+       <class 'eprun.epeso_daily_variable.EPEsoDailyVariable'>
+       >>> print(dv.summary())
+       51 - ZN001:WALL001 - Surface Inside Face Temperature (C)
+       >>> print(dv.values[:5])
+       (0.2586823729828891, -2.1861342037263127, -3.1313024424355285, -2.9489865949136895, 0.3701320282261298)
+    
     """
     
     def __repr__(self):
@@ -77,8 +99,7 @@ class EPEsoDailyVariable():
     def get_max_times(self):
         """Returns the times when the maximum values occur.
         
-        :returns: A tuple of datetime.datetime instances.
-        :rtype: tuple
+        :rtype: tuple (datetime.datetime)
         
         """
         day_start_times=self._epesose.get_daily_periods().get_start_times()
@@ -100,8 +121,7 @@ class EPEsoDailyVariable():
     def get_min_times(self):
         """Returns the times when the minumum values occur.
         
-        :returns: A tuple of datetime.datetime instances.
-        :rtype: tuple
+        :rtype: tuple (datetime.datetime)
         
         """
         day_start_times=self._epesose.get_daily_periods().get_start_times()
@@ -124,8 +144,7 @@ class EPEsoDailyVariable():
     def max_hours(self):
         """The hour numbers for the maximum values of the daily variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[5])
@@ -135,8 +154,7 @@ class EPEsoDailyVariable():
     def max_minutes(self):
         """The minute numbers for the maximum values of the daily variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[6])
@@ -146,8 +164,7 @@ class EPEsoDailyVariable():
     def max_values(self):
         """The maximum values of the monthly variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[4])
@@ -157,8 +174,7 @@ class EPEsoDailyVariable():
     def min_hours(self):
         """The hour numbers for the minimum values of the daily variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[2])
@@ -168,8 +184,7 @@ class EPEsoDailyVariable():
     def min_minutes(self):
         """The minute numbers for the minimum values of the daily variable.
         
-        :returns: A tuple of ints.
-        :rtype: tuple
+        :rtype: tuple (int)
         
         """
         return tuple(int(x) for x in self._data[3])
@@ -179,8 +194,7 @@ class EPEsoDailyVariable():
     def min_values(self):
         """The minimum values of the daily variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[1])
@@ -199,11 +213,15 @@ class EPEsoDailyVariable():
     def plot(self,
              ax=None,
              **kwargs):
-        """Plots the daily variable values on the supplied axes.
+        """Plots the daily variable on the supplied axes.
         
-        :param ax: An Axes instance.
+        :param ax: An Axes instance. 
+            Optional, if not supplied then automatically created.
         :type ax: matplotlib.axes.Axes
         :param kwargs: Keyword arguments to be supplied to the matplotlib plot call.
+        
+        :returns: The Axes instance.
+        :rtype: matplotlib.axes.Axes
         
         """
         if not ax:
@@ -262,8 +280,7 @@ class EPEsoDailyVariable():
     def values(self):
         """The (mean) values of the daily variable.
         
-        :returns: A tuple of floats.
-        :rtype: tuple
+        :rtype: tuple (float)
         
         """
         return tuple(float(x) for x in self._data[0])

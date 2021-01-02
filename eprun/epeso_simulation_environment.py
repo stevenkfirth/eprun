@@ -16,19 +16,28 @@ import pandas as pd
 
 
 class EPEsoSimulationEnvironment():
-    """A class representing the results from a simulation environment section of an EnergyPlus .eso file.
+    """A class representing the results from a simulation environment section 
+    of an `EPEso` instance.
     
+    .. note::
+        
+       An EPEsoSimulationEnvironment instance is returned as the result of 
+       the `get_environment` or `get_environments` function.
+       It should not be instantiated directly.
     
-    :Example:
+    .. rubric:: Code Example
         
     .. code-block:: python
     
-       >>> epeso=EPEso(fp=r'files\eplusout.eso')
-       >>> se=epeso.get_environments()[0]
-       >>> print(se.environment_title)
+       >>> from eprun import EPEso
+       >>> eso=EPEso(fp=r'files\eplusout.eso')
+       >>> envs=eso.get_environments()
+       [EPEsoSimuationEnvironment(environment_title="DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB"),
+        EPEsoSimuationEnvironment(environment_title="DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=>MWB"),
+        EPEsoSimuationEnvironment(environment_title="RUN PERIOD 1")]
+       >>> print(envs[0].environment_title)
        DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB
        
-      
     """
     
     def __repr__(self):
@@ -79,6 +88,7 @@ class EPEsoSimulationEnvironment():
         """Returns the annual time periods.
         
         :rtype: EPEsoAnnualPeriods
+        
         """
         p=EPEsoAnnualPeriods()
         p._epesose=self
@@ -98,7 +108,7 @@ class EPEsoSimulationEnvironment():
     def get_annual_variables(self):
         """Return the annual variables.
         
-        :rtype: tuple
+        :rtype: tuple (EPEsoAnnualVariable)
         
         """
         result=[]
@@ -157,6 +167,7 @@ class EPEsoSimulationEnvironment():
         """Returns the daily time periods.
         
         :rtype: EPEsoDailyPeriods
+        
         """
         p=EPEsoDailyPeriods()
         p._epesose=self
@@ -181,7 +192,7 @@ class EPEsoSimulationEnvironment():
     def get_daily_variables(self):
         """Return the daily variables.
         
-        :rtype: tuple
+        :rtype: tuple (EPEsoDailyVariable)
         
         """
         result=[]
@@ -200,7 +211,7 @@ class EPEsoSimulationEnvironment():
         :param report_code: The report code of the variable.
         :type report_code: int
         
-        :raises: KeyError if a daily variable with the report code does not exist.
+        :raises KeyError: If a daily variable with the report code does not exist.
         
         :rtype: EPEsoDailyVariable
 
@@ -223,7 +234,6 @@ class EPEsoSimulationEnvironment():
         :rtype: pandas.DataFrame
         
         """
-    
         index=pd.Index(data=self.get_interval_periods().get_periods(),
                        name='time_periods')
         column_level_names=('object_name','quantity','unit','value_type')
@@ -254,6 +264,7 @@ class EPEsoSimulationEnvironment():
         """Returns the interval time periods.
         
         :rtype: EPEsoIntervalPeriods
+        
         """
         p=EPEsoIntervalPeriods()
         p._epesose=self
@@ -282,7 +293,7 @@ class EPEsoSimulationEnvironment():
         :param report_code: The report code of the variable.
         :type report_code: int
         
-        :raises: KeyError if an interval variable with the report code does not exist.
+        :raises KeyError: If an interval variable with the report code does not exist.
         
         :rtype: EPEsoIntervalVariable
 
@@ -302,7 +313,7 @@ class EPEsoSimulationEnvironment():
     def get_interval_variables(self):
         """Return the interval variables.
         
-        :rtype: tuple
+        :rtype: tuple (EPEsoIntervalVariable)
         
         """
         result=[]
@@ -316,25 +327,13 @@ class EPEsoSimulationEnvironment():
     
     
     def get_monthly_dataframe(self):
-        """Returns the inputs to create a pandas DataFrame from the monthly data.
+        """Returns a pandas DataFrame from the monthly data.
         
-        Use the following code to create a pandas DataFrame:
-            
-        .. code-block:: python
-           
-           import pandas as pd
-           df=pd.DataFrame(index=[pd.Period(dt,period_frequency) for dt in index],
-                           data=data,
-                           columns=pd.MultiIndex.from_tuples(columns, 
-                                                             names=column_level_names))
-        
-        :returns: index, period_frequency, data, columns ,column_level_names
-        :rtype: tuple
+        :rtype: pandas.DataFrame
         
         """
-    
-        index=self.get_monthly_periods().get_start_times()
-        period_frequency='M'
+        index=pd.Index(data=self.get_monthly_periods().get_periods(),
+                       name='time_periods')
         column_level_names=('object_name','quantity','unit','value_type')
         
         data=[]
@@ -356,13 +355,19 @@ class EPEsoSimulationEnvironment():
         columns=tuple(zip(*columns))
         data=tuple(zip(*data))
         
-        return index,period_frequency,data,columns,column_level_names
+        df=pd.DataFrame(index=index,
+                        data=data,
+                        columns=pd.MultiIndex.from_tuples(columns,
+                                                          names=column_level_names))
+        
+        return df
     
     
     def get_monthly_periods(self):
         """Returns the monthly time periods.
         
         :rtype: EPEsoMonthlyPeriods
+        
         """
         p=EPEsoMonthlyPeriods()
         p._epesose=self
@@ -387,7 +392,7 @@ class EPEsoSimulationEnvironment():
     def get_monthly_variables(self):
         """Return the monthly variables.
         
-        :rtype: tuple
+        :rtype: tuple (EPEsoMonthlyVariable)
         
         """
         result=[]
@@ -401,9 +406,26 @@ class EPEsoSimulationEnvironment():
     
     
     def get_monthly_variable(self,report_code):
-        """
-        """
+        """Return a monthly variable.
         
+        :param report_code: The report code of the variable.
+        :type report_code: int
+        
+        :raises KeyError: If a monthly variable with the report code does not exist.
+        
+        :rtype: EPEsoMonthlyVariable
+
+        """ 
+        if report_code in self._data['monthly_data']:
+        
+            v=EPEsoMonthlyVariable()
+            v._epesose=self
+            v._report_code=report_code
+            return v        
+        
+        else:
+            
+            raise KeyError('Report code %s does not match any monthly variables.' % (report_code))
         
     
     def get_number_of_variables(self):
@@ -411,7 +433,7 @@ class EPEsoSimulationEnvironment():
         
         :returns: A dictionary with keys as the different variable intervals
             and values as the number of variables.
-        :rtype: dict
+        :rtype: dict (str,int)
         
         """
         return {'interval':len(self.get_interval_variables()),
@@ -431,6 +453,7 @@ class EPEsoSimulationEnvironment():
         """Returns the run period time periods.
         
         :rtype: EPEsoRunPeriodPeriods
+        
         """
         p=EPEsoRunPeriodPeriods()
         p._epesose=self
@@ -448,7 +471,7 @@ class EPEsoSimulationEnvironment():
     def get_run_period_variables(self):
         """Return the run period variables.
         
-        :rtype: tuple
+        :rtype: tuple (EPEsorunPeriodVariable)
         
         """
         result=[]
@@ -470,9 +493,8 @@ class EPEsoSimulationEnvironment():
     def get_timezone(self):
         """Returns the time zone as a datetime.timezone instance.
         
-        See https://docs.python.org/3/library/datetime.html#timezone-objects
-        
         :rtype: datetime.timezone
+        
         """
         return datetime.timezone(datetime.timedelta(hours=float(self.time_zone)))
     
@@ -482,7 +504,7 @@ class EPEsoSimulationEnvironment():
         
         :returns: A dictionary with keys as the different variable intervals
             and values as the interval objects.
-        :rtype: dict
+        :rtype: dict(str,list)
         
         """
         return {'interval':self.get_interval_variables(),
