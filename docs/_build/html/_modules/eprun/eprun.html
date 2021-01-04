@@ -287,9 +287,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># check if the directory for the simulation exists</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_dir</span><span class="o">==</span><span class="s1">&#39;&#39;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">sim_dir</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The sim_dir directory does not exist: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sim_dir</span><span class="p">)</span>
+    <span class="c1"># if not sim_dir==&#39;&#39;:</span>
+    <span class="c1">#     if not os.path.isdir(sim_dir):</span>
+    <span class="c1">#         raise Exception(&#39;The sim_dir directory does not exist: %s&#39; % sim_dir)</span>
     
     <span class="c1"># get absolute filepaths</span>
     <span class="n">input_absolute_filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">input_filepath</span><span class="p">)</span>

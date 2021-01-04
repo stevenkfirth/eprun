@@ -117,9 +117,9 @@ def eprun(input_filepath,
     """
     
     # check if the directory for the simulation exists
-    if not sim_dir=='':
-        if not os.path.isdir(sim_dir):
-            raise Exception('The sim_dir directory does not exist: %s' % sim_dir)
+    # if not sim_dir=='':
+    #     if not os.path.isdir(sim_dir):
+    #         raise Exception('The sim_dir directory does not exist: %s' % sim_dir)
     
     # get absolute filepaths
     input_absolute_filepath=os.path.abspath(input_filepath)

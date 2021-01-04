@@ -30,12 +30,13 @@ class EPErr():
         
     def __init__(self,fp):
         ""
-        lines=[]
+        lines=''
         warnings=[]
+        severes=[]
         
         with open(fp,'r') as f:
             for line in f:
-                lines.append(line)
+                lines+=line
                 
                 # first line
                 if line.startswith('Program Version'):
@@ -43,18 +44,24 @@ class EPErr():
                 
                 # warning
                 if line.startswith('   ** Warning ** '):
-                    warnings.append(line[17:])
+                    warnings.append(line[17:].strip())
                     current_message=warnings
                     
+                # severe
+                if line.startswith('   ** Severe  ** '):
+                    severes.append(line[17:].strip())
+                    current_message=severes
                     
                 # error message continuation
                 if line.startswith('   **   ~~~   ** '):
-                    current_message[-1]+=line[17:]
+                    current_message[-1]+=' ' + line[17:].strip()
         
         self._firstline=firstline
         self._lastline=line[17:]
         self._lines=lines
+        self._severes=severes
         self._warnings=warnings
+        
         
         
     @property
@@ -81,15 +88,25 @@ class EPErr():
     def lines(self):
         """The lines recorded in the .err file.
         
-        :rtype: list(str)
+        :rtype: str
         
         """
         return self._lines
         
     
     @property
+    def severes(self):
+        """The severe errors recorded in the .err file.
+        
+        :rtype: list (str)
+        
+        """
+        return self._severes
+    
+    
+    @property
     def warnings(self):
-        """The warnings recorded in the .err file.
+        """The warning errors recorded in the .err file.
         
         :rtype: list (str)
         

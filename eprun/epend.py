@@ -27,7 +27,7 @@ class EPEnd():
     def __init__(self,fp):
         ""
         with open(fp,'r') as f:
-            self._line=f.readline()
+            self._line=f.readline().strip()
             
             
     @property
