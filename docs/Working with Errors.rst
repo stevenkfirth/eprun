@@ -4,19 +4,27 @@ Working with Errors
 1. Introduction
 ---------------
 
+Running an EnergyPlus simulation using the `eprun` function has the potential to raise a number of errors. 
+These can arise from a variety of sources including user input error for the `eprun` function arguments 
+and incorrectly specified EnergyPlus input files.
 
+The sections below demonstrate the different errors which can be encountered. 
+This should help in identifying and solving the error. 
 
-In summary:
+A summary of the errors listed below is:
 
 * The `eprun` function will raise a `FileNotFoundError` if the EnergyPlus install directory is specified incorrectly.
 
-* EnergyPlus will run but fail with a `returncode` of '1' if:
+* EnergyPlus will run but fail with a `returncode` of '1' and generate no output files if:
 
    * The input file name is specified incorrectly.
    * The weather file name is specified incorrectly.
+   
+* EnergyPlus will run but fail with a `returncode` of '1' and generate some output files if:
+
    * The simulation terminates due to a Fatal Error - such as objects missing from the input file.
    
-* EnergyPlus will run successfuly with a `returncode` of '0' if:
+* EnergyPlus will run successfuly with a `returncode` of '0' and generate all output files if:
 
    * There are no errors.
    * There are no Fatal Errors but only minor errors such as warnings.
@@ -26,6 +34,8 @@ In summary:
 
 2. Simulation with no errors
 ----------------------------
+
+This demonstrates a simulation which runs successfully with no errors. 
 
 .. code-block:: python
 
@@ -43,7 +53,9 @@ In summary:
 
 3. Simulation with the EnergyPlus install directory not specified correctly
 ---------------------------------------------------------------------------
-   
+  
+Here the 'ep_dir' argument is specified incorrectly, leading to a `FileNotFoundError`.
+  
 .. code-block:: python
 
    >>> from eprun import eprun
@@ -60,6 +72,9 @@ In summary:
 
 4. Simulation with the input file name not specified correctly
 --------------------------------------------------------------
+
+Here the 'input_filepath' argument is specified incorrectly, leading to a `returncode` of '1' (fail) and no output files created.
+The details of the error are given in the `stdout` property.
 
 .. code-block:: python
 
@@ -83,6 +98,9 @@ In summary:
 5. Simulation with the weather file name not specified correctly
 ----------------------------------------------------------------
 
+Here the 'input_filepath' argument is specified incorrectly, leading to a `returncode` of '1' (fail) and no output files created.
+The details of the error are given in the `stdout` property.
+
 .. code-block:: python
 
    >>> from eprun import eprun
@@ -105,6 +123,10 @@ In summary:
 5. Simulation with the simulation directory name not specified correctly
 ------------------------------------------------------------------------
 
+Here the 'sim_dir' argument is specified incorrectly. 
+However this leads to a successful EnergyPlus run with a `returncode` of '0' (success).
+A new directory named 'simulation_files_ERROR' is created and the simulation output files are placed in this new directory.
+
 .. code-block:: python
 
    >>> from eprun import eprun
@@ -121,6 +143,11 @@ In summary:
 
 6. Simulation with an empty input file
 --------------------------------------
+
+Here the '1ZoneUncontrolled - EMPTY.idf' file is an empty text file. 
+The simulation runs but terminates due to a 'Fatal Error Detected'.
+A `returncode` of '1' (fail) is given and some of the output files are created. 
+The reason for the error is given by the `EPErr.severes` property.
 
 .. code-block:: python
 
@@ -141,6 +168,11 @@ In summary:
 7. Simulation with input file with required objects only
 --------------------------------------------------------
 
+Here the '1ZoneUncontrolled - MINIMUM REQUIRED OBJECTS.idf' file contains the minimum input objects required, a Building object and a GlobalGeometryRules object.
+The simulation runs but terminates due to a 'Fatal Error Detected'.
+A `returncode` of '1' (fail) is given and some of the output files are created. 
+The reason for the error is given by the `EPErr.severes` property.
+
 .. code-block:: python
 
    >>> from eprun import eprun
@@ -159,6 +191,10 @@ In summary:
 
 8. Simulation with warning errors only
 --------------------------------------
+
+Here a simulation is run with a weather file that doesn't match the location specified in the input .idf file.
+The simulation runs successfully with a `returncode` of '0' (success) and all the the output files created.
+Although the simulation does work a number of warning errors are reported. These can be seen in the `EPErr.warnings` property.
 
 .. code-block:: python
 
