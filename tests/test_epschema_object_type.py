@@ -7,163 +7,114 @@ import jsonschema
 from eprun import EPSchema
 
 
-class Test_EPSchemaObject(unittest.TestCase):
+class Test_EPSchemaObjectType(unittest.TestCase):
     ""
     
-    def _test_0(self):
-        "A routine to determine the available keys of the object dictionaries"
-        
-        # gives the keys and their value types
-        result={}
-        for object_name in s.object_names:
-            object_dict=s._dict['properties'][object_name]
-            for k,v in object_dict.items():
-                result.setdefault(k,set())
-                result[k].add(type(v))
-        pprint(result)
-        # {'additionalProperties': {<class 'bool'>},
-        #  'extensible_size': {<class 'float'>},
-        #  'format': {<class 'str'>},
-        #  'legacy_idd': {<class 'dict'>},
-        #  'maxProperties': {<class 'int'>},
-        #  'memo': {<class 'str'>},
-        #  'minProperties': {<class 'int'>},
-        #  'min_fields': {<class 'float'>},
-        #  'name': {<class 'dict'>},
-        #  'patternProperties': {<class 'dict'>},
-        #  'type': {<class 'str'>}}
-        
-        # gives the keys and the first object where they occur
-        result={}
-        for object_name in s.object_names:
-            object_dict=s._dict['properties'][object_name]
-            for k,v in object_dict.items():
-                if not k in result:
-                    result[k]=object_name
-        pprint(result)
-        # {'additionalProperties': 'ZoneCapacitanceMultiplier:ResearchSpecial',
-        #  'extensible_size': 'ShadowCalculation',
-        #  'format': 'Version',
-        #  'legacy_idd': 'Version',
-        #  'maxProperties': 'Version',
-        #  'memo': 'Version',
-        #  'minProperties': 'Building',
-        #  'min_fields': 'SimulationControl',
-        #  'name': 'Building',
-        #  'patternProperties': 'Version',
-        #  'type': 'Version'}
-        
+    
         
     def test_additional_properties(self):
         ""
-        so=s.get_object('Version')
-        self.assertEqual(so.additional_properties,
-                         None)
-        
-        so=s.get_object('ZoneCapacitanceMultiplier:ResearchSpecial')
+        so=s.get_object_type('ZoneCapacitanceMultiplier:ResearchSpecial')
         self.assertEqual(so.additional_properties,
                          False)
         
         
+    def test_dict_(self):
+        ""
+        so=s.get_object_type('Version')
+        self.assertIsInstance(so.dict_,
+                              dict)
+        
+        
     def test_extensible_size(self):
         ""
-        so=s.get_object('Version')
-        self.assertEqual(so.extensible_size,
-                         None)
-        
-        so=s.get_object('ShadowCalculation')
+        so=s.get_object_type('ShadowCalculation')
         self.assertEqual(so.extensible_size,
                          1.0)
         
         
-    def test_fields(self):
+    def test_legacy_idd_fields(self):
         ""
-        so=s.get_object('Version')
-        self.assertEqual(so.fields,
+        so=s.get_object_type('Version')
+        self.assertEqual(so.legacy_idd_fields,
                          ['version_identifier'])
         
         
     def test_format(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(so.format_,
                          'singleLine')
         
         
     def test_get_properties(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(str(so.get_properties()),
                          '[EPSchemaProperty(name="version_identifier")]')
         
     
     def test_get_property(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(str(so.get_property('version_identifier')),
                          'EPSchemaProperty(name="version_identifier")')
         
         
-    def test_get_name(self):
-        ""
-        so=s.get_object('Version')
-        self.assertEqual(so.get_name(),
-                         None)
-        
-        so=s.get_object('Building')
-        self.assertEqual(str(so.get_name()),
-                         'EPSchemaName(object_name="Building")')
-        
-        
     def test_max_properties(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(so.max_properties,
                          1)
         
     
     def test_memo(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(so.memo,
                          'Specifies the EnergyPlus version of the IDF file.')
         
         
     def test_min_properties(self):
         ""
-        so=s.get_object('Version')
-        self.assertEqual(so.min_properties,
-                         None)
-        
-        so=s.get_object('Building')
+        so=s.get_object_type('Building')
         self.assertEqual(so.min_properties,
                          1)
         
         
     def test_name(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(so.name,
                          'Version')
         
         
+    def test_name_property(self):
+        ""
+        so=s.get_object_type('Building')
+        self.assertEqual(so.name_property,
+                         {'type': 'string', 
+                          'retaincase': True, 
+                          'default': 'NONE'})
+        
+        
     def test_pattern_properties_regexes(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(so.pattern_properties_regexes,
                          ['.*'])
         
         
     def test_property_names(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         self.assertEqual(so.property_names,
                          ['version_identifier'])
         
         
     def test_validate_property_name(self):
         ""
-        so=s.get_object('Version')
+        so=s.get_object_type('Version')
         so.validate_property_name('version_identifier')
         
         self.assertRaises(IndexError,
@@ -173,7 +124,7 @@ class Test_EPSchemaObject(unittest.TestCase):
     
     def test_validate_object(self):
         ""
-        so=s.get_object('Building')
+        so=s.get_object_type('Building')
         building={
                     "Simple One Zone (Wireframe DXF)": {
                         "loads_convergence_tolerance_value": 0.04,
@@ -206,4 +157,4 @@ class Test_EPSchemaObject(unittest.TestCase):
 if __name__=='__main__':
     
     s=EPSchema(fp='files/Energy+.schema.epJSON')
-    unittest.main(Test_EPSchemaObject())
+    unittest.main(Test_EPSchemaObjectType())

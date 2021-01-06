@@ -84,7 +84,7 @@ class EPSchema():
     def dict_(self):
         """The json dictionary for the schema.
         
-        :rtype: dict (str,dict)
+        :rtype: dict 
         
         """
         return self._dict
@@ -99,8 +99,8 @@ class EPSchema():
         
         """
         epso=EPSchemaObjectType()
-        epso._eps=self
-        epso._name=object_type_name
+        epso.__dict__['_eps']=self
+        epso.__dict__['_name']=object_type_name
         return epso
     
     

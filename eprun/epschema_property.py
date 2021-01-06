@@ -1,33 +1,51 @@
 # -*- coding: utf-8 -*-
 
 import jsonschema
+import collections
 
 
-class EPSchemaProperty():
-    """A class representing a property of an EPSchemaObject.
+class EPSchemaProperty(collections.abc.Mapping):
+    """A class representing a property of an EPSchemaObjectType.
+    
+    An EPSchemaProperty can act as a dictionary to access its properties and values.
     
     .. note::
         
        An EPSchemaProperty instance is returned as the result of the 
-       EPSchemaObject :py:meth:`~eprun.epschema_object.EPSchemaObject.get_property` function.
+       `EPSchemaObjectType.get_property` function.
        It should not be instantiated directly.
     
-    :Example:
+    .. rubric:: Code Example
         
     .. code-block:: python
            
        >>> from eprun import EPSchema
        >>> s=EPSchema(fp='Energy+.schema.epJSON')
-       >>> o=s.get_object('Version')
-       >>> p=o.get_property('version_identifier')
-       >>> print(p)
-       EPSchemaProperty(name="version_identifier")
-       >>> print(n.type_)
-       string
-       >>> print(n.default)
-       9.4
-    
+       >>> ot=s.get_object_type('Building')
+       >>> p=ot.get_property('north_axis')
+       >>> print(type(p))
+       <class 'eprun.epschema_property.EPSchemaProperty'>
+       >>> print(p.name)
+       north_axis
+       >>> print(list(p.keys()))
+       ['type', 'note', 'units', 'default']
+       >>> print(p['units'])
+       deg
+       
     """
+    
+    
+    def __getitem__(self,key):
+        ""
+        return self._dict[key]
+        
+    def __iter__ (self):
+        ""
+        return iter(self._dict)
+        
+    def __len__ (self):
+        ""
+        return len(self._dict)
     
     def __repr__(self):
         ""
@@ -36,12 +54,8 @@ class EPSchemaProperty():
     
     @property
     def _dict(self):
-        """Returns the json dictionary for the schema propoerty.
-        
-        :rtype: dict
-        
-        """
-        return self._epso._dict['patternProperties'][self._pattern_properties_regex]['properties'][self._name]
+        ""
+        return self._epsot._dict['patternProperties'][self._pattern_properties_regex]['properties'][self._name]
 
 
     @property
@@ -75,6 +89,16 @@ class EPSchemaProperty():
         
         """
         return self._dict.get('default',None)
+    
+    
+    @property
+    def dict_(self):
+        """The json dictionary for the EpSchemaProperty.
+        
+        :rtype: dict
+        
+        """
+        return self._dict
     
     
     @property
@@ -128,7 +152,7 @@ class EPSchemaProperty():
         :returns: The 'legacy_idd' field name of the property. 
         
         """
-        return self._epso._dict['legacy_idd']['field_info'][self._name]['field_name']
+        return self._epsot._dict['legacy_idd']['field_info'][self._name]['field_name']
     
 
     @property
@@ -142,15 +166,15 @@ class EPSchemaProperty():
         return self._dict.get('ip-units',None)
     
 
-    @property
-    def items(self):
-        """The items property of the schema property object.
+    # @property
+    # def items(self):
+    #     """The items property of the schema property object.
         
-        :returns: The 'items' dict, or None if not present.
-        :rtype: dict or None
+    #     :returns: The 'items' dict, or None if not present.
+    #     :rtype: dict or None
         
-        """
-        return self._dict.get('items',None)
+    #     """
+    #     return self._dict.get('items',None)
     
 
     @property
