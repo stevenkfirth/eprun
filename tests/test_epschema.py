@@ -3,7 +3,7 @@
 import unittest
 from pprint import pprint
 
-from eprun import EPSchema, EPEpJSON
+from eprun import EPSchema, EPInput
 
 
 class Test_EPSchema(unittest.TestCase):

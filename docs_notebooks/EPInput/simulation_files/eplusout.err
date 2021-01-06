@@ -1,0 +1,20 @@
+Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.05 07:40,
+   ** Warning ** CheckEnvironmentSpecifications: SimulationControl specified doing weather simulations; run periods for weather file specified; but no weather file specified.
+   ** Warning ** Weather Environment(s) requested, but no weather file found
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ** Severe  ** Weather Simulation requested, but no weather file attached.
+   ** Severe  ** GetNextEnvironment: Errors found in getting a new environment
+   **  Fatal  ** Error condition occurred.  Previous Severe Errors cause termination.
+   ...Summary of Errors that led to program termination:
+   ..... Reference severe error count=2
+   ..... Last severe error=GetNextEnvironment: Errors found in getting a new environment
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Terminated--Fatal Error Detected. 2 Warning; 2 Severe Errors; Elapsed Time=00hr 00min  0.65sec

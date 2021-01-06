@@ -127,8 +127,9 @@ The next section introduces the *eprun* package and gives more details and examp
    :caption: Reference - Input files:
    :hidden:
    
+   EPInput_class
    EPSchema_class   
-   EPEpJSON_class
+   
 
    
 

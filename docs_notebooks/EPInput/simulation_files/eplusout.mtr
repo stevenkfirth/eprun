@@ -1,0 +1,207 @@
+Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.05 07:40
+1,5,Environment Title[],Latitude[deg],Longitude[deg],Time Zone[],Elevation[m]
+2,8,Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],Hour[],StartMinute[],EndMinute[],DayType
+3,5,Cumulative Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],DayType  ! When Daily Meters Requested
+4,2,Cumulative Days of Simulation[],Month[]  ! When Monthly Meters Requested
+5,1,Cumulative Days of Simulation[] ! When Run Period Meters Requested
+6,1,Calendar Year of Simulation[] ! When Annual Meters Requested
+24,1,ExteriorLights:Electricity [J] !Hourly
+92,1,EnergyTransfer:Building [J] !Hourly
+80,1,EnergyTransfer:Facility [J] !Hourly
+End of Data Dictionary
+1,DENVER CENTENNIAL  GOLDEN   N ANN HTG 99% CONDNS DB,  39.74,-105.18,  -7.00,1829.00
+2,1,12,21, 0, 1, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 2, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 3, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 4, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 5, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 6, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 7, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 8, 0.00,60.00,WinterDesignDay
+24,4725000.0
+80,0.0
+92,0.0
+2,1,12,21, 0, 9, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,10, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,11, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,12, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,13, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,14, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,15, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,16, 0.00,60.00,WinterDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1,12,21, 0,17, 0.00,60.00,WinterDesignDay
+24,9450000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,18, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,19, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,20, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,21, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,22, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,23, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1,12,21, 0,24, 0.00,60.00,WinterDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+1,DENVER CENTENNIAL  GOLDEN   N ANN CLG 1% CONDNS DB=>MWB,  39.74,-105.18,  -7.00,1829.00
+2,1, 7,21, 0, 1, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 2, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 3, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 4, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 5, 0.00,60.00,SummerDesignDay
+24,14175000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 6, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 7, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 8, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0, 9, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,10, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,11, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,12, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,13, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,14, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,15, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,16, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,17, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,18, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,19, 0.00,60.00,SummerDesignDay
+24,0.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,20, 0.00,60.00,SummerDesignDay
+24,14175000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,21, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,22, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,23, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+2,1, 7,21, 0,24, 0.00,60.00,SummerDesignDay
+24,18900000.0
+80,0.0
+92,0.0
+End of Data
+ Number of Records Written=         144

@@ -5,4 +5,4 @@ from .epend import EPEnd
 from .eperr import EPErr
 from .epeso import EPEso
 from .epschema import EPSchema
-from .epepjson import EPEpJSON
+from .epinput import EPInput
