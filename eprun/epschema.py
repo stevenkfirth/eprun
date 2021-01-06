@@ -26,6 +26,8 @@ class EPSchema():
        9.4.0
        >>> print(len(s.get_object_types()))
        815
+       >>> print(s.get_object_types()[0])
+       EPSchemaObjectType(name="Version")
        
     .. seealso::
     
@@ -114,30 +116,6 @@ class EPSchema():
             result.append(self.get_object_type(x))
         return result
         
-    
-    # @property
-    # def object_groups(self):
-    #     """The object groups in the schema.
-        
-    #     :returns: This looks through the object names and returns the groups 
-    #         to the left of the last colon.
-    #         If an object name does not have a colon then it is not included here.
-    #     :rtype: list
-        
-    #     :Example:
-        
-    #     .. code-block:: python
-               
-    #        >>> from eprun import EPSchema
-    #        >>> s=EPSchema(fp='Energy+.schema.epJSON')
-    #        >>> print(s.object_groups[0])
-    #        WindowMaterial:Blind
-    #        >>> print(len(so.object_groups))
-    #        263
-        
-    #     """
-    #     return list({':'.join(x.split(':')[:-1]) for x in self.object_names if ':' in x})
-    
     
     @property
     def object_type_names(self):

@@ -5,7 +5,7 @@ EPSchema class
    :hidden:
    :maxdepth: 1
    
-   EPSchemaObject_class
+   EPSchemaObjectType_class
  
 
 .. autoclass:: eprun.epschema.EPSchema

@@ -30,7 +30,7 @@ class EPSchemaObjectType():
     
     def __repr__(self):
         ""
-        return 'EPSchemaObject(name="%s")' % (self.name)
+        return 'EPSchemaObjectType(name="%s")' % (self.name)
     
     
     @property

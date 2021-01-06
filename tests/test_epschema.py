@@ -28,42 +28,38 @@ class Test_EPSchema(unittest.TestCase):
                          '998c4b761e')
         
         
-    def test_get_object(self):
+    def test_dict_(self):
         ""
-        o=s.get_object('Version')
+        self.assertIsInstance(s.dict_,
+                              dict)
+        
+        
+    def test_get_object_type(self):
+        ""
+        o=s.get_object_type('Version')
         #print(o)
         self.assertEqual(str(o),
-                         'EPSchemaObject(name="Version")')
+                         'EPSchemaObjectType(name="Version")')
         
         
-    def test_get_objects(self):
+    def test_get_object_types(self):
         ""
-        objs=s.get_objects()
+        objs=s.get_object_types()
         #print(objs)
         self.assertEqual(len(objs),
                          815)
         self.assertEqual(str(objs[0]),
-                         'EPSchemaObject(name="Version")')
+                         'EPSchemaObjectType(name="Version")')
 
     
-    def test_object_names(self):
+    def test_object_type_names(self):
         ""
-        names=s.object_names
+        names=s.object_type_names
         #print(len(names))
         self.assertEqual(len(names),
                          815)
         self.assertEqual(names[0],
                          'Version')
-        
-        
-    def test_object_groups(self):
-        ""
-        groups=s.object_groups
-        #print(groups)
-        self.assertEqual(len(groups),
-                         263)
-        self.assertEqual(groups[0],
-                         'ThermostatSetpoint:ThermalComfort:Fanger')
         
         
     def test_required(self):
@@ -75,7 +71,7 @@ class Test_EPSchema(unittest.TestCase):
         
     def test_validate_epjson(self):
         ""
-        j=EPEpJSON(fp='files/1ZoneUncontrolled.epJSON')
+        j=EPInput(fp='files/1ZoneUncontrolled.epJSON')
         s.validate_epjson(j._dict)
         
         
