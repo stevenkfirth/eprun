@@ -23,7 +23,7 @@ class Test_EPInput(unittest.TestCase):
         s=EPSchema(fp='files/Energy+.schema.epJSON')
         i=EPInput(fp='files/1ZoneUncontrolled.idf',
                   schema=s)
-        pprint(i._dict)  ### NEED TO CONVERT STRINGS TO NUMBERS ###
+        pprint(i._dict)
         
     
         

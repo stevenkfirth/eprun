@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 
 import jsonschema
+import collections
 
 from .epschema_property import EPSchemaProperty
 
 
-class EPSchemaObjectType():
+class EPSchemaObjectType(collections.abc.Mapping):
     """A class representing an object in a EnergyPlus .schema.epJSON file.
+    
+    An EPSchemaObectType can act as a dictionary to access its properties and values.
+    For example it has the `keys <dict.keys>`, `values <dict.values>` and 
+    `items <dict.items>` attributes.
     
     .. note::
         
-       An EPSchemaObject instance is returned as the result of the `EPSchema.get_object_type` function.
+       An EPSchemaObjectType instance is returned as the result of the `EPSchema.get_object_type` function.
        It should not be instantiated directly.
     
     .. rubric:: Code Example
@@ -34,8 +39,30 @@ class EPSchemaObjectType():
         EPSchemaProperty(name="solar_distribution"), 
         EPSchemaProperty(name="maximum_number_of_warmup_days"), 
         EPSchemaProperty(name="minimum_number_of_warmup_days")]
+       >>> print(list(ot.keys()))
+       ['patternProperties', 'name', 'legacy_idd', 'type', 'minProperties', 
+        'maxProperties', 'memo', 'min_fields']
+       >>> print(ot['memo'])
+       Describes parameters that are used during the simulation of the building. 
+       There are necessary correlations between the entries for this object and 
+       some entries in the Site:WeatherStation and Site:HeightVariation objects, 
+       specifically the Terrain field.
        
     """
+    def __getitem__(self,key):
+        ""
+        return self._dict[key]
+        
+    
+    def __iter__ (self):
+        ""
+        return iter(self._dict)
+        
+    
+    def __len__ (self):
+        ""
+        return len(self._dict)
+    
     
     def __repr__(self):
         ""
@@ -49,18 +76,6 @@ class EPSchemaObjectType():
     
     
     @property
-    def additional_properties(self):
-        """The value of the 'additionalProperties' key of the EPSchemaObjectType.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: dict or bool 
-        
-        """
-        return self._dict['additionalProperties']
-    
-    
-    @property
     def dict_(self):
         """The json dictionary for the EPSchemaObjectType.
         
@@ -68,30 +83,6 @@ class EPSchemaObjectType():
         
         """
         return self._dict
-    
-    
-    @property
-    def extensible_size(self):
-        """The value of the 'extensible_size' key of the EPSchemaObjectType.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: int or float   
-        
-        """
-        return self._dict['extensible_size']
-    
-    
-    @property
-    def format_(self):
-        """The value of the 'format' key of the EPSchemaObject.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: str     
-        
-        """
-        return self._dict['format']
     
     
     @property
@@ -138,42 +129,6 @@ class EPSchemaObjectType():
 
     
     @property
-    def max_properties(self):
-        """The value of the 'maxProperties' key of the EPSchemaObjectType.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: int     
-        
-        """
-        return self._dict.get('maxProperties',None)
-    
-    
-    @property
-    def memo(self):
-        """The memo of the schema object.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: str   
-        
-        """
-        return self._dict['memo']
-    
-    
-    @property
-    def min_properties(self):
-        """The value of the 'minProperties' key  of the EPSchemaObjectType.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: str      
-        
-        """
-        return self._dict['minProperties']
-    
-    
-    @property
     def name(self):
         """The name of the EPSchemaObjectType.
         
@@ -181,18 +136,6 @@ class EPSchemaObjectType():
         
         """
         return self._name
-    
-    
-    @property
-    def name_property(self):
-        """The value of the 'name' key  of the EPSchemaObjectType.
-        
-        :raises KeyError: If the key does not exist.
-        
-        :rtype: dict
-                   
-        """
-        return self._dict['name']
     
     
     @property

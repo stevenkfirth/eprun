@@ -10,7 +10,7 @@ from .epepjson_object_type import EPEpJSONObjectType
 
 
 class EPInput():
-    """A class for an EnergyPlus i.idf or .epJSON input file.
+    """A class for an EnergyPlus .idf or .epJSON input file.
     
     :param fp: The filepath of an .idf or .epJSON file.
         This can be relative or absolute.
@@ -98,7 +98,7 @@ class EPInput():
         
     
     def _parse_idf(self,st):
-        """Parses an idf string and returns a dictionary similar to the .epJSON dict
+        """Parses an idf string and returns a dictionary equivalent to the .epJSON dict
         
         :param st: A string of the entire .idf file
         :type st: str
@@ -106,12 +106,46 @@ class EPInput():
         :rtype: dict
         
         """
+        def _convert_arg_to_value(arg,schema_property_object):
+            ""
+            p=schema_property_object
+            try:
+                type_=p['type'] # schema property has a 'type' property
+            
+                if type_=='number':
+                    
+                    if arg=='':
+                        raise ValueError()
+                    else:
+                        value=float(arg)
+                
+                elif type_=='string':
+                    
+                    value=arg
+                    
+                else:
+                    
+                    raise Exception()
+                
+                
+            except KeyError: # schema property does not have a 'type' property
+                
+                if 'anyOf' in p:
+                    
+                    try:
+                        value=float(arg)
+                    except ValueError:
+                        value=arg
+                        
+                else:
+                    
+                    raise Exception()
+                
+            return value
+        
         #print(st.encode())
         
         # removes the comments
-        x=re.findall(r'!.*\n',st)
-        #print(x)
-        
         st=re.sub(r'!.*\n','',st)
         #print(st)
         
@@ -131,23 +165,20 @@ class EPInput():
         d={}
         for object_type,*args in b:
             
-            # get object type
-            object_type=object_type
-            #print('object_type',object_type)
+            print('object_type:',object_type)
             
             # get schema objects
-            schema_object_type=self.schema.get_object(object_type)
-            schema_name=schema_object_type.get_name()
-            fields=schema_object_type.fields
+            schema_object_type=self.schema.get_object_type(object_type)
+            legacy_idd_fields=schema_object_type.legacy_idd_fields
             property_names=schema_object_type.property_names
             
             # adjustments if object has a defined name in the schema
-            if schema_name is None:
-                object_name=uuid4()
-            else:
+            if 'name' in schema_object_type:
                 object_name=args[0]
                 args=args[1:]
-                fields=fields[1:]
+                legacy_idd_fields=legacy_idd_fields[1:]
+            else:
+                object_name=uuid4()
                 
             #print('object_name',object_name)
             #print('args',args)
@@ -158,26 +189,57 @@ class EPInput():
             properties={}
             i=0
             while i<len(args):
+                
                 try:
-                    properties[fields[i]]=args[i]
+                    
+                    # get property value and key
+                    arg=args[i]
+                    legacy_idd_field=legacy_idd_fields[i] # this will raise the IndexError is the object is 'extensible'
+                    
+                    #print('arg:',arg)
+                    #print('legacy_idd_field:',legacy_idd_field)
+                    
+                    # get schema property object
+                    p=schema_object_type.get_property(legacy_idd_field)
+                    
+                    try:
+                        value=_convert_arg_to_value(arg, p)
+                        properties[legacy_idd_field]=value
+                    except ValueError:
+                        pass
+                    
                     i+=1
+                    
                     
                 except IndexError: # if the object includes extensible properties
                     
-                    p=schema_object_type.get_property(property_names[-1])
-                    #print(p)
-                    #print(p._dict)
+                    # get extensible property name
+                    property_name=property_names[-1] 
+                
+                    #print('property_name', property_name)
+                    
+                    # get schema property object
+                    p=schema_object_type.get_property(property_name)
                     
                     d1=properties.setdefault(p.name,[])
                     
                     d2={}
-                    for k in p.items['properties']:
-                        d2[k]=args[i]
+                    for k,v in p['items']['properties'].items():
+                        
+                        if v['type']=='number':
+                            value=float(args[i])  
+                        elif v['type']=='string':
+                            value=args[i]
+                        else:
+                            raise Exception()
+                        #print('value',value)
+                        
+                        
+                        d2[k]=value
                         i+=1
                     
                     d1.append(d2)
-                    
-                    #print('properties',properties)
+                
                      
             #print('properties',properties)
             
@@ -194,28 +256,28 @@ class EPInput():
         
     
     
-    def _get_schema(self,schema=None):
-        """Returns the schema to be used in a validation method
+    # def _get_schema(self,schema=None):
+    #     """Returns the schema to be used in a validation method
         
-        :param schema: The schema for the epJSON file. 
-            Optional. If used then validation will be done on against this schema.
-        :type schema: EPSchema
+    #     :param schema: The schema for the epJSON file. 
+    #         Optional. If used then validation will be done on against this schema.
+    #     :type schema: EPSchema
         
-        :returns: If `schema` is provided, then this is returned. 
-            If not, then if the object was initialized with a schema then this schema is returned.
-            Else `None` is returned.
+    #     :returns: If `schema` is provided, then this is returned. 
+    #         If not, then if the object was initialized with a schema then this schema is returned.
+    #         Else `None` is returned.
             
-        :rtype: EPSchema or None
+    #     :rtype: EPSchema or None
         
-        """
-        if not schema is None:
-            return schema
+    #     """
+    #     if not schema is None:
+    #         return schema
         
-        elif not self._schema is None:
-            return self._schema
+    #     elif not self._schema is None:
+    #         return self._schema
         
-        else:
-            return None
+    #     else:
+    #         return None
         
     
     def get_object_type(self,
@@ -232,7 +294,7 @@ class EPInput():
         
         schema=self._get_schema(schema)
         if not schema is None: # if a schema exists
-            if not name in schema.object_names:
+            if not name in schema.object_type_names:
                 raise IndexError('Object type name "%s" does not exist in schema.' % name)
             
         ot=EPEpJSONObjectType()
@@ -288,8 +350,12 @@ class EPInput():
     
     @schema.setter
     def schema(self,value):
-        ""
-        self._schema=schema
+        """
+        :param value:
+        :type value: EPSchema
+
+        """
+        self._schema=value
         
     
     @property

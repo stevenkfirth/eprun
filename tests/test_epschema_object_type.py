@@ -9,15 +9,13 @@ from eprun import EPSchema
 
 class Test_EPSchemaObjectType(unittest.TestCase):
     ""
-    
-    
-        
-    def test_additional_properties(self):
+
+    def test___init__(self):
         ""
-        so=s.get_object_type('ZoneCapacitanceMultiplier:ResearchSpecial')
-        self.assertEqual(so.additional_properties,
-                         False)
-        
+        so=s.get_object_type('Version')
+        self.assertEqual(list(so.keys()),
+                         ['patternProperties', 'legacy_idd', 'type', 'maxProperties', 'memo', 'format'])
+
         
     def test_dict_(self):
         ""
@@ -26,25 +24,11 @@ class Test_EPSchemaObjectType(unittest.TestCase):
                               dict)
         
         
-    def test_extensible_size(self):
-        ""
-        so=s.get_object_type('ShadowCalculation')
-        self.assertEqual(so.extensible_size,
-                         1.0)
-        
-        
     def test_legacy_idd_fields(self):
         ""
         so=s.get_object_type('Version')
         self.assertEqual(so.legacy_idd_fields,
                          ['version_identifier'])
-        
-        
-    def test_format(self):
-        ""
-        so=s.get_object_type('Version')
-        self.assertEqual(so.format_,
-                         'singleLine')
         
         
     def test_get_properties(self):
@@ -61,42 +45,12 @@ class Test_EPSchemaObjectType(unittest.TestCase):
                          'EPSchemaProperty(name="version_identifier")')
         
         
-    def test_max_properties(self):
-        ""
-        so=s.get_object_type('Version')
-        self.assertEqual(so.max_properties,
-                         1)
-        
-    
-    def test_memo(self):
-        ""
-        so=s.get_object_type('Version')
-        self.assertEqual(so.memo,
-                         'Specifies the EnergyPlus version of the IDF file.')
-        
-        
-    def test_min_properties(self):
-        ""
-        so=s.get_object_type('Building')
-        self.assertEqual(so.min_properties,
-                         1)
-        
-        
     def test_name(self):
         ""
         so=s.get_object_type('Version')
         self.assertEqual(so.name,
                          'Version')
-        
-        
-    def test_name_property(self):
-        ""
-        so=s.get_object_type('Building')
-        self.assertEqual(so.name_property,
-                         {'type': 'string', 
-                          'retaincase': True, 
-                          'default': 'NONE'})
-        
+    
         
     def test_pattern_properties_regexes(self):
         ""
