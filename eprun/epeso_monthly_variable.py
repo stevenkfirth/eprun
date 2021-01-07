@@ -12,7 +12,7 @@ class EPEsoMonthlyVariable():
     .. note::
         
        An EPEsoMonthlyVariable instance is returned as the result of 
-       the `get_monthly_variable` or `get_monthly_variables` function.
+       the `get_monthly_variable` or `get_monthly_variables` methods.
        It should not be instantiated directly.
     
     .. rubric:: Code Example

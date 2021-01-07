@@ -10,7 +10,7 @@ class EPEsoDailyPeriods():
     .. note::
         
        An EPEsoDailyPeriods instance is returned as the result of 
-       the `get_daily_periods` function.
+       the `get_daily_periods` method.
        It should not be instantiated directly.
     
     .. rubric:: Code Example

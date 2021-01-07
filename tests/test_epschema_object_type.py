@@ -104,8 +104,14 @@ class Test_EPSchemaObjectType(unittest.TestCase):
                           building)
         # jsonschema.exceptions.ValidationError: 'my_building' is not of type 'object'
         
+        # the schema does not have required properties
         building={'my_building':{}}
         so.validate_object(building)
+        
+        # the schema does not restrict additional properties
+        building={'my_building':{'ABC':'abc'}}
+        so.validate_object(building)
+        
         
         
 if __name__=='__main__':

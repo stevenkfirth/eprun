@@ -151,6 +151,19 @@ class EPSchema():
         except jsonschema.exceptions.ValidationError as err:
             raise jsonschema.exceptions.ValidationError(str(err).split('\n')[0])  
         
+        
+    def validate_object_type_name(self,object_type_name):
+        """Validates an object type name
+        
+        :param object_type_name: The object type name.#
+        :type object_type_name: str
+        
+        :raises IndexError: If the supplied name is not a valid object type name
+        
+        """
+        if not object_type_name in self.object_type_names:
+            raise IndexError ('"%s" is not a valid object type name' % object_type_name)
+        
     
     @property
     def version(self):

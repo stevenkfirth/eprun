@@ -6,7 +6,7 @@ import os
 import re
 from uuid import uuid4
 
-from .epepjson_object_type import EPEpJSONObjectType
+from .epinput_object import EPInputObject
 
 
 class EPInput():
@@ -16,49 +16,61 @@ class EPInput():
         This can be relative or absolute.
         Optional, if not supplied then a blank EPInput object is returned.
     :type fp: str
+    :param schema: The schema for the epJSON file. 
+        Optional, but required for parsing an .idf file and for validation.
+    :type schema: EPSchema
     
-    ..
-      :param schema: The schema for the epJSON file. 
-              Optional. If used then validation will be done using this schema.
-      :type schema: EPSchema
+    .. note::
+    
+       This class assumes that all the EnergyPlus input objects in the .idf or .epJSON file 
+       have unique names.
     
     .. rubric:: Code Example
         
     .. code-block:: python
            
-       >>> from eprun import EPEpJSON
-       >>> epinput=EPInput(fp='1ZoneUncontrolled.idf')
-       >>> print(input)
-       EPInput(fp="1ZoneUncontrolled.idf")
-       >>> print(j.object_type_names)
-       ['Building', 
-        'BuildingSurface:Detailed', 
-        'Construction', 
-        'Exterior:Lights', 
-        'GlobalGeometryRules', 
-        'HeatBalanceAlgorithm', 
-        'Material', 
-        'Material:NoMass', 
-        'OtherEquipment', 
-        'Output:Constructions', 
-        'Output:Meter:MeterFileOnly', 
-        'Output:Surfaces:Drawing', 
-        'Output:Table:SummaryReports', 
-        'Output:Variable', 
-        'Output:VariableDictionary', 
-        'OutputControl:Table:Style', 
-        'RunPeriod', 
-        'Schedule:Constant', 
-        'ScheduleTypeLimits', 
-        'SimulationControl', 
-        'Site:Location', 
-        'SizingPeriod:DesignDay', 
-        'SurfaceConvectionAlgorithm:Inside', 
-        'SurfaceConvectionAlgorithm:Outside', 
-        'Timestep', 
-        'Version', 
-        'Zone']
- 
+       >>> from eprun import EPInput
+       >>> epinput=EPInput(fp='1ZoneUncontrolled.json')
+       >>> print(type(epinput))
+       <class 'eprun.epinput.EPInput'>
+       >>> print(epinput.summary)
+       {'Building': 1, 
+        'BuildingSurface:Detailed': 6, 
+        'Construction': 3, 
+        'Exterior:Lights': 1, 
+        'GlobalGeometryRules': 1, 
+        'HeatBalanceAlgorithm': 1, 
+        'Material': 1, 
+        'Material:NoMass': 2, 
+        'OtherEquipment': 2, 
+        'Output:Constructions': 1, 
+        'Output:Meter:MeterFileOnly': 3, 
+        'Output:Surfaces:Drawing': 1, 
+        'Output:Table:SummaryReports': 1, 
+        'Output:Variable': 14, 
+        'Output:VariableDictionary': 1, 
+        'OutputControl:Table:Style': 1, 
+        'RunPeriod': 1, 
+        'Schedule:Constant': 1, 
+        'ScheduleTypeLimits': 2, 
+        'SimulationControl': 1, 
+        'Site:Location': 1, 
+        'SizingPeriod:DesignDay': 2, 
+        'SurfaceConvectionAlgorithm:Inside': 1, 
+        'SurfaceConvectionAlgorithm:Outside': 1, 
+        'Timestep': 1, 
+        'Version': 1, 
+        'Zone': 1}
+       >>> print(epinput.get_objects('Building'))
+       [EPInputObject(name="Simple One Zone (Wireframe DXF)")]
+       >>> print(epinput.get_object('Simple One Zone (Wireframe DXF)'))
+       EPInputObject(name="Simple One Zone (Wireframe DXF)")
+       >>> print(epinput['Building'])
+       {'Simple One Zone (Wireframe DXF)': EPInputObject(name="Simple One Zone (Wireframe DXF)")}
+       >>> print(epinput['Building']['Simple One Zone (Wireframe DXF)'])
+       EPInputObject(name="Simple One Zone (Wireframe DXF)")
+       
+       
     .. seealso::
     
        EnergyPlus Essentials, page 19.
@@ -73,12 +85,9 @@ class EPInput():
         
         self._fp=fp
         self._schema=schema
-        
-        
-        if fp is None:
-            self._dict={}
+        self._dict={}
             
-        elif os.path.splitext(fp)[1]=='.epJSON':
+        if os.path.splitext(fp)[1]=='.epJSON':
             with open(fp,'r') as f:
                 self._dict=json.load(f)
                 
@@ -89,13 +98,27 @@ class EPInput():
                 
         
     def __getitem__(self,key):
-        """Returns the object type with name = key
+        """Returns the objects with object_type = key
         
-        :rtype: EPEpJSONObjectType
+        :rtype: dict (str,EPInputObject)
         
         """
-        return self.get_object_type(key)
-        
+        return self.get_objects(key)
+    
+
+    def _get_object_type(self,object_name):
+        ""
+        for object_type in self.object_types:
+            object_type_dict=self._get_object_type_dict(object_type)
+            if object_name in object_type_dict:
+                return object_type
+        raise KeyError('The object name does not exist in the EPInput object')
+    
+    
+    def _get_object_type_dict(self,object_type):
+        ""
+        return self._dict[object_type]
+    
     
     def _parse_idf(self,st):
         """Parses an idf string and returns a dictionary equivalent to the .epJSON dict
@@ -165,7 +188,7 @@ class EPInput():
         d={}
         for object_type,*args in b:
             
-            print('object_type:',object_type)
+            #print('object_type:',object_type)
             
             # get schema objects
             schema_object_type=self.schema.get_object_type(object_type)
@@ -253,68 +276,113 @@ class EPInput():
         
         return d
         
-        
     
-    
-    # def _get_schema(self,schema=None):
-    #     """Returns the schema to be used in a validation method
+    def get_object(self,
+                   name,
+                   object_type=None):
+        """Returns an EPInputObject from the EPInput object.
         
-    #     :param schema: The schema for the epJSON file. 
-    #         Optional. If used then validation will be done on against this schema.
-    #     :type schema: EPSchema
-        
-    #     :returns: If `schema` is provided, then this is returned. 
-    #         If not, then if the object was initialized with a schema then this schema is returned.
-    #         Else `None` is returned.
+        .. note::
             
-    #     :rtype: EPSchema or None
+           Specifying the 'object_type' will reduce the execution time of 
+           this method.    
         
-    #     """
-    #     if not schema is None:
-    #         return schema
-        
-    #     elif not self._schema is None:
-    #         return self._schema
-        
-    #     else:
-    #         return None
-        
-    
-    def get_object_type(self,
-                        name,
-                        schema=None):
-        """Returns an object type in the .epJSON file.
-        
-        :param name: The name of the object type.
+        :param name: The name of the EPInputObject.
         :type name: str
-    
-        :rtype: EPEpJSONObjectType
+        :param object_type: The object type of the EPInputObject.
+            Optional. 
+        :type object_type: str
+        
+        :raises KeyError: If an EPInputObject with 'name' 
+            (and with 'object_type_name' if specified)
+            does not exist in the EPInput object.
+        
+        :rtype: EPInputObject
         
         """
-        
-        schema=self._get_schema(schema)
-        if not schema is None: # if a schema exists
-            if not name in schema.object_type_names:
-                raise IndexError('Object type name "%s" does not exist in schema.' % name)
-            
-        ot=EPEpJSONObjectType()
-        ot._epjson=self
-        ot._name=name
-        return ot
-        
-        
-    def get_object_types(self):
-        """Returns the object types in the .epJSON file.
     
+        if object_type is None:
+            
+            try:
+                object_type=self._get_object_type(name)
+            except KeyError:
+                raise KeyError('There is no EPInputObject with name "%s" in the EPInput object' % (name))
+    
+        else:
+            
+            object_type_dict=self._get_object_type_dict(object_type)
+            
+            if not name in object_type_dict:
+                
+                raise KeyError('There is no EPInputObject with name "%s" and object_type "%s"' % (name,object_type))
+        
+        
+        o=EPInputObject()
+        o.__dict__['_epinput']=self
+        o.__dict__['_object_type']=object_type
+        o.__dict__['_name']=name
+        return o    
+    
+    
+    def get_object_names(self,object_type):
+        """Returns the object names for the specified object_type in the EPInput object.
+        
+        :param object_type: The object type name.
+        :type object_type: str
+        
         :rtype: list
         
         """
-        return [self.get_object_type(x) for x in self.object_type_names]
+        object_type_dict=self._get_object_type_dict(object_type)
+        return list(object_type_dict.keys())
+    
+    
+    def get_objects(self,object_type):
+        """Returns all EPInputObject instances for the specified object_type in the EPInput object.
+        
+        :param object_type: The object_type of the EPInputObjects.
+            :type object_type: str
+        
+        :returns: A dictionary keyed by the object name
+        :rtype: dict (str,EPInputObject)
+        
+        """
+        result={}
+        for object_name in self.get_object_names(object_type):
+            result[object_name]=self.get_object(object_name,object_type)
+        return result
+    
+    
+    @property
+    def object_names(self):
+        """The object names in the EPInput object.
+        
+        :rtype: list (str)
+        
+        """
+        result=[]
+        for object_type in self.object_types:
+            result+=self.get_object_names(object_type)
+        return result
         
     
     @property
-    def object_type_names(self):
-        """The object type names in the .epJSON file.
+    def objects(self):
+        """The EPInputObject objects in the EPInput object.
+        
+        :returns: A dictionary keyed by the object name
+        :rtype: dict (str,EPInputObject)
+        
+        """
+        result={}
+        for object_type in self.object_types:
+            result.update(self.get_objects(object_type))
+        return result
+        
+
+    @property
+    def object_types(self):
+        """The object type names in the EPInput object.
         
         :rtype: list
         
@@ -322,15 +390,88 @@ class EPInput():
         return list(self._dict.keys())
     
     
-    def remove_object_type(self,name):
-        """Removes the object type and all associated objects from the .epJSON file.
+    def remove_object(self,
+                      name,
+                      object_type=None):
+        """Removes an EPInputObject from the EPInput object.
         
-        :param name: The name of the object type.
+        .. note::
+            
+           Specifying the 'object_type' will reduce the execution time of 
+           this method. 
+           
+        :param name: The name of the EPInputObject.
         :type name: str
+        :param object_type: The object type of the EPInputObject.
+            Optional. 
+        :type object_type: str
+        
+        :raises KeyError: If an EPInputObject with 'name' 
+            (and with 'object_type_name' if specified)
+            does not exist in the EPInput object.
         
         """
-        del self._dict[name]
     
+        if object_type is None:
+            
+            try:
+                object_type=self._get_object_type(name)
+            except KeyError:
+                raise KeyError('There is no EPInputObject with name "%s" in the EPInput object' % (name))
+    
+        # remove object
+        object_type_dict=self._get_object_type_dict(object_type)
+        del object_type_dict[name]
+        
+        # if object was the last one of the object_type, then remove the 
+        #    object_type from the json dict.
+        if len(object_type_dict)==0:
+            del self._dict[object_type]
+            
+            
+    def set_object(self,
+                   name,
+                   object_type,
+                   validate=True,
+                   **kwargs):
+        """Adds a new EPInputObject to the EPInput object.
+        
+        :param name: The name of the EPInputObject.
+        :type name: str
+        :param object_type: The object type of the EPInputObject.
+        :type object_type: str
+        :param validate: If True then validation of the new EPInputObject is 
+            carried out using the schema.
+        :type validation: bool
+        :param kwargs: The key:value properties of the EPInputObject.
+        
+        :returns: The newly created EPInputObject instance.
+        :rtype: EPInputObject
+        
+        """
+        if validate:
+            
+            # validate the object_type name
+            self.schema.validate_object_type_name(object_type)
+        
+            # # validate the object properties
+            # obj_dict={name:kwargs}
+            # self.schema.get_object_type(object_type).validate_object(obj_dict)
+        
+        
+        object_type_dict=self._dict.setdefault(object_type,{})
+        object_type_dict[name]={}
+        
+        o=self.get_object(name,object_type)
+        
+        try:
+            for k,v in kwargs.items():
+                o.set_property_value(k,v,validate=validate)
+        except ValueError as err:
+            self.remove_object(name,object_type)
+            raise ValueError(err)
+        
+        
     
     @property
     def schema(self):
@@ -368,31 +509,15 @@ class EPInput():
         return {k:len(v.keys()) for k,v in self._dict.items()}
         
     
-    def validate(self,schema=None):
-        """Validates the .epJSON file against a schema.
+    def validate(self):
+        """Validates the .epJSON file against the schema.
         
-        :param schema: The schema for the epJSON file. 
-            Optional. If used then validation will be done on against this schema.
-        :type schema: EPSchema
-        
-        :raises: Exception - if no schema is present to validate against.
-        :raises: jsonschema.exceptions.ValidationError if the .epJSON file is not valid against the schema.
-        
-        .. note::
-        
-           Schema validation occurs in two cases:
-           1. A EPSchema instance is supplied to this method using the ``schema`` argument;
-           2. The :py:class:`~eprun.epepjson.EPEpJSON` object was initiated with an EPSchema instance.
-        
+        :raises Exception: If no schema is present to validate against.
+        :raises jsonschema.exceptions.ValidationError: If the EPInput object is not valid against the schema.
         
         """
-        schema=self._get_schema(schema)
-        
-        try:
-            schema.validate_epjson(self._dict)
-        except AttributeError:
-            raise Exception('No schema is set - please provide a schema to validate against')
-        
+        schema=self.schema
+        schema.validate_epjson(self._dict)
         
         
     def write(self,fp):

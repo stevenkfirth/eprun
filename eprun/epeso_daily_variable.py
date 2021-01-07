@@ -11,7 +11,7 @@ class EPEsoDailyVariable():
     .. note::
         
        An EPEsoDailyVariable instance is returned as the result of 
-       the `get_daily_variable` or `get_daily_variables` function.
+       the `get_daily_variable` or `get_daily_variables` methods.
        It should not be instantiated directly.
     
     .. rubric:: Code Example

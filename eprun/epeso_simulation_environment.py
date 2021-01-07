@@ -22,7 +22,7 @@ class EPEsoSimulationEnvironment():
     .. note::
         
        An EPEsoSimulationEnvironment instance is returned as the result of 
-       the `get_environment` or `get_environments` function.
+       the `get_environment` or `get_environments` methods.
        It should not be instantiated directly.
     
     .. rubric:: Code Example

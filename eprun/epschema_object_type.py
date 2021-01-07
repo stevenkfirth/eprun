@@ -15,7 +15,8 @@ class EPSchemaObjectType(collections.abc.Mapping):
     
     .. note::
         
-       An EPSchemaObjectType instance is returned as the result of the `EPSchema.get_object_type` function.
+       An EPSchemaObjectType instance is returned as the result of the 
+       `EPSchema.get_object_type` method.
        It should not be instantiated directly.
     
     .. rubric:: Code Example

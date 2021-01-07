@@ -5,7 +5,7 @@ EPInput class
    :hidden:
    :maxdepth: 1
 
-   EPEpJSONObjectType_class
+   EPInputObject_class
 
 .. autoclass:: eprun.epinput.EPInput
    :members:

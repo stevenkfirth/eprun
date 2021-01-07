@@ -75,6 +75,16 @@ class Test_EPSchema(unittest.TestCase):
         s.validate_epjson(j._dict)
         
         
+    def test_validate_object_type_name(self):
+        ""
+        s.validate_object_type_name('Building')
+        
+        self.assertRaises(IndexError,
+                          s.validate_object_type_name,
+                          'ABC')
+        
+        
+        
     def test_version(self):
         ""
         v=s.version

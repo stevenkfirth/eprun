@@ -11,7 +11,7 @@ class EPEsoMonthlyPeriods():
     .. note::
         
        An EPEsoMonthlyPeriods instance is returned as the result of 
-       the `get_monthly_periods` function.
+       the `get_monthly_periods` method.
        It should not be instantiated directly.
     
     .. rubric:: Code Example

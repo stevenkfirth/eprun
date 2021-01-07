@@ -10,7 +10,7 @@ class EPEsoIntervalVariable():
     .. note::
         
        An EPEsoIntervalVariable instance is returned as the result of 
-       the `get_interval_variable` or `get_interval_variables` function.
+       the `get_interval_variable` or `get_interval_variables` methods.
        It should not be instantiated directly.
     
     .. rubric:: Code Example
