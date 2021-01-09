@@ -87,6 +87,26 @@ class EPSchemaObjectType(collections.abc.Mapping):
     
     
     @property
+    def legacy_idd_extensibles(self):
+        """The 'legacy_idd' extensibles of the EPSchemaObjectType.
+        
+        :rtype: list (str)
+        
+        """
+        return self._dict['legacy_idd']['extensibles']
+    
+    
+    @property
+    def legacy_idd_extension(self):
+        """The 'legacy_idd' extension of the EPSchemaObjectType.
+        
+        :rtype: str
+        
+        """
+        return self._dict['legacy_idd']['extension']
+    
+    
+    @property
     def legacy_idd_fields(self):
         """The 'legacy_idd' fields of the EPSchemaObjectType.
         

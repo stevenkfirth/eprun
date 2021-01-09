@@ -289,9 +289,15 @@ class Test_EPInput(unittest.TestCase):
         # "jsonschema.exceptions.ValidationError: 'Building' is a required property"
         
         
-    def test_write(self):
+    def test_write_json(self):
         ""
-        j.write('test.epJSON')
+        j.write_json('test.epJSON')
+        
+        
+    def test_write_idf(self):
+        ""
+        j.write_idf('test.idf')
+    
         
         
     

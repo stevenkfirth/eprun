@@ -520,16 +520,71 @@ class EPInput():
         schema.validate_epjson(self._dict)
         
         
-    def write(self,fp):
-        """Writes to a .epJSON file.
+    def write_json(self,fp):
+        """Writes an .epJSON file.
         
-        :param fp: The filename.
+        :param fp: The filename including the .epJSON extension.
             This can be relative or absolute.
         :type fp: str
         
         """
         with open(fp,'w') as f:
             f.write(json.dumps(self._dict,indent=4))
+            
+            
+    def write_idf(self,fp):
+        """Writes an .idf file.
+        
+        :param fp: The filename including the .idf extension.
+            This can be relative or absolute.
+        :type fp: str
+        
+        """
+        idf=''
+        
+        for o in self.objects.values():
+            
+            print(o)
+            
+            # object type
+            schema_object_type=self.schema.get_object_type(o.object_type)
+            idf+='%s, ' % o.object_type
+            
+            # object name
+            legacy_idd_fields=schema_object_type.legacy_idd_fields
+            i=0
+            print(legacy_idd_fields)
+            if len(legacy_idd_fields)>0:
+                if legacy_idd_fields[0]=='name':
+                    idf+='%s, ' % o.name
+                    i=1
+                    
+            # legacy_idd_fields properties
+            if len(legacy_idd_fields)>0:
+                for field in legacy_idd_fields[i:]:
+                    try:
+                        idf+='%s, ' % o.get_property_value(field)
+                    except KeyError: # if property is not present, output ', '
+                        idf+=', '
+                    
+            # extension properties
+            try:
+                extension=schema_object_type.legacy_idd_extension
+            except KeyError:
+                extension=None
+            if extension:
+                extensibles=schema_object_type.legacy_idd_extensibles
+                for value in o.get_property_value(extension):
+                    for extensible in extensibles:
+                        idf+='%s, ' % value[extensible]
+                
+            idf=idf[:-2]+';\n'
+        
+        print(idf)
+        
+        # write to file
+        with open(fp,'w') as f:
+            f.write(idf)
         
         
         

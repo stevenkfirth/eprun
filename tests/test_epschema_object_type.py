@@ -24,6 +24,20 @@ class Test_EPSchemaObjectType(unittest.TestCase):
                               dict)
         
         
+    def test_legacy_idd_extensibles(self):
+        ""
+        so=s.get_object_type('BuildingSurface:Detailed')
+        self.assertEqual(so.legacy_idd_extensibles,
+                         ['vertex_x_coordinate', 'vertex_y_coordinate', 'vertex_z_coordinate'])
+        
+        
+    def test_legacy_idd_extension(self):
+        ""
+        so=s.get_object_type('BuildingSurface:Detailed')
+        self.assertEqual(so.legacy_idd_extension,
+                         'vertices')
+        
+        
     def test_legacy_idd_fields(self):
         ""
         so=s.get_object_type('Version')
