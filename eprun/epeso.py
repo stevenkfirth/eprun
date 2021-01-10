@@ -49,7 +49,7 @@ class EPEso():
 
     def __init__(self,fp):
         ""
-        programme_version_statement_flag=True # True if in his section
+        programme_version_statement_flag=True # True if in this section
         data_dictionary_flag=False # True if in this section
         data_flag=False # True if in this section
                 
