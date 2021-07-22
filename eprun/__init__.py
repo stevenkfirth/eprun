@@ -5,4 +5,5 @@ from .epend import EPEnd
 from .eperr import EPErr
 from .epeso import EPEso
 from .epschema import EPSchema
-from .epinput import EPInput
+from .epjson import EPJSON
+from .epjson import read_idf

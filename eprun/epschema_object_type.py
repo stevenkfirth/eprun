@@ -76,19 +76,21 @@ class EPSchemaObjectType(collections.abc.Mapping):
         return self._eps._dict['properties'][self.name]
     
     
-    @property
-    def dict_(self):
-        """The json dictionary for the EPSchemaObjectType.
+    # @property
+    # def dict_(self):
+    #     """The json dictionary for the EPSchemaObjectType.
         
-        :rtype: dict 
+    #     :rtype: dict 
         
-        """
-        return self._dict
+    #     """
+    #     return self._dict
     
     
     @property
     def legacy_idd_extensibles(self):
         """The 'legacy_idd' extensibles of the EPSchemaObjectType.
+        
+        :raises KeyError: If not present
         
         :rtype: list (str)
         
@@ -99,6 +101,8 @@ class EPSchemaObjectType(collections.abc.Mapping):
     @property
     def legacy_idd_extension(self):
         """The 'legacy_idd' extension of the EPSchemaObjectType.
+        
+        :raises KeyError: If not present
         
         :rtype: str
         

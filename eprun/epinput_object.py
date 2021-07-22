@@ -7,6 +7,8 @@ import collections.abc
 class EPInputObject(collections.abc.MutableMapping):
     """A class representing an EnergyPlus input object in an .idf or .epJSON file.
     
+    An EPInputObject is a MutableMapping, with methods similar to a dictionary.
+    
     .. note::
         
        An EPInputObject instance is returned as the result of the 
