@@ -43,6 +43,8 @@ def read_idf(idf,
         schema=jsonpi.JSONSchemaSchemaObject(schema_epJSON)
     elif isinstance(schema_epJSON,jsonpi.JSONSchemaSchemaObject):
         schema=schema_epJSON
+    else:
+        raise Exception
     #print(schema)
     
     # clean and format as a list
@@ -169,7 +171,7 @@ def read_idf(idf,
         # add object epjson
         epjson.setdefault(object_type,{})[object_name]=object_epjson
         
-    return epjson
+    return EPJSON(epjson,schema)
         
 
         
