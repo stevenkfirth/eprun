@@ -6,6 +6,6 @@ EPEso class
 
    EPEsoSimulationEnvironment_class
    
-.. autoclass:: eprun.epeso.EPEso
+.. autoclass:: eprun.eprun.EPEso
    :members:
    

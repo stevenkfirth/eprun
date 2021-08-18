@@ -3,6 +3,6 @@ EPEsoRunPeriodVariable class
 ============================
 
 
-.. autoclass:: eprun.epeso_runperiod_variable.EPEsoRunPeriodVariable
+.. autoclass:: eprun.eprun.EPEsoRunPeriodVariable
    :members:
    

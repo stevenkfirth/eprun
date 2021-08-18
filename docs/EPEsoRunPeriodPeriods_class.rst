@@ -2,5 +2,5 @@
 EPEsoRunPeriodPeriods class
 ===========================
 
-.. autoclass:: eprun.epeso_runperiod_periods.EPEsoRunPeriodPeriods
+.. autoclass:: eprun.eprun.EPEsoRunPeriodPeriods
    :members:

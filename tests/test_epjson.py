@@ -1,46 +1,51 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from pprint import pprint
-import os
-
-import jsonschema
 
 import eprun
-from eprun import EPJSON, read_idf
-from jsonpi import read_jsonschema
+from eprun import EPJSON, read_idf, read_epjson
+
+from pprint import pprint
+import os
+import jsonschema
+from jsonpi import read_json_schema
 
 fp_idf='files/1ZoneUncontrolled.idf'
 fp_epJSON='files/1ZoneUncontrolled.epJSON'
-fp_schema_epJSON='files/Energy+.schema.epJSON'
+fp_schema='files/Energy+.schema.epJSON'
 
+schema=read_json_schema(fp_schema)
 
+epjson=read_epjson(fp_epJSON,
+                   schema)
 
 
 class Test_read_idf(unittest.TestCase):
     ""
     
-    def _test_read_idf(self):
+    def test_read_idf(self):
         ""
-        epjson=read_idf(fp_idf,
-                        fp_schema_epJSON)
-
-        #print(epjson)
+        x=read_idf(fp_idf,
+                   schema)
+        self.assertIsInstance(x,
+                              EPJSON)
+        self.assertEqual(len(x),
+                         len(epjson))
         
         
-    def test_read_ep_example_file_idfs(self):
-        ""
-        example_files_dir=r'C:\EnergyPlusV9-4-0\ExampleFiles'
-        schema_fp=r'C:\EnergyPlusV9-4-0\Energy+.schema.epJSON'
-        schema=read_jsonschema(schema_fp)
-        files=[os.path.join(example_files_dir,x) for x in os.listdir(example_files_dir) 
-               if os.path.isfile(os.path.join(example_files_dir,x))]
-        files_idf=[x for x in files if os.path.splitext(x)[1]=='.idf']
+    # def test_read_ep_example_file_idfs(self):
+    #     ""
+    #     example_files_dir=r'C:\EnergyPlusV9-4-0\ExampleFiles'
+    #     schema_fp=r'C:\EnergyPlusV9-4-0\Energy+.schema.epJSON'
+    #     schema=read_jsonschema(schema_fp)
+    #     files=[os.path.join(example_files_dir,x) for x in os.listdir(example_files_dir) 
+    #            if os.path.isfile(os.path.join(example_files_dir,x))]
+    #     files_idf=[x for x in files if os.path.splitext(x)[1]=='.idf']
         
-        start=141
-        for i,idf_fp in enumerate(files_idf[141:]):
-            print(i+start, idf_fp)
-            d=read_idf(idf_fp,schema)
+    #     start=141
+    #     for i,idf_fp in enumerate(files_idf[141:]):
+    #         print(i+start, idf_fp)
+    #         d=read_idf(idf_fp,schema)
         
 
 
@@ -50,14 +55,52 @@ class Test_EPJSON(unittest.TestCase):
     
     def test___init__(self):
         ""
-        epjson=EPJSON(fp_epJSON,
-                      fp_schema_epJSON)
         self.assertIsInstance(epjson,
                               EPJSON)
         
-        #print(epjson.Building)
-        #print(epjson.Building['Simple One Zone (Wireframe DXF)'].north_axis)
         
+    def test_schema(self):
+        ""
+        self.assertEqual(epjson.schema(),
+                         schema)
+        
+        
+    def test_summary(self):
+        ""
+        self.assertEqual(epjson.summary(),
+                         {'Building': 1,
+                             'BuildingSurface:Detailed': 6,
+                             'Construction': 3,
+                             'Exterior:Lights': 1,
+                             'GlobalGeometryRules': 1,
+                             'HeatBalanceAlgorithm': 1,
+                             'Material': 1,
+                             'Material:NoMass': 2,
+                             'OtherEquipment': 2,
+                             'Output:Constructions': 1,
+                             'Output:Meter:MeterFileOnly': 3,
+                             'Output:Surfaces:Drawing': 1,
+                             'Output:Table:SummaryReports': 1,
+                             'Output:Variable': 14,
+                             'Output:VariableDictionary': 1,
+                             'OutputControl:Table:Style': 1,
+                             'RunPeriod': 1,
+                             'Schedule:Constant': 1,
+                             'ScheduleTypeLimits': 2,
+                             'SimulationControl': 1,
+                             'Site:Location': 1,
+                             'SizingPeriod:DesignDay': 2,
+                             'SurfaceConvectionAlgorithm:Inside': 1,
+                             'SurfaceConvectionAlgorithm:Outside': 1,
+                             'Timestep': 1,
+                             'Version': 1,
+                             'Zone': 1})
+        
+    
+
+    def test_write_json(self):
+        ""
+        epjson.write_json(r'files/test.epjson')
 
 
 
@@ -375,8 +418,5 @@ class Test_EPJSON(unittest.TestCase):
     
 if __name__=='__main__':
     
-
-    epjson=EPJSON(fp_epJSON,
-                  fp_schema_epJSON)
 
     unittest.main()

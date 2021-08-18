@@ -2,5 +2,5 @@
 EPEsoAnnualVariable class
 =========================
 
-.. autoclass:: eprun.epeso_annual_variable.EPEsoAnnualVariable
+.. autoclass:: eprun.eprun.EPEsoAnnualVariable
    :members:

@@ -4,8 +4,8 @@ Working with Errors
 1. Introduction
 ---------------
 
-Running an EnergyPlus simulation using the `eprun` function has the potential to raise a number of errors. 
-These can arise from a variety of sources including user input error for the `eprun` function arguments 
+Running an EnergyPlus simulation using the `runsim` function has the potential to raise a number of errors. 
+These can arise from a variety of sources including user input error for the `runsim` function arguments 
 and incorrectly specified EnergyPlus input files.
 
 The sections below demonstrate the different errors which can be encountered. 
@@ -13,7 +13,7 @@ This should help in identifying and solving the error.
 
 A summary of the errors listed below is:
 
-* The `eprun` function will raise a `FileNotFoundError` if the EnergyPlus install directory is specified incorrectly.
+* The `runsim` function will raise a `FileNotFoundError` if the EnergyPlus install directory is specified incorrectly.
 
 * EnergyPlus will run but fail with a `returncode` of '1' and generate no output files if:
 

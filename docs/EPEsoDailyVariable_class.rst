@@ -2,6 +2,6 @@
 EPEsoDailyVariable class
 ========================
 
-.. autoclass:: eprun.epeso_daily_variable.EPEsoDailyVariable
+.. autoclass:: eprun.eprun.EPEsoDailyVariable
    :members:
    

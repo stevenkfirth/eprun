@@ -6,11 +6,11 @@ A successful EnergyPlus simulation run will generate a series of EnergyPlus outp
 .. code-block:: python
    :lineno-start: 1
 
-   >>> from eprun import eprun
-   >>> result=eprun(ep_dir=r'C:\EnergyPlusV9-4-0',
-   >>>              input_filepath='1ZoneUncontrolled.idf',
-   >>>              epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
-   >>>              sim_dir='simulation_results')
+   >>> from eprun import runsim
+   >>> result=runsim(ep_dir=r'C:\EnergyPlusV9-4-0',
+   >>>               input_filepath='1ZoneUncontrolled.idf',
+   >>>               epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
+   >>>               sim_dir='simulation_results')
    >>> print(type(epresult))
    <class 'eprun.epresult.EPResult'>
    >>> print(list(epresult.files.keys()))      # This prints the output file extensions
@@ -67,7 +67,7 @@ This is accessed using the `get_err` method which returns a `EPErr` object insta
 Another output file is the '.eso' file which contains the results of the simulation calculations. 
 Instructions on how to view these results is described in the tutorial `Reading the eso Output File`.
 
-Congratulations! You now know how to run an EnergyPlus simulation using the `eprun` function
+Congratulations! You now know how to run an EnergyPlus simulation using the `runsim` function
 and how to access the simulation results and output files using the `EPResult` class.
 
 .. The next section looks further at these topics with in-depth tutorials on working with Energy Plus simulations, input files and output files.

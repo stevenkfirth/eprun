@@ -29,17 +29,17 @@ Why use *eprun*?
 Quick Demo
 ----------
 
-*eprun* uses the `eprun` function to run an EnergyPlus simulation. 
+*eprun* uses the `runsim` function to run an EnergyPlus simulation. 
 The code below runs an EnergyPlus simulation on an EnergyPlus input file (.idf) and an EnergyPlus weather file (.epw).
 
 .. code-block:: python
    :lineno-start: 1
 
-   >>> from eprun import eprun
-   >>> epresult=eprun(ep_dir=r'C:\EnergyPlusV9-4-0',
-   >>>                input_filepath='1ZoneUncontrolled.idf',
-   >>>                epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
-   >>>                sim_dir='simulation_files')
+   >>> from eprun import runsim
+   >>> epresult=runsim(ep_dir=r'C:\EnergyPlusV9-4-0',
+   >>>                 input_filepath='1ZoneUncontrolled.idf',
+   >>>                 epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
+   >>>                 sim_dir='simulation_files')
    >>> print(type(epresult))
    <class 'eprun.epresult.EPResult'>
 
@@ -108,7 +108,7 @@ The next section introduces the *eprun* package and gives more details and examp
    :caption: Reference - Simulation Run:
    :hidden:
    
-   eprun_function
+   runsim_function
    EPResult_class
 
    
@@ -127,8 +127,9 @@ The next section introduces the *eprun* package and gives more details and examp
    :caption: Reference - Input files:
    :hidden:
    
-   EPSchema_class
-   EPInput_class
+   read_epjson_function
+   read_idf_function
+   EPJSON_class
       
    
 

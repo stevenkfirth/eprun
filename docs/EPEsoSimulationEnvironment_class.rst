@@ -16,6 +16,6 @@ EPEsoSimulationEnviroment class
    EPEsoAnnualPeriods_class
    EPEsoAnnualVariable_class
 
-.. autoclass:: eprun.epeso_simulation_environment.EPEsoSimulationEnvironment
+.. autoclass:: eprun.eprun.EPEsoSimulationEnvironment
    :members:
    

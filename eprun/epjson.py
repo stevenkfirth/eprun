@@ -2,50 +2,30 @@
 
 
 import json
-import jsonpi
-import os
+from jsonpi import JSONObject
 import re
 from uuid import uuid4
-import collections.abc
+
 
 #from .epinput_object import EPInputObject
 
 
-def read_idf(idf,
-             schema_epJSON):
+def read_idf(fp,
+             schema):
     """Reads an EnergyPlus idf file.
     
-    :param epJSON: The idf input file
-    :type epJSON: filepath, string
-    :param schema_epJSON: The EnergyPlus epJSON schema
-    :type schema_epJSON: filepath, dict, JSONSchemaSchemaObject
+    :param fp: A filepath.
+    :type fp: string
+    :param schema: The EnergyPlus epJSON schema.
+    :type schema: JSONSchemaObject
     
-    :returns: The equivalent epJSON file as a dictionary.
-    :rtype: dict
-    
+    :rtype: EPJSON
     
     """
     
     # load idf
-    try:
-        with open(idf) as f:
-            st=f.read()
-    except FileNotFoundError:  # assume an idf string has been passed
-        st=idf
-    #print(st)
-    
-    # load schema_epJSON
-    if isinstance(schema_epJSON,str):
-        with open(schema_epJSON) as f:
-            json_value=json.load(f)
-        schema=jsonpi.JSONSchemaSchemaObject(json_value)
-    elif isinstance(schema_epJSON,dict):
-        schema=jsonpi.JSONSchemaSchemaObject(schema_epJSON)
-    elif isinstance(schema_epJSON,jsonpi.JSONSchemaSchemaObject):
-        schema=schema_epJSON
-    else:
-        raise Exception
-    #print(schema)
+    with open(fp) as f:
+        st=f.read()
     
     # clean and format as a list
     st=_clean_and_format_idf_string(st)
@@ -73,7 +53,7 @@ def read_idf(idf,
         #print('object_schema:', object_schema)  # i.e. {'patternProperties': {'.*':
         object_legacy_idd=object_schema.legacy_idd
         #print('object_legacy_idd:', object_legacy_idd)  # i.e. ['version_identifier']
-        object_properties=object_schema.patternProperties.schemas()[0].properties
+        object_properties=object_schema.patternProperties.values()[0].properties
         #print('object_properties:', object_properties)
         
         # loop through non-extensible field values
@@ -200,54 +180,137 @@ def _clean_and_format_idf_string(st):
     return b
     
 
-
-class EPJSON(jsonpi.JSONObject):
+def read_epjson(fp,schema):
+    """Reads a JSON file.
+    
+    :param fp: A filepath.
+    :type fp: str
+    :param schema: The EnergyPlus epJSON schema. 
+    :type schema: JSONSchemaObject
+    
+    :rtype: EPJSON
+    
+    """
+    with open(fp,'r') as f:
+        value=json.load(f)
+        
+    return EPJSON(value,schema=schema)
+    
+    
+class EPJSON(JSONObject):
     """Represents the root object of an epJSON file.
     
     Subclass of jsonpi.JSONObject.
     
-    :param epJSON: The epJSON input file
-    :type epJSON: filepath, dict, JSONObject
-    :param schema_epJSON: The EnergyPlus epJSON schema
-    :type schema_epJSON: filepath, dict, JSONSchemaSchemaObject
+    :param json_dict: A Python dictionary of a JSON object. 
+    :type json_dict: dict
+    :param schema: The EnergyPlus epJSON schema. 
+    :type schema: JSONSchemaObject
     
     
     """
     
     def __init__(self,
-                 epJSON,
-                 schema_epJSON):
+                 json_dict,
+                 schema):
         ""
         
-        # load epJSON
-        if isinstance(epJSON,str):
-            with open(epJSON) as f:
-                json_value=json.load(f)
-            self._dict=json_value
-        elif isinstance(epJSON,dict):
-            self._dict=epJSON
-        elif isinstance(epJSON,jsonpi.JSONObject):
-            self._dict=epJSON._dict
+        JSONObject.__init__(self,json_dict)
+        self.__dict__['_schema']=schema
+        
+        
+    def schema(self):
+        ""
+        return self._schema
+        
             
-        # load schema_epJSON
-        if isinstance(schema_epJSON,str):
-            with open(schema_epJSON) as f:
-                json_value=json.load(f)
-            self._schema=jsonpi.JSONSchemaSchemaObject(json_value)
-        elif isinstance(schema_epJSON,dict):
-            self._schema=jsonpi.JSONSchemaSchemaObject(schema_epJSON)
-        elif isinstance(schema_epJSON,jsonpi.JSONSchemaSchemaObject):
-            self._schema=schema_epJSON
-            
-            
+    def summary(self):
+        """The count of input objects for each input type.
+        
+        :rtype: dict
+        
+        """
+        return {name:len(value) for name,value in self.items()}
     
     
-class EPJSONObject(jsonpi.JSONObject):
-    """
-    """
+    def get_input_object(self,
+                         name,
+                         input_type=None):
+        """Returns an EnergyPlus input object.
+        
+        :param name: The name of the object.
+        :type name: str
+        :param input_type: The input type to filter on, optional.
+        :type input_type: str
+        
+        :raises KeyError: If the input_type or name does not exist.
+        
+        :rtype: JSONObject
+        
+        """
+        if input_type is None:
+            for x in self.values():
+                if name in x:
+                    return x[name]
+            raise KeyError
+        else:
+            return self[input_type][name]
+    
+    
+    def get_input_objects(self,input_type=None):
+        """Returns a collection of EnergyPlus input objects. 
+        
+        :param input_type: The input type to filter on.
+        :type input_type: str
+        
+        :rtype: JSONArray
+        
+        """
+        if input_type is None:
+            return self.values().object_values()
+        else:
+            return self[input_type]
+        
+        
+    def add_input_object(self,
+                         input_type,
+                         name,
+                         **properties
+                         ):
+        """Adds an EnergyPlus input object.
+        
+        :param input_type: The input type.
+        :type input_type: str
+        :param name: The name of the object.
+        :type name: str
+        :param properties: The properties of the object.
+        
+        :returns: The newly created object.
+        :rtype: JSONObject
+        
+        """
+        self.setdefault(input_type,{})[name]=properties
+        return self.get_input_object(input_type=input_type,
+                                     name=name)
+        
+    
+    def remove_input_object(self,
+                            input_type,
+                            name
+                            ):
+        """Removes an EnergyPlus input object.
+        
+        :param input_type: The input type.
+        :type input_type: str
+        :param name: The name of the object.
+        :type name: str
+        
+        """
+        del self[input_type][name]
     
     
     
+
     
 
 

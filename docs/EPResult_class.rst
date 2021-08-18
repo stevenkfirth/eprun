@@ -2,5 +2,5 @@
 EPResult class
 ==============
 
-.. autoclass:: eprun.epresult.EPResult
+.. autoclass:: eprun.eprun.EPResult
    :members:

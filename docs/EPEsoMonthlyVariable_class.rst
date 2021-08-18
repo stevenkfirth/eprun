@@ -2,6 +2,6 @@
 EPEsoMonthlyVariable class
 ==========================
 
-.. autoclass:: eprun.epeso_monthly_variable.EPEsoMonthlyVariable
+.. autoclass:: eprun.eprun.EPEsoMonthlyVariable
    :members:
    

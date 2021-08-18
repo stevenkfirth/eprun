@@ -2,5 +2,5 @@
 EPEnd class
 ===========
 
-.. autoclass:: eprun.epend.EPEnd
+.. autoclass:: eprun.eprun.EPEnd
    :members:

@@ -63,8 +63,8 @@ html_static_path = ['_static']
 default_role='any'
 
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
-                       'pandas': ('http://pandas.pydata.org/pandas-docs/stable/', None),
-                       'matplotlib': ('http://matplotlib.sourceforge.net', None)
+                       'pandas': ('https://pandas.pydata.org/pandas-docs/dev/', None),
+                       'matplotlib': ('https://matplotlib.org/', None)
                        }
 
 

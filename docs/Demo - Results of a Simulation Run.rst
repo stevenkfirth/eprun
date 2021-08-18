@@ -1,16 +1,16 @@
 Demo - Results of a Simulation Run
 ==================================
 
-In the previous section we ran an EnergyPlus simulation using the `eprun` function.
+In the previous section we ran an EnergyPlus simulation using the `runsim` function.
 
 .. code-block:: python
    :lineno-start: 1
 
-   >>> from eprun import eprun
-   >>> result=eprun(ep_dir=r'C:\EnergyPlusV9-4-0',
-   >>>              input_filepath='1ZoneUncontrolled.idf',
-   >>>              epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
-   >>>              sim_dir='simulation_results')
+   >>> from eprun import runsim
+   >>> result=runsim(ep_dir=r'C:\EnergyPlusV9-4-0',
+   >>>               input_filepath='1ZoneUncontrolled.idf',
+   >>>               epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
+   >>>               sim_dir='simulation_results')
    >>> print(type(result))
    <class 'eprun.epresult.EPResult'>
    

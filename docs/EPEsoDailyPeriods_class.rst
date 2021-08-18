@@ -2,5 +2,5 @@
 EPEsoDailyPeriods class
 =======================
 
-.. autoclass:: eprun.epeso_daily_periods.EPEsoDailyPeriods
+.. autoclass:: eprun.eprun.EPEsoDailyPeriods
    :members:

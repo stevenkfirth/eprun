@@ -10,13 +10,13 @@ The .eso file is a text file in a non-standard format.
 Some, but not all, of the contents of a .eso file can be viewed as a .csv file by including the ``--readvars`` argument when running an EnergyPlus simulation.
 This runs an additional programme after the main simulation which converts some contents in the .eso file to a .csv file. 
 
-`eprun` provides the :py:class:`~eprun.epeso.EPEso` class to directly read the .eso file and avoid the need for the ``--readvars`` step.
+*eprun* provides the `EPEso` class to directly read the .eso file and avoid the need for the ``--readvars`` step.
 
 2. Accessing an EPEso object instance
 ------------------------------------- 
 
-In `eprun` the contents of the .eso file are viewed using the :py:class:`~eprun.epeso.EPEso` class. 
-A :py:class:`~eprun.epeso.EPEso` object instance is created from the results of an EnergyPlus simulation run using the :py:meth:`~eprun.eprun.eprun` function.
+In *eprun* the contents of the .eso file are viewed using the `EPEso` class. 
+A `EPEso` object instance is created from the results of an EnergyPlus simulation run using the `runsim` function.
 
 This tutorial is based on the '1ZoneUncontrolled.idf' EnergyPlus input file which is provided in the 'ExampleFiles' directory of the EnergyPlus install directory.
 The simulation is run using the 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw' EnergyPlus weather file.
@@ -30,7 +30,7 @@ The simulation is run using the 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw' E
    >>>              sim_dir='my_results')
    >>> eso=result.get_eso()
    >>> print(type(eso))
-   <class 'eprun.epeso.EPEso'>
+   <class 'eprun.eprun.EPEso'>
    
 3. Understanding EPEso simulation environments
 ----------------------------------------------
@@ -40,8 +40,8 @@ such as a winter design day, a summer design day and a annual run period of hour
 The results of these simulation environments are stored in the same .eso file.
 
 In our example, the '1ZoneUncontrolled.idf' contains the instructions for three simulation environments.
-These are accessed using the :py:meth:`~eprun.epeso.EPEso.get_environments` method which returns a list of 
-:py:class:`~eprun.epeso_simulation_environment.EPEsoSimulationEnviroment` object instances.
+These are accessed using the `EPEso.get_environments` method which returns a list of 
+:py:class:`~eprun.eprun.EPEsoSimulationEnviroment` object instances.
 
 .. code-block:: python
 
@@ -52,7 +52,7 @@ These are accessed using the :py:meth:`~eprun.epeso.EPEso.get_environments` meth
     EPEsoSimuationEnvironment("RUN PERIOD 1")]
 
 Each :py:class:`~eprun.epeso_simulation_environment.EPEsoSimulationEnviroment` object contains a number of properties 
-(:py:attr:`~eprun.epeso_simulation_environment.EPEsoSimulationEnviroment.elevation`,
+(:py:attr:`~eprun.eprun.EPEsoSimulationEnviroment.elevation`,
 :py:attr:`~eprun.epeso_simulation_environment.EPEsoSimulationEnviroment.environment_title`,
 :py:attr:`~eprun.epeso_simulation_environment.EPEsoSimulationEnviroment.latitude`,
 :py:attr:`~eprun.epeso_simulation_environment.EPEsoSimulationEnviroment.longitude`,

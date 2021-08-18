@@ -2,6 +2,6 @@
 EPEsoAnnualPeriods class
 ========================
 
-.. autoclass:: eprun.epeso_annual_periods.EPEsoAnnualPeriods
+.. autoclass:: eprun.eprun.EPEsoAnnualPeriods
    :members:
    

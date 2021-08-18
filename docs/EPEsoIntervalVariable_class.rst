@@ -2,5 +2,5 @@
 EPEsoIntervalVariable class
 ===========================
 
-.. autoclass:: eprun.epeso_interval_variable.EPEsoIntervalVariable
+.. autoclass:: eprun.eprun.EPEsoIntervalVariable
    :members:
