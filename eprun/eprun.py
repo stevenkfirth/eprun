@@ -22,7 +22,8 @@ def runsim(input_filepath,
           output_prefix='eplus',
           output_suffix='L',
           readvars=False,
-          print_call=False):
+          print_call=False,
+          **kwargs):
     """Runs an EnergyPlus simulation and returns the results.
     
     :param input_filepath: The filepath of the input file.
@@ -149,7 +150,7 @@ def runsim(input_filepath,
     simulation_start_time=time.time()
         
     # run EnergyPlus simulation using subprocess.run
-    result=subprocess.run(st,capture_output=True)
+    result=subprocess.run(st,capture_output=True,**kwargs)
     
     # get outputs
     returncode=result.returncode

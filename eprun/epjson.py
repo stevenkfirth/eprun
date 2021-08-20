@@ -180,7 +180,8 @@ def _clean_and_format_idf_string(st):
     return b
     
 
-def read_epjson(fp,schema):
+
+def read_epjson(fp,schema=None):
     """Reads a JSON file.
     
     :param fp: A filepath.
@@ -196,6 +197,7 @@ def read_epjson(fp,schema):
         
     return EPJSON(value,schema=schema)
     
+
     
 class EPJSON(JSONObject):
     """Represents the root object of an epJSON file.
@@ -207,32 +209,63 @@ class EPJSON(JSONObject):
     :param schema: The EnergyPlus epJSON schema. 
     :type schema: JSONSchemaObject
     
-    
     """
     
     def __init__(self,
                  json_dict,
-                 schema):
+                 schema=None):
         ""
+        d={}
+        if isinstance(json_dict,dict):
+            for k,v in json_dict.items():
+                j=EPJSONInputType(v)
+                j.__dict__['_name']=k
+                j.__dict__['_obj']=self
+                d[k]=j
+        self.__dict__['_dict']=d
         
-        JSONObject.__init__(self,json_dict)
         self.__dict__['_schema']=schema
         
         
-    def schema(self):
-        ""
-        return self._schema
+    def __setitem__(self,name,value):
+        """Sets a name:value pair.
         
-            
-    def summary(self):
-        """The count of input objects for each input type.
-        
-        :rtype: dict
+        :param name: The name.
+        :type name: str
+        :param value: The value. This should be a Python object that
+            maps to valid JSON.
+        :type value: str, float, int, bool, None, dict or list
         
         """
-        return {name:len(value) for name,value in self.items()}
+        if name.startswith('__'):
+            self.__dict__[name]=value
+        self.__dict__.setdefault('_dict',{})[name]=EPJSONInputType(value)
+        
     
+    def add_input_object(self,
+                         input_type,
+                         name,
+                         **properties
+                         ):
+        """Adds an EnergyPlus input object.
+        
+        :param input_type: The input type.
+        :type input_type: str
+        :param name: The name of the object.
+        :type name: str
+        :param properties: The properties of the object.
+        
+        :returns: The newly created object.
+        :rtype: JSONObject
+        
+        """
+        if not input_type in self:
+            self[input_type]={}
+        self[input_type][name]=properties
+        return self.get_input_object(input_type=input_type,
+                                     name=name)
     
+
     def get_input_object(self,
                          name,
                          input_type=None):
@@ -272,28 +305,6 @@ class EPJSON(JSONObject):
             return self[input_type]
         
         
-    def add_input_object(self,
-                         input_type,
-                         name,
-                         **properties
-                         ):
-        """Adds an EnergyPlus input object.
-        
-        :param input_type: The input type.
-        :type input_type: str
-        :param name: The name of the object.
-        :type name: str
-        :param properties: The properties of the object.
-        
-        :returns: The newly created object.
-        :rtype: JSONObject
-        
-        """
-        self.setdefault(input_type,{})[name]=properties
-        return self.get_input_object(input_type=input_type,
-                                     name=name)
-        
-    
     def remove_input_object(self,
                             input_type,
                             name
@@ -307,6 +318,78 @@ class EPJSON(JSONObject):
         
         """
         del self[input_type][name]
+    
+        
+    def schema(self):
+        """The epJSON schema.
+        
+        :rtype: jsonpi.JSONSchema
+        
+        """
+        return self._schema
+        
+            
+    def summary(self):
+        """The count of input objects for each input type.
+        
+        :rtype: dict
+        
+        """
+        return {name:len(value) for name,value in self.items()}
+    
+    
+    
+class EPJSONInputType(JSONObject):
+    """A JSON object of an EnergyPlus input type, e.g. 'Building' or 'Version'
+    
+    """
+    
+    def __init__(self,
+                 json_dict):
+        ""
+        d={}
+        if isinstance(json_dict,dict):
+            for k,v in json_dict.items():
+                j=EPJSONInputObject(v)
+                j.__dict__['_name']=k
+                j.__dict__['_obj']=self
+                d[k]=j
+        self.__dict__['_dict']=d
+        
+        
+    def __setitem__(self,name,value):
+        """Sets a name:value pair.
+        
+        :param name: The name.
+        :type name: str
+        :param value: The value. This should be a Python object that
+            maps to valid JSON.
+        :type value: str, float, int, bool, None, dict or list
+        
+        """
+        if name.startswith('__'):
+            self.__dict__[name]=value
+        self.__dict__.setdefault('_dict',{})[name]=EPJSONInputObject(value)
+    
+    
+    
+class EPJSONInputObject(JSONObject):
+    """A JSON object of an EnergyPlus input object.
+    
+    For example, a specific building or zone within the EPJSON instance.
+    
+    """
+    
+    def input_type(self):
+        """The input type of the object, i.e. 'Building' or 'Version'.
+        
+        :rtype: str
+        
+        """
+        return self.obj().name()
+    
+        
+    
     
     
     

@@ -59,6 +59,58 @@ class Test_EPJSON(unittest.TestCase):
                               EPJSON)
         
         
+    def test_add_input_object(self):
+        ""
+        e=EPJSON({},schema)
+        e.add_input_object(input_type='Building',
+                           name='building1',
+                           north_axis=0
+                           )
+        self.assertEqual(e.Building.names()[0],
+                         'building1')
+        self.assertEqual(e.Building.building1.north_axis,
+                         0)
+        
+        
+    def test_get_input_object(self):
+        ""
+        io=epjson.get_input_object(name='Simple One Zone (Wireframe DXF)')
+        self.assertEqual(io.north_axis,
+                         0)
+        self.assertEqual(io.name(),
+                         'Simple One Zone (Wireframe DXF)')
+        self.assertEqual(io.obj(),
+                         epjson.Building)
+        self.assertEqual(io.input_type(),
+                         'Building')
+        
+        
+    def test_get_input_objects(self):
+        ""
+        objs=epjson.get_input_objects()
+        self.assertEqual(len(objs),
+                         53)
+        
+        objs=epjson.get_input_objects(input_type='Building')
+        self.assertEqual(len(objs),
+                         1)
+        
+        
+    def test_remove_input_object(self):
+        ""
+        e=EPJSON({},schema)
+        e.add_input_object(input_type='Building',
+                           name='building1',
+                           north_axis=0
+                           )
+        self.assertEqual(len(e.get_input_objects()),
+                         1)
+        e.remove_input_object(input_type='Building',
+                              name='building1')
+        self.assertEqual(len(e.get_input_objects()),
+                         0)
+        
+        
     def test_schema(self):
         ""
         self.assertEqual(epjson.schema(),
@@ -96,7 +148,6 @@ class Test_EPJSON(unittest.TestCase):
                              'Version': 1,
                              'Zone': 1})
         
-    
 
     def test_write_json(self):
         ""

@@ -111,7 +111,6 @@ The next section introduces the *eprun* package and gives more details and examp
    runsim_function
    EPResult_class
 
-   
 .. toctree::
    :maxdepth: 1
    :caption: Reference - Output files:
@@ -120,6 +119,17 @@ The next section introduces the *eprun* package and gives more details and examp
    EPEnd_class
    EPErr_class
    EPEso_class
+   EPEsoSimulationEnvironment_class
+   EPEsoIntervalPeriods_class
+   EPEsoIntervalVariable_class
+   EPEsoDailyPeriods_class
+   EPEsoDailyVariable_class
+   EPEsoMonthlyPeriods_class
+   EPEsoMonthlyVariable_class
+   EPEsoRunPeriodPeriods_class
+   EPEsoRunPeriodVariable_class
+   EPEsoAnnualPeriods_class
+   EPEsoAnnualVariable_class
    
    
 .. toctree::
@@ -130,6 +140,8 @@ The next section introduces the *eprun* package and gives more details and examp
    read_epjson_function
    read_idf_function
    EPJSON_class
+   EPJSONInputType_class
+   EPJSONInputObject_class
       
    
 
