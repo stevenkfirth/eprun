@@ -7,7 +7,7 @@ A successful EnergyPlus simulation run will generate a series of EnergyPlus outp
    :lineno-start: 1
 
    >>> from eprun import runsim
-   >>> result=runsim(ep_dir=r'C:\EnergyPlusV9-4-0',
+   >>> result=runsim(ep_dir=r'C:\EnergyPlusV9-6-0',
    >>>               input_filepath='1ZoneUncontrolled.idf',
    >>>               epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
    >>>               sim_dir='simulation_results')
@@ -49,20 +49,21 @@ This is accessed using the `get_err` method which returns a `EPErr` object insta
    >>> err=epresult.get_err()
    >>> print(type(err))
    <class 'eprun.eperr.EPErr'>
-   >>> for line in err.lines: print(line, end='')      # Prints all lines in the file 
-   Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.31 08:53,
-      ************* Testing Individual Branch Integrity
-      ************* All Branches passed integrity testing
-      ************* Testing Individual Supply Air Path Integrity
-      ************* All Supply Air Paths passed integrity testing
-      ************* Testing Individual Return Air Path Integrity
-      ************* All Return Air Paths passed integrity testing
-      ************* No node connection errors were found.
-      ************* Beginning Simulation
-      ************* Simulation Error Summary *************
-      ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
-      ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
-      ************* EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.21sec
+   >>> print(err.lines)
+   Program Version,EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 06:13,
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ************* Simulation Error Summary *************
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  0.64sec
+
 
 Another output file is the '.eso' file which contains the results of the simulation calculations. 
 Instructions on how to view these results is described in the tutorial `Reading the eso Output File`.

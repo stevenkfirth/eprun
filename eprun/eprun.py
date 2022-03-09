@@ -10,20 +10,22 @@ import calendar
 
 
         
-def runsim(input_filepath,
-          epw_filepath,
-          sim_dir='.',
-          ep_dir='C:\EnergyPlusV9-4-0',
-          annual=False,
-          convert=False,
-          design_day=False,
-          epmacro=False,
-          expand_objects=False,
-          output_prefix='eplus',
-          output_suffix='L',
-          readvars=False,
-          print_call=False,
-          **kwargs):
+def runsim(
+        input_filepath,
+        epw_filepath,
+        ep_dir,
+        sim_dir='.',
+        annual=False,
+        convert=False,
+        design_day=False,
+        epmacro=False,
+        expand_objects=False,
+        output_prefix='eplus',
+        output_suffix='L',
+        readvars=False,
+        print_call=False,
+        **kwargs
+        ):
     """Runs an EnergyPlus simulation and returns the results.
     
     :param input_filepath: The filepath of the input file.
@@ -35,14 +37,13 @@ def runsim(input_filepath,
         This can be relative or absolute.
     :type epw_filepath: str
     
+    :param ep_dir: The EnergyPlus directory where 'energyplus.exe' is installed.
+    :type ep_dir: str
+    
     :param sim_dir: The directory to hold the simulation files.
         This can be relative or absolute.
         Default is '.' which is the current directory.
     :type sim_dir: str
-    
-    :param ep_dir: The EnergyPlus directory where 'energyplus.exe' is installed.
-        Default is 'C:\EnergyPlusV9-4-0'.
-    :type ep_dir: str
     
     :param annual: If True, the '--annual' argument is included in the call
         to EnergyPlus. 
@@ -103,7 +104,7 @@ def runsim(input_filepath,
     .. code-block:: python
            
        >>> from eprun import eprun
-       >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+       >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-6-0',
        >>>                input_filepath='1ZoneUncontrolled.idf',
        >>>                epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
        >>>                sim_dir='simulation_files')
@@ -189,7 +190,7 @@ class EPResult():
     .. code-block:: python
            
        >>> from eprun import eprun
-       >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-4-0',
+       >>> epresult=eprun(ep_dir='C:\EnergyPlusV9-6-0',
        >>>                input_filepath='1ZoneUncontrolled.idf',
        >>>                epw_filepath='USA_CO_Golden-NREL.724666_TMY3.epw',
        >>>                sim_dir='simulation_files')

@@ -1,4 +1,4 @@
-! Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54,
+! Program Version,EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 05:55,
 ! Output:Meter Objects (applicable to this run)
 Output:Meter,Electricity:Facility,hourly; !- [J]
 Output:Meter:Cumulative,Electricity:Facility,hourly; !- [J]
@@ -18,12 +18,16 @@ Output:Meter,Heating:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
 Output:Meter:Cumulative,Heating:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
 Output:Meter,General:Heating:EnergyTransfer,hourly; !- [J]
 Output:Meter:Cumulative,General:Heating:EnergyTransfer,hourly; !- [J]
+Output:Meter,General:Heating:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
+Output:Meter:Cumulative,General:Heating:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
 Output:Meter,Cooling:EnergyTransfer,hourly; !- [J]
 Output:Meter:Cumulative,Cooling:EnergyTransfer,hourly; !- [J]
 Output:Meter,Cooling:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
 Output:Meter:Cumulative,Cooling:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
 Output:Meter,General:Cooling:EnergyTransfer,hourly; !- [J]
 Output:Meter:Cumulative,General:Cooling:EnergyTransfer,hourly; !- [J]
+Output:Meter,General:Cooling:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
+Output:Meter:Cumulative,General:Cooling:EnergyTransfer:Zone:ZONE ONE,hourly; !- [J]
 Output:Meter,ElectricityPurchased:Facility,hourly; !- [J]
 Output:Meter:Cumulative,ElectricityPurchased:Facility,hourly; !- [J]
 Output:Meter,ElectricityPurchased:Plant,hourly; !- [J]

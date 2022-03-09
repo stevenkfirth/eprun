@@ -1,4 +1,4 @@
-Program Version: EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54
+Program Version: EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 05:55
 Tabular Output Report in Format:  Fixed
 
 Building:        Simple One Zone (Wireframe DXF)
@@ -82,6 +82,25 @@ End Uses By Subcategory
        Water Systems       General              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
        Refrigeration       General              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
           Generators       General              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+
+
+End Uses By Space Type
+
+                     Space Type  Electricity [GJ]  Natural Gas [GJ]  Gasoline [GJ]  Diesel [GJ]   Coal [GJ]  Fuel Oil No 1 [GJ]  Fuel Oil No 2 [GJ]  Propane [GJ]  Other Fuel 1 [GJ]  Other Fuel 2 [GJ]  District Cooling [GJ]  District Heating [GJ]  Water [m3]
+             Heating   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+             Cooling   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+   Interior Lighting   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+   Exterior Lighting   Unassigned             82.42              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+  Interior Equipment   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+  Exterior Equipment   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+                Fans   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+               Pumps   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+      Heat Rejection   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+      Humidification   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+       Heat Recovery   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+       Water Systems   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+       Refrigeration   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
+          Generators   Unassigned              0.00              0.00           0.00          0.0          0.                0.00                0.00          0.00               0.00               0.00                   0.00                   0.00          0.
 
 
 Normalized Metrics
@@ -226,6 +245,23 @@ Zone Summary
     Not Part of Total             0.00                                                               0.00                                               0.00                              0.00                    0.00               0.00
 
 
+Space Summary
+
+                           Area [m2]  Conditioned (Y/N)  Part of Total Floor Area (Y/N)     Multipliers       Zone Name      Space Type  Radiant/Solar Enclosure Name  Lighting [W/m2]  People [m2 per person]  Plug and Process [W/m2]            Tags
+             ZONE ONE           232.26                 No                             Yes            1.00        ZONE ONE         GENERAL                      ZONE ONE           0.0000                    0.00                   0.0000
+                Total           232.26                                                                                                                                            0.0000                    0.00                   0.0000
+    Conditioned Total             0.00                                                                                                                                            0.0000                    0.00                   0.0000
+  Unconditioned Total           232.26                                                                                                                                            0.0000                    0.00                   0.0000
+    Not Part of Total             0.00                                                                                                                                            0.0000                    0.00                   0.0000
+
+
+Space Type Summary
+
+          Total Area [m2]  Conditioned Area [m2]  Unconditioned Area [m2]  Not Part of Total Area [m2]  Lighting [W/m2]  People [m2 per person]  Plug and Process [W/m2]
+  GENERAL            232.26                   0.00                   232.26                         0.00           0.0000                    0.00                   0.0000
+    Total            232.26                   0.00                   232.26                         0.00
+
+
 ----------------------------------------------------------------------------------------------------
 REPORT:       Demand End Use Components Summary
 FOR:          Entire Facility
@@ -361,7 +397,7 @@ FOR:          Entire Facility
 Version
 
         Version ID
-  1              9.4
+  1              9.6
 
 
 Timesteps per Hour
@@ -513,10 +549,12 @@ Zone Air Generic Contaminant Balance Simulation
 
 Zone Air Mass Flow Balance Simulation
 
-    Enforce Mass Balance  Adjust Zone Mixing                               Adjust Zone Infiltration {AddInfiltration              Infiltration Zones {MixingSourceZonesOnly
-                                                                                                  AdjustInfiltration                                              AllZones}
-                                                                                                               None}
-  1                     No                 N/A                                                                     N/A                                                    N/A
+    Enforce Mass Balance                                                                               Adjust Zone Mixing and Return {AdjustMixingOnly                               Adjust Zone Infiltration {AddInfiltration              Infiltration Zones {MixingSourceZonesOnly
+                                                                                                                                      AdjustReturnOnly                                                      AdjustInfiltration                                              AllZones}
+                                                                                                                                AdjustMixingThenReturn                                                                   None}
+                                                                                                                                AdjustReturnThenMixing
+                                                                                                                                                 None}
+  1                     No                                                                                                                           N/A                                                                     N/A                                                    N/A
 
 
 HVACSystemRootFindingAlgorithm
@@ -771,8 +809,8 @@ REPORT:       Lighting Summary
 FOR:          Entire Facility
 Interior Lighting
 
-                                    Zone  Lighting Power Density [W/m2]  Zone Area [m2]  Total Power [W]  End Use Subcategory   Schedule Name  Scheduled Hours/Week [hr]  Hours/Week > 1% [hr]  Full Load Hours/Week [hr]  Return Air Fraction  Conditioned (Y/N)  Consumption [GJ]
-  Interior Lighting Total                                          0.0000            0.00             0.00                                                                                                                                                                       0.00
+                               Zone Name      Space Name      Space Type  Lighting Power Density [W/m2]  Space Area [m2]  Total Power [W]  End Use Subcategory   Schedule Name  Scheduled Hours/Week [hr]  Hours/Week > 1% [hr]  Full Load Hours/Week [hr]  Return Air Fraction  Conditioned (Y/N)  Consumption [GJ]
+  Interior Lighting Total                                                                          0.0000             0.00             0.00                                                                                                                                                                       0.00
 
 
 Daylighting
@@ -793,7 +831,7 @@ REPORT:       Equipment Summary
 FOR:          Entire Facility
 Central Plant
 
-                 Type  Nominal Capacity [W]  Nominal Efficiency [W/W]  IPLV in SI Units [W/W]  IPLV in IP Units [Btu/W-h]
+                 Type  Reference Capacity [W]  Reference Efficiency [W/W]  Rated Capacity [W]  Rated Efficiency [W/W]  IPLV in SI Units [W/W]  IPLV in IP Units [Btu/W-h]
   None
 
 
@@ -938,6 +976,51 @@ Values shown for a single zone without multipliers
 
 
 ----------------------------------------------------------------------------------------------------
+REPORT:       Outdoor Air Details
+FOR:          Entire Facility
+Mechanical Ventilation Parameters by Zone
+
+                   AirLoop Name  Average Number of Occupants  Nominal Number of Occupants  Zone Volume [m3]  Zone Area [m2]  Design Zone Outdoor Airflow - Voz [m3/s]  Minimum Dynamic Target Ventilation - Voz-dyn-min [m3/s]
+  Total Facility                                          0.00                         0.00              0.00            0.00                                    0.0000                                                    0.000
+
+
+Total Outdoor Air by Zone
+
+                 Mechanical Ventilation [m3]  Natural Ventilation [m3]  Total Ventilation [m3]  Infiltration [m3]  Total Ventilation and Infiltration [m3]  Dynamic Target Ventilation - Voz-dyn [m3]  Time Below Voz-dyn [hr]  Time At Voz-dyn [hr]  Time Above Voz-dyn [hr]  Time Above Zero When Unoccupied [hr]
+  Total Facility                          0.00                      0.00                    0.00               0.00                                     0.00                                       0.00                     0.00                  0.00                     0.00                                  0.00
+
+
+Average Outdoor Air During Occupancy by Zone - Flow Rates
+
+                 Mechanical Ventilation [m3/s]  Natural Ventilation [m3/s]  Total Ventilation [m3/s]  Infiltration [m3/s]  Total Ventilation and Infiltration [m3/s]  Dynamic Target Ventilation - Voz-dyn [m3/s]  Time Below Voz-dyn [hr]  Time At Voz-dyn [hr]  Time Above Voz-dyn [hr]
+  Total Facility                          0.0000                      0.0000                    0.0000               0.0000                                     0.0000                                       0.0000                     0.00                  0.00                     0.00
+
+
+Total Outdoor Air by AirLoop
+
+       Mechanical Ventilation [m3]  Natural Ventilation [m3/s]  Total Ventilation [m3/s]  Sum Zone Dynamic Target Ventilation - Voz-sum-dyn [m3]  Time Below Voz-sum-dyn [hr]  Time At Voz-sum-dyn [hr]  Time Above Voz-sum-dyn [hr]  Time Above Zero When Unoccupied [hr]
+  None
+
+
+Average Outdoor Air During Occupancy by AirLoop
+
+       Mechanical Ventilation [m3/s]  Natural Ventilation [m3/s]  Total Ventilation [m3/s]  Sum Zone Dynamic Target Ventilation - Voz-sum-dyn [m3/s]  Time Below Voz-sum-dyn [hr]  Time At Voz-sum-dyn [hr]  Time Above Voz-sum-dyn [hr]
+  None
+
+
+Outdoor Air Controller Limiting Factors by AirLoop
+
+       No Limiting Factor [hr]  Limits and Scheduled Limits [hr]  Economizer [hr]  Exhaust Flow [hr]  Mixed Air Flow [hr]  High Humidity [hr]  Demand Controlled Ventilation [hr]  Night Ventilation [hr]  Demand Limiting [hr]  Energy Management System [hr]
+  None
+
+
+Average Outdoor Air for Limiting Factors During Occupancy
+
+       No Limiting Factor [m3/s]  Limits and Scheduled Limits [m3/s]  Economizer [m3/s]  Exhaust Flow [m3/s]  Mixed Air Flow [m3/s]  High Humidity [m3/s]  Demand Controlled Ventilation [m3/s]  Night Ventilation [m3/s]  Demand Limiting [m3/s]  Energy Management System [m3/s]
+  None
+
+
+----------------------------------------------------------------------------------------------------
 REPORT:       Object Count Summary
 FOR:          Entire Facility
 Surfaces by Class
@@ -972,9 +1055,9 @@ HVAC
 Input Fields
 
                                    Count
-              IDF Objects               53
-         Defaulted Fields               25
-     Fields with Defaults              153
+              IDF Objects               55
+         Defaulted Fields               26
+     Fields with Defaults              158
          Autosized Fields                0
        Autosizable Fields                0
     Autocalculated Fields                3
@@ -1043,16 +1126,18 @@ Annual and Peak Values - Other Liquid/Gas
 
 Annual and Peak Values - Other
 
-                                       Annual Value [GJ]  Minimum Value [W]  Timestamp of Minimum {TIMESTAMP}  Maximum Value [W]  Timestamp of Maximum {TIMESTAMP}
-               EnergyTransfer:Facility                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-               EnergyTransfer:Building                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-          EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-                Heating:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-  Heating:EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-        General:Heating:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-                Cooling:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-  Cooling:EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
-        General:Cooling:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                                               Annual Value [GJ]  Minimum Value [W]  Timestamp of Minimum {TIMESTAMP}  Maximum Value [W]  Timestamp of Maximum {TIMESTAMP}
+                       EnergyTransfer:Facility                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                       EnergyTransfer:Building                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                  EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                        Heating:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+          Heating:EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                General:Heating:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+  General:Heating:EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                        Cooling:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+          Cooling:EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+                General:Cooling:EnergyTransfer                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
+  General:Cooling:EnergyTransfer:Zone:ZONE ONE                0.00               0.00                      01-JAN-00:15               0.00                      01-JAN-00:15
 
 
 ----------------------------------------------------------------------------------------------------

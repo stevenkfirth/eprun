@@ -1,52 +1,54 @@
 
- Meters for 10,EXTLIGHTS:Exterior Lights Electricity Energy [J]
+ Meters for 12,EXTLIGHTS:Exterior Lights Electricity Energy [J]
   OnMeter=Electricity:Facility [J]
   OnMeter=ExteriorLights:Electricity [J]
   OnMeter=Grounds Lights:ExteriorLights:Electricity [J]
 
- Meters for 78,ZONE ONE:Zone Air System Sensible Heating Energy [J]
+ Meters for 80,ZONE ONE:Zone Air System Sensible Heating Energy [J]
   OnMeter=EnergyTransfer:Facility [J]
   OnMeter=EnergyTransfer:Building [J]
   OnMeter=EnergyTransfer:Zone:ZONE ONE [J]
   OnMeter=Heating:EnergyTransfer [J]
   OnMeter=Heating:EnergyTransfer:Zone:ZONE ONE [J]
   OnMeter=General:Heating:EnergyTransfer [J]
+  OnMeter=General:Heating:EnergyTransfer:Zone:ZONE ONE [J]
 
- Meters for 151,ZONE ONE:Zone Air System Sensible Cooling Energy [J]
+ Meters for 165,ZONE ONE:Zone Air System Sensible Cooling Energy [J]
   OnMeter=EnergyTransfer:Facility [J]
   OnMeter=EnergyTransfer:Building [J]
   OnMeter=EnergyTransfer:Zone:ZONE ONE [J]
   OnMeter=Cooling:EnergyTransfer [J]
   OnMeter=Cooling:EnergyTransfer:Zone:ZONE ONE [J]
   OnMeter=General:Cooling:EnergyTransfer [J]
+  OnMeter=General:Cooling:EnergyTransfer:Zone:ZONE ONE [J]
 
- Meters for 188,Whole Building:Facility Total Purchased Electricity Energy [J]
+ Meters for 214,Whole Building:Facility Total Purchased Electricity Energy [J]
   OnMeter=ElectricityPurchased:Facility [J]
   OnMeter=ElectricityPurchased:Plant [J]
   OnMeter=Cogeneration:ElectricityPurchased [J]
   OnMeter=General:Cogeneration:ElectricityPurchased [J]
 
- Meters for 237,Whole Building:Facility Total Surplus Electricity Energy [J]
+ Meters for 263,Whole Building:Facility Total Surplus Electricity Energy [J]
   OnMeter=ElectricitySurplusSold:Facility [J]
   OnMeter=ElectricitySurplusSold:Plant [J]
   OnMeter=Cogeneration:ElectricitySurplusSold [J]
   OnMeter=General:Cogeneration:ElectricitySurplusSold [J]
 
- Meters for 286,Whole Building:Facility Net Purchased Electricity Energy [J]
+ Meters for 312,Whole Building:Facility Net Purchased Electricity Energy [J]
   OnMeter=ElectricityNet:Facility [J]
   OnMeter=ElectricityNet:Plant [J]
   OnMeter=Cogeneration:ElectricityNet [J]
   OnMeter=General:Cogeneration:ElectricityNet [J]
 
- Meters for 335,Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass [kg]
+ Meters for 361,Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass [kg]
   OnMeter=Carbon Equivalent:Facility [kg]
   OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
 
- Meters for 360,Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass [kg]
+ Meters for 386,Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass [kg]
   OnMeter=Carbon Equivalent:Facility [kg]
   OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
 
- Meters for 361,Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass [kg]
+ Meters for 387,Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass [kg]
   OnMeter=Carbon Equivalent:Facility [kg]
   OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
 
@@ -80,6 +82,9 @@
  For Meter=General:Heating:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Heating, contents are:
   ZONE ONE:Zone Air System Sensible Heating Energy
 
+ For Meter=General:Heating:EnergyTransfer:Zone:ZONE ONE [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ZONE ONE:Zone Air System Sensible Heating Energy
+
  For Meter=Cooling:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Cooling, contents are:
   ZONE ONE:Zone Air System Sensible Cooling Energy
 
@@ -87,6 +92,9 @@
   ZONE ONE:Zone Air System Sensible Cooling Energy
 
  For Meter=General:Cooling:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Cooling, contents are:
+  ZONE ONE:Zone Air System Sensible Cooling Energy
+
+ For Meter=General:Cooling:EnergyTransfer:Zone:ZONE ONE [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
   ZONE ONE:Zone Air System Sensible Cooling Energy
 
  For Meter=ElectricityPurchased:Facility [J], ResourceType=ElectricityPurchased, contents are:

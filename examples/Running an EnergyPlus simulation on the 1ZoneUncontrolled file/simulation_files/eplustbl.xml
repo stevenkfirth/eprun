@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <EnergyPlusTabularReports>
-  <BuildingName>Simple One Zone (Wireframe DXF)</BuildingName>
+  <state.dataHeatBal->BuildingName>Simple One Zone (Wireframe DXF)</state.dataHeatBal->BuildingName>
   <EnvironmentName>RUN PERIOD 1</EnvironmentName>
   <WeatherFileLocationTitle>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFileLocationTitle>
-  <ProgramVersion>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54</ProgramVersion>
+  <ProgramVersion>EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 05:55</ProgramVersion>
   <SimulationTimestamp>
     <Date>
-      2021-01-01
+      2022-03-09
     </Date>
     <Time>
-      04:54:24
+      05:55:01
     </Time>
   </SimulationTimestamp>
 
@@ -536,6 +536,244 @@
     <DistrictHeating units="GJ">0.00</DistrictHeating>
     <Water units="m3">0.00</Water>
   </EndUsesBySubcategory>
+  <EndUsesBySpaceType>
+    <name>Heating</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>Cooling</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>InteriorLighting</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>ExteriorLighting</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">82.42</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>InteriorEquipment</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>ExteriorEquipment</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>Fans</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>Pumps</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>HeatRejection</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>Humidification</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>HeatRecovery</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>WaterSystems</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>Refrigeration</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
+  <EndUsesBySpaceType>
+    <name>Generators</name>
+    <SpaceType>Unassigned</SpaceType>
+    <Electricity units="GJ">0.00</Electricity>
+    <NaturalGas units="GJ">0.00</NaturalGas>
+    <Gasoline units="GJ">0.00</Gasoline>
+    <Diesel units="GJ">0.00</Diesel>
+    <Coal units="GJ">0.00</Coal>
+    <FuelOilNo1 units="GJ">0.00</FuelOilNo1>
+    <FuelOilNo2 units="GJ">0.00</FuelOilNo2>
+    <Propane units="GJ">0.00</Propane>
+    <OtherFuel1 units="GJ">0.00</OtherFuel1>
+    <OtherFuel2 units="GJ">0.00</OtherFuel2>
+    <DistrictCooling units="GJ">0.00</DistrictCooling>
+    <DistrictHeating units="GJ">0.00</DistrictHeating>
+    <Water units="m3">0.00</Water>
+  </EndUsesBySpaceType>
 <note>Normalized Metrics</note>
   <UtilityUsePerTotalFloorArea>
     <name>Lighting</name>
@@ -771,7 +1009,7 @@
   <for>Entire Facility</for>
   <General>
     <name>Value</name>
-    <ProgramVersionAndBuild>EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 04:54</ProgramVersionAndBuild>
+    <ProgramVersionAndBuild>EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 05:55</ProgramVersionAndBuild>
     <Runperiod>RUN PERIOD 1</Runperiod>
     <WeatherFile>Denver Centennial  Golden   Nr CO USA TMY3 WMO#=724666</WeatherFile>
     <Latitude units="deg">
@@ -933,6 +1171,64 @@
     <WindowGlassArea units="m2">0.00</WindowGlassArea>
     <OpeningArea units="m2">0.00</OpeningArea>
   </ZoneSummary>
+  <SpaceSummary>
+    <name>ZoneOne</name>
+    <Area units="m2">232.26</Area>
+    <ConditionedYN>No</ConditionedYN>
+    <PartOfTotalFloorAreaYN>Yes</PartOfTotalFloorAreaYN>
+    <Multipliers>1.00</Multipliers>
+    <ZoneName>ZONE ONE</ZoneName>
+    <SpaceType>GENERAL</SpaceType>
+    <RadiantSolarEnclosureName>ZONE ONE</RadiantSolarEnclosureName>
+    <Lighting units="W/m2">0.0000</Lighting>
+    <People units="m2 per person">0.00</People>
+    <PlugAndProcess units="W/m2">0.0000</PlugAndProcess>
+  </SpaceSummary>
+  <SpaceSummary>
+    <name>Total</name>
+    <Area units="m2">232.26</Area>
+    <Lighting units="W/m2">0.0000</Lighting>
+    <People units="m2 per person">0.00</People>
+    <PlugAndProcess units="W/m2">0.0000</PlugAndProcess>
+  </SpaceSummary>
+  <SpaceSummary>
+    <name>ConditionedTotal</name>
+    <Area units="m2">0.00</Area>
+    <Lighting units="W/m2">0.0000</Lighting>
+    <People units="m2 per person">0.00</People>
+    <PlugAndProcess units="W/m2">0.0000</PlugAndProcess>
+  </SpaceSummary>
+  <SpaceSummary>
+    <name>UnconditionedTotal</name>
+    <Area units="m2">232.26</Area>
+    <Lighting units="W/m2">0.0000</Lighting>
+    <People units="m2 per person">0.00</People>
+    <PlugAndProcess units="W/m2">0.0000</PlugAndProcess>
+  </SpaceSummary>
+  <SpaceSummary>
+    <name>NotPartOfTotal</name>
+    <Area units="m2">0.00</Area>
+    <Lighting units="W/m2">0.0000</Lighting>
+    <People units="m2 per person">0.00</People>
+    <PlugAndProcess units="W/m2">0.0000</PlugAndProcess>
+  </SpaceSummary>
+  <SpaceTypeSummary>
+    <name>General</name>
+    <TotalArea units="m2">232.26</TotalArea>
+    <ConditionedArea units="m2">0.00</ConditionedArea>
+    <UnconditionedArea units="m2">232.26</UnconditionedArea>
+    <NotPartOfTotalArea units="m2">0.00</NotPartOfTotalArea>
+    <Lighting units="W/m2">0.0000</Lighting>
+    <People units="m2 per person">0.00</People>
+    <PlugAndProcess units="W/m2">0.0000</PlugAndProcess>
+  </SpaceTypeSummary>
+  <SpaceTypeSummary>
+    <name>Total</name>
+    <TotalArea units="m2">232.26</TotalArea>
+    <ConditionedArea units="m2">0.00</ConditionedArea>
+    <UnconditionedArea units="m2">232.26</UnconditionedArea>
+    <NotPartOfTotalArea units="m2">0.00</NotPartOfTotalArea>
+  </SpaceTypeSummary>
 </InputVerificationAndResultsSummary>
 <DemandEndUseComponentsSummary>
   <for>Entire Facility</for>
@@ -1896,7 +2192,7 @@
   <for>Entire Facility</for>
   <Version>
     <name>t1</name>
-    <VersionId>9.4</VersionId>
+    <VersionId>9.6</VersionId>
   </Version>
   <TimestepsPerHour>
     <name>t1</name>
@@ -2114,7 +2410,7 @@
   <ZoneAirMassFlowBalanceSimulation>
     <name>t1</name>
     <EnforceMassBalance>No</EnforceMassBalance>
-    <AdjustZoneMixing>N/A</AdjustZoneMixing>
+    <AdjustZoneMixingAndReturnAdjustmixingonlyAdjustreturnonlyAdjustmixingthenreturnAdjustreturnthenmixingNone>N/A</AdjustZoneMixingAndReturnAdjustmixingonlyAdjustreturnonlyAdjustmixingthenreturnAdjustreturnthenmixingNone>
     <AdjustZoneInfiltrationAddinfiltrationAdjustinfiltrationNone>N/A</AdjustZoneInfiltrationAddinfiltrationAdjustinfiltrationNone>
     <InfiltrationZonesMixingsourcezonesonlyAllzones>N/A</InfiltrationZonesMixingsourcezonesonlyAllzones>
   </ZoneAirMassFlowBalanceSimulation>
@@ -2714,7 +3010,7 @@
   <InteriorLighting>
     <name>InteriorLightingTotal</name>
     <LightingPowerDensity units="W/m2">0.0000</LightingPowerDensity>
-    <ZoneArea units="m2">0.00</ZoneArea>
+    <SpaceArea units="m2">0.00</SpaceArea>
     <TotalPower units="W">0.00</TotalPower>
     <Consumption units="GJ">0.00</Consumption>
   </InteriorLighting>
@@ -2776,6 +3072,43 @@
 <OutdoorAirSummary>
   <for>Entire Facility</for>
 </OutdoorAirSummary>
+<OutdoorAirDetails>
+  <for>Entire Facility</for>
+  <MechanicalVentilationParametersByZone>
+    <name>TotalFacility</name>
+    <AverageNumberOfOccupants>0.00</AverageNumberOfOccupants>
+    <NominalNumberOfOccupants>0.00</NominalNumberOfOccupants>
+    <ZoneVolume units="m3">0.00</ZoneVolume>
+    <ZoneArea units="m2">0.00</ZoneArea>
+    <DesignZoneOutdoorAirflowVoz units="m3/s">0.0000</DesignZoneOutdoorAirflowVoz>
+    <MinimumDynamicTargetVentilationVozDynMin units="m3/s">0.000</MinimumDynamicTargetVentilationVozDynMin>
+  </MechanicalVentilationParametersByZone>
+  <TotalOutdoorAirByZone>
+    <name>TotalFacility</name>
+    <MechanicalVentilation units="m3">0.00</MechanicalVentilation>
+    <NaturalVentilation units="m3">0.00</NaturalVentilation>
+    <TotalVentilation units="m3">0.00</TotalVentilation>
+    <Infiltration units="m3">0.00</Infiltration>
+    <TotalVentilationAndInfiltration units="m3">0.00</TotalVentilationAndInfiltration>
+    <DynamicTargetVentilationVozDyn units="m3">0.00</DynamicTargetVentilationVozDyn>
+    <TimeBelowVozDyn units="hr">0.00</TimeBelowVozDyn>
+    <TimeAtVozDyn units="hr">0.00</TimeAtVozDyn>
+    <TimeAboveVozDyn units="hr">0.00</TimeAboveVozDyn>
+    <TimeAboveZeroWhenUnoccupied units="hr">0.00</TimeAboveZeroWhenUnoccupied>
+  </TotalOutdoorAirByZone>
+  <AverageOutdoorAirDuringOccupancyByZoneFlowRates>
+    <name>TotalFacility</name>
+    <MechanicalVentilation units="m3/s">0.0000</MechanicalVentilation>
+    <NaturalVentilation units="m3/s">0.0000</NaturalVentilation>
+    <TotalVentilation units="m3/s">0.0000</TotalVentilation>
+    <Infiltration units="m3/s">0.0000</Infiltration>
+    <TotalVentilationAndInfiltration units="m3/s">0.0000</TotalVentilationAndInfiltration>
+    <DynamicTargetVentilationVozDyn units="m3/s">0.0000</DynamicTargetVentilationVozDyn>
+    <TimeBelowVozDyn units="hr">0.00</TimeBelowVozDyn>
+    <TimeAtVozDyn units="hr">0.00</TimeAtVozDyn>
+    <TimeAboveVozDyn units="hr">0.00</TimeAboveVozDyn>
+  </AverageOutdoorAirDuringOccupancyByZoneFlowRates>
+</OutdoorAirDetails>
 <ObjectCountSummary>
   <for>Entire Facility</for>
   <SurfacesByClass>
@@ -2858,9 +3191,9 @@
   </Hvac>
   <InputFields>
     <name>Count</name>
-    <IdfObjects>53</IdfObjects>
-    <DefaultedFields>25</DefaultedFields>
-    <FieldsWithDefaults>153</FieldsWithDefaults>
+    <IdfObjects>55</IdfObjects>
+    <DefaultedFields>26</DefaultedFields>
+    <FieldsWithDefaults>158</FieldsWithDefaults>
     <AutosizedFields>0</AutosizedFields>
     <AutosizableFields>0</AutosizableFields>
     <AutocalculatedFields>3</AutocalculatedFields>
@@ -3054,6 +3387,14 @@
     <TimestampOfMaximumTimestamp>01-JAN-00:15</TimestampOfMaximumTimestamp>
   </AnnualAndPeakValuesOther>
   <AnnualAndPeakValuesOther>
+    <name>GeneralHeatingEnergytransferZoneZoneOne</name>
+    <AnnualValue units="GJ">0.00</AnnualValue>
+    <MinimumValue units="W">0.00</MinimumValue>
+    <TimestampOfMinimumTimestamp>01-JAN-00:15</TimestampOfMinimumTimestamp>
+    <MaximumValue units="W">0.00</MaximumValue>
+    <TimestampOfMaximumTimestamp>01-JAN-00:15</TimestampOfMaximumTimestamp>
+  </AnnualAndPeakValuesOther>
+  <AnnualAndPeakValuesOther>
     <name>CoolingEnergytransfer</name>
     <AnnualValue units="GJ">0.00</AnnualValue>
     <MinimumValue units="W">0.00</MinimumValue>
@@ -3071,6 +3412,14 @@
   </AnnualAndPeakValuesOther>
   <AnnualAndPeakValuesOther>
     <name>GeneralCoolingEnergytransfer</name>
+    <AnnualValue units="GJ">0.00</AnnualValue>
+    <MinimumValue units="W">0.00</MinimumValue>
+    <TimestampOfMinimumTimestamp>01-JAN-00:15</TimestampOfMinimumTimestamp>
+    <MaximumValue units="W">0.00</MaximumValue>
+    <TimestampOfMaximumTimestamp>01-JAN-00:15</TimestampOfMaximumTimestamp>
+  </AnnualAndPeakValuesOther>
+  <AnnualAndPeakValuesOther>
+    <name>GeneralCoolingEnergytransferZoneZoneOne</name>
     <AnnualValue units="GJ">0.00</AnnualValue>
     <MinimumValue units="W">0.00</MinimumValue>
     <TimestampOfMinimumTimestamp>01-JAN-00:15</TimestampOfMinimumTimestamp>

@@ -1,6 +1,6 @@
-Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2020.12.31 08:53
+Program Version,EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 06:13
 ! <Version>, Version ID
- Version, 9.4
+ Version, 9.6
 ! <Timesteps per Hour>, #TimeSteps, Minutes per TimeStep {minutes}
  Timesteps per Hour,  4, 15
 ! <System Convergence Limits>, Minimum System TimeStep {minutes}, Max HVAC Iterations, Minimum Plant Iterations, Maximum Plant Iterations
@@ -47,7 +47,7 @@ Sky Radiance Distribution,Anisotropic
  Zone Air Carbon Dioxide Balance Simulation, No,N/A
 ! <Zone Air Generic Contaminant Balance Simulation>, Simulation {Yes/No}, Generic Contaminant Concentration
  Zone Air Generic Contaminant Balance Simulation, No,N/A
-! <Zone Air Mass Flow Balance Simulation>, Enforce Mass Balance, Adjust Zone Mixing, Adjust Zone Infiltration {AddInfiltration | AdjustInfiltration | None}, Infiltration Zones {MixingSourceZonesOnly | AllZones}
+! <Zone Air Mass Flow Balance Simulation>, Enforce Mass Balance, Adjust Zone Mixing and Return {AdjustMixingOnly | AdjustReturnOnly | AdjustMixingThenReturn | AdjustReturnThenMixing | None}, Adjust Zone Infiltration {AddInfiltration | AdjustInfiltration | None}, Infiltration Zones {MixingSourceZonesOnly | AllZones}
  Zone Air Mass Flow Balance Simulation, No,N/A,N/A,N/A
 ! <HVACSystemRootFindingAlgorithm>, Value {RegulaFalsi | Bisection | BisectionThenRegulaFalsi | RegulaFalsiThenBisection}
  HVACSystemRootFindingAlgorithm, RegulaFalsi

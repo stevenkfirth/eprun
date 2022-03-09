@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 05:31,
+Program Version,EnergyPlus, Version 9.6.0-f420c06a69, YMD=2022.03.09 06:02,
    ************* Testing Individual Branch Integrity
    ************* All Branches passed integrity testing
    ************* Testing Individual Supply Air Path Integrity
@@ -10,4 +10,4 @@ Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.01.01 05:31,
    ************* Simulation Error Summary *************
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
-   ************* EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  2.56sec
+   ************* EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  0.64sec
