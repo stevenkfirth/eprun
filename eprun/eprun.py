@@ -115,6 +115,8 @@ def runsim(input_filepath,
                
     .. seealso::
     
+       https://github.com/NREL/EnergyPlus/blob/develop/doc/running-energyplus-from-command-line.md#how-to-run-energyplus-from-the-command-line
+    
        EnergyPlus Essentials, pages 15 and 16.
        https://energyplus.net/quickstart#reading
     

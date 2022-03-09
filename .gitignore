@@ -1,5 +1,6 @@
 *.pdf
 old/
+_old/
 
 
 # Byte-compiled / optimized / DLL files

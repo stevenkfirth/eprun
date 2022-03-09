@@ -15,7 +15,8 @@ import datetime
 epresult=runsim(input_filepath=r'files\1ZoneUncontrolled.idf',
                 epw_filepath=r'files\USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw',
                 sim_dir='sim',
-                readvars=False)
+                readvars=False,
+                ep_dir=r'C:\Users\cvskf\EnergyPlusV9-6-0')
 end=EPEnd(fp=r'files\eplusout.end')
 err=EPErr(fp=r'files\eplusout.err')
 eso=EPEso(fp=r'files\eplusout.eso')
